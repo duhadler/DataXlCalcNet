@@ -1,0 +1,46 @@
+using System;
+using System.Numerics;
+using FixedPrecNet;
+using ArbPrecNet;
+using UserFixedPrecNet;
+using UserArbPrecNet;
+
+namespace EvaluateCS
+{
+    public class Program
+    {
+        public double[,,] test4()
+        {
+
+            int xResolution = 128;
+            int yResolution = 128;
+            double xmin = -3.14159265358979;
+            double xmax = 3.14159265358979;
+            double ymin = -3.14159265358979;
+            double ymax = 3.14159265358979;
+            double[,,] d3 = new double[3, xResolution+2, yResolution+2];
+            double dx = (xmax - xmin) / xResolution;
+            double dy = (ymax - ymin) / yResolution;
+            double u = 0.0;
+            double v = 0.0;
+            for (int ix = 0; ix <= xResolution + 1; ix++)
+            {
+                for (int iy = 0; iy <= yResolution + 1; iy++)
+                {
+                    u = xmin + ix * dx;
+                    v = ymin + iy * dy;
+                    // Start function definition
+var p2 = 2 * Math.PI / 3;
+var x = 2 * Math.Sin(3 * u) / (2 + Math.Cos(v));
+var y = 2 * (Math.Sin(u) + 2 * Math.Sin(2 * u)) / (2 + Math.Cos(v + p2));
+var z = (Math.Cos(u) - 2 * Math.Cos(2 * u)) * (2 + Math.Cos(v)) * (2 + Math.Cos(v + p2)) / 4;
+                    // End function definition
+                    d3[0, ix, iy] = x;
+                    d3[1, ix, iy] = z;
+                    d3[2, ix, iy] = -y;
+                }
+            }
+            return d3;
+        }
+    }
+}

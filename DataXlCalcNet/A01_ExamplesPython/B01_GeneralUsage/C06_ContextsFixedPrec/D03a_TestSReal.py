@@ -18,7 +18,6 @@ def main_tests():
     arithmetic_comparisons_with_floats()
     arithmetic_comparisons_with_long_integers()
     arithmetic_comparisons_with_short_integers()
-    assignments_to_matrices()
 
 
 def general_assignments():
@@ -355,21 +354,6 @@ def arithmetic_comparisons_with_short_integers():
     print('res = 25 ≠ x:', res)
     print('</H1>')
 
-
-
-def assignments_to_matrices():
-    print()
-    print('<H1 Title="Assignments to matrices">')
-#    xMat = sreal.Mat.Random(2,2)
-#    print('xMat = sreal.Mat.Random(2,2): \n', xMat)
-#
-#    xcoeff = sreal.t(4.5)
-#    print('xcoeff = sreal.t(4.5): ', xcoeff)
-#
-#    xMat[1,1] = xcoeff
-#    print('xMat[1,1] = xcoeff: \n', xMat)
-#    print('xMat[1,1]: ', xMat[1,1])
-    print('</H1>')
 
 
 
