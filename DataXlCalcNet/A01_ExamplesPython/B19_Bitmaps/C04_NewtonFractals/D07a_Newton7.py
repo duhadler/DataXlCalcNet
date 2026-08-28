@@ -1,12 +1,12 @@
 ﻿from xlcalcnet import gui
 import os, re
-from numba import jit
+#from numba import jit
 import numpy as np
 from matplotlib import colors, pyplot as plt
 
 
 #Classical Halley, Modified
-@jit(nopython=True)
+#@jit(nopython=True)
 def newton(z,maxiter):
     iteration = 0
     zlast = complex(0.0, 0.0)
@@ -25,7 +25,7 @@ def newton(z,maxiter):
     else: return maxiter+2
 
 
-@jit(nopython=True)
+#@jit(nopython=True)
 def newton_set(xmin,xmax,ymin,ymax,width,height,maxiter):
     r1 = np.linspace(xmin, xmax, width)
     r2 = np.linspace(ymin, ymax, height)
