@@ -159,19 +159,31 @@ def DomainColoring(**kwargs):
 
 try:
     if __name__ == '__main__':
+
+
+        DomainColoring(func=lambda z:(z**3-1)/z, style='c', re=[-1.5, 1.5], im=[-1.5, 1.5], Title=r'$f(z)=\dfrac{z^3-1}{z}$', daxis=True)
+
+        #DomainColoring(func=lambda z:(z**3-1)/z, style='p', re=[-1.5, 1.5], im=[-1.5, 1.5], Title=r'$f(z)=\dfrac{z^3-1}{z}$', daxis=True)
+
+        #DomainColoring(func=lambda z:(z**3-1)/z, style='m', re=[-1.5, 1.5], im=[-1.5, 1.5], Title=r'$f(z)=\dfrac{z^3-1}{z}$', daxis=True)
+
+        #DomainColoring(func=lambda z:(z**3-1)/z, style='pm', re=[-1.5, 1.5], im=[-1.5, 1.5], Title=r'$f(z)=\dfrac{z^3-1}{z}$', daxis=True)
+
+        #DomainColoring(func=lambda z:(z**6-1) / (z**12+1), style='pm', re=[-2.0, 2.0], im=[-2.0, 2.0], Title=r'$f(z)=\dfrac{z^6-1}{z^{12}+1}$', daxis=True)
+
+        #DomainColoring(func=lambda z:np.exp(1/z), style='pm', re=[-2.0, 2.0], im=[-2.0, 2.0], Title=r'$f(z)=\exp(1/z)$', daxis=True)
+
         #DomainColoring(func=lambda z:np.exp(1.0 / z**2), style='pm', re=[-1.5, 1.5], im=[-1.5, 1.5], Title=r'$f(z)=\exp(1/z^2)$', daxis=True)
+
+        #DomainColoring(func=lambda z:z*np.sin(1/z), style='pm', re=[-0.6, 0.6], im=[-0.6, 0.6], Title=r'$f(z)=z \cdot \sin(1/z)$', daxis=True)
 
         #DomainColoring(func=lambda z:np.sin(z) / (z-1j)**2, style='pm', re=[-3, 3], im=[-3, 3], Title=r'$f(z)=\dfrac{\sin(z)}{(z-i)^2}$', daxis=True)
 
-        #DomainColoring(func=lambda z:z*np.sin(1/z), style='pm', re=[-0.75, 0.75], im=[-0.75, 0.75], Title=r'$f(z)=z \cdot \sin(1/z)$', daxis=True)
+
 
         #DomainColoring(func=lambda z:np.exp(1/z), style='pm', re=[-0.75, 0.75], im=[-0.75, 0.75], Title=r'$f(z)=\exp(1/z)$', daxis=True)
 
         #DomainColoring(func=lambda z:z*np.exp(1/z), style='pm', re=[-0.75, 0.75], im=[-0.75, 0.75], Title=r'$f(z)=z \cdot \exp(1/z)$', daxis=True)
-
-        #DomainColoring(func=lambda z:(z**6-1) / (z**12+1), style='pm', re=[-1.5, 1.5], im=[-1.5, 1.5], Title=r'$f(z)=\dfrac{z^6-1}{z^{12}+1}$', daxis=True)
-
-        #DomainColoring(func=lambda z:(z**3-1)/z, style='pm', re=[-1.5, 1.5], im=[-1.5, 1.5], Title=r'$f(z)=\dfrac{z^3-1}{z}$', daxis=True)
 
         #DomainColoring(func=lambda z:z**5 + z, style='pm', re=[-2, 2], im=[-2, 2], Title=r'$f(z)=(z^5+z)$', daxis=True)
 
@@ -179,7 +191,7 @@ try:
 
         #DomainColoring(func=lambda z:np.sin(z), style='pm', re=[-np.pi, np.pi], im=[-2, 2], Title=r'$f(z)=\sin(z)$', daxis=True)
 
-        DomainColoring(func=lambda z:np.tan(z), style='pm', re=[-np.pi, np.pi], im=[-2, 2], Title=r'$f(z)=\tan(z)$', daxis=True)
+        #DomainColoring(func=lambda z:np.tan(z), style='pm', re=[-np.pi, np.pi], im=[-2, 2], Title=r'$f(z)=\tan(z)$', daxis=True)
 
 
 
