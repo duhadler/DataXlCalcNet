@@ -311,7 +311,9 @@ def FieldLinesContours(**kwargs):
 
 try:
     if __name__ == '__main__':
-        FieldLinesContours(ContourFilled=False, Model=1)
+        ContourFilled_ = False
+        Model_ = 1  # 1, 2, 3, 4
+        FieldLinesContours(ContourFilled=ContourFilled_, Model=Model_)
 
 
 except Exception:

@@ -1,11 +1,7 @@
 ﻿from xlcalcnet import gui
 import os, re
 import numpy as np; 
-def f(z): return np.exp(z);
 import matplotlib.pyplot as plt
-#import matplotlib
-#matplotlib.use('TkAgg')
-
 import cmath
 
 
@@ -14,69 +10,6 @@ import cmath
 
 
 
-#def f(z):
-    #w = z**1; wclip = 20.0
-    #w = z**2; wclip = 20.0
-    #w = z**3; wclip = 20.0
-
-    #w = (z**2-1)*(z-2-1j)**2/(z**2+2+2j) ; wclip = 20.0
-
-    #w = 1 / z**1; wclip = 2.0
-    #w = 1 / z**2; wclip = 2.0
-    #w = 1 / z**3; wclip = 2.0
-
-    #w = z**6 + 1; wclip = 20.0
-    #w = z**6 - 1; wclip = 20.0
-    #w = z**(-6) + 1; wclip = 2.0
-
-    #w = z**z; wclip = 20.0
-    #w = (1/z)**z; wclip = 2.0
-    #w = z**(1/z); wclip = 2.0
-
-    #w = np.sqrt(z); wclip = 20.0
-    #w = z**(1.0/3.0); wclip = 20.0
-    #w = z**(1.0/4.0); wclip = 20.0
-
-    #w = np.log(z); wclip = 2.5
-    #w = np.exp(z); wclip = 20.0
-    #w = np.exp2(z); wclip = 20.0
-
-    #w = np.exp(1/z); wclip = 2.0
-    #w = z * np.sin(1/z); wclip = 1.0
-    #w = np.cos(1/z); wclip = 2.0
-
-    #w = np.exp(-z**2); wclip = 2.0
-    #w = 1 / (1 + z ** 2); wclip = 2.0
-
-    #w = np.sin(z); wclip = 20.0
-    #w = np.cos(z); wclip = 20.0
-    #w = np.tan(z); wclip = 2.0
-
-    #w = np.sinh(z); wclip = 20.0
-    #w = np.cosh(z); wclip = 20.0
-    #w = np.tanh(z); wclip = 2.0
-
-    #w = np.asin(z); wclip = 20.0
-    #w = np.acos(z); wclip = 20.0
-    #w = np.atan(z); wclip = 20.0
-
-    #w = np.asinh(z); wclip = 20.0
-    #w = np.acosh(z); wclip = 20.0
-    #w = np.atanh(z); wclip = 20.0
-
-    #w = np.sin(z) / z; wclip = 20.0
-    #w = np.cos(z) / z; wclip = 2.0
-    #w = np.tan(z) / z; wclip = 2.0
-
-###        wreal = np.clip(w.real, -0, wclip)
-###        wimag = np.clip(w.imag, -0, wclip)
-#    wreal = np.clip(w.real, -wclip, wclip)
-#    wimag = np.clip(w.imag, -wclip, wclip)
-#    w.real = wreal
-#    w.imag = wimag
-#    return w
-
-    
 
 def Contour2dComplex(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
@@ -139,8 +72,17 @@ def Contour2dComplex(**kwargs):
 
 try:
     if __name__ == '__main__':
-#        Contour2dComplex(func=np.sin, wclip=20.0, Title='f(z)=sin(z)')
         Contour2dComplex(func=lambda z:z*z, wclip=20.0, showlevels=True, Title=r'$f(z)=z^2$')
+        #Contour2dComplex(func=np.sqrt, wclip=20.0, Title='f(z)=sqrt(z)')
+        #Contour2dComplex(func=np.exp, wclip=20.0, Title='f(z)=exp(z)')
+        #Contour2dComplex(func=np.log, wclip=2.5, Title='f(z)=log(z)')
+        #Contour2dComplex(func=np.sin, wclip=20.0, Title='f(z)=sin(z)')
+        #Contour2dComplex(func=np.asin, wclip=20.0, Title='f(z)=asin(z)')
+        #Contour2dComplex(func=np.tan, wclip=2.0, Title='f(z)=tan(z)')
+        #Contour2dComplex(func=np.atan, wclip=20.0, Title='f(z)=atan(z)')
+
+
+
 
 except Exception:
     import traceback

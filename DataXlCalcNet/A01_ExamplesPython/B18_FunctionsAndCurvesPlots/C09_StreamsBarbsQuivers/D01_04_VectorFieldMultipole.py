@@ -83,7 +83,8 @@ def VectorFieldMultipole(**kwargs):
 
 try:
     if __name__ == '__main__':
-        VectorFieldMultipole(nq=2**3)
+        nq_ = 2**1  # 2**1, 2**2, 2**3, 2 **4
+        VectorFieldMultipole(nq=nq_)
 
 
 

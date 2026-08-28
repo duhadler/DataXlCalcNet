@@ -12,12 +12,12 @@ namespace EvaluateCS
         public double[,,] test4()
         {
 
-            int xResolution = 128;
-            int yResolution = 128;
-            double xmin = -3.14159265358979;
-            double xmax = 3.14159265358979;
-            double ymin = -3.14159265358979;
-            double ymax = 3.14159265358979;
+            int xResolution = 6;
+            int yResolution = 2;
+            double xmin = 0;
+            double xmax = 6.28318530717959;
+            double ymin = 0.4;
+            double ymax = 1;
             double[,,] d3 = new double[3, xResolution+2, yResolution+2];
             double dx = (xmax - xmin) / xResolution;
             double dy = (ymax - ymin) / yResolution;
@@ -30,10 +30,10 @@ namespace EvaluateCS
                     u = xmin + ix * dx;
                     v = ymin + iy * dy;
                     // Start function definition
-var p2 = 2 * Math.PI / 3;
-var x = 2 * Math.Sin(3 * u) / (2 + Math.Cos(v));
-var y = 2 * (Math.Sin(u) + 2 * Math.Sin(2 * u)) / (2 + Math.Cos(v + p2));
-var z = (Math.Cos(u) - 2 * Math.Cos(2 * u)) * (2 + Math.Cos(v)) * (2 + Math.Cos(v + p2)) / 4;
+var h = 1.5; 
+var x = v * Math.Cos(u);
+var y = v * Math.Sin(u);
+var z = h * v;
                     // End function definition
                     d3[0, ix, iy] = x;
                     d3[1, ix, iy] = z;

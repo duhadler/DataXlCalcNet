@@ -12,8 +12,8 @@ def PopulationPyramid(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'PopulationPyramid'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
+#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 7
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 6
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300

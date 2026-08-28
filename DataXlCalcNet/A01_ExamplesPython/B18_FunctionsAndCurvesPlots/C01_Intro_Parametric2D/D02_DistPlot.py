@@ -106,37 +106,37 @@ def DistPlot(**kwargs):
 try:
     if __name__ == '__main__':
 
-#        Title = 'Arcsine distribution'
-#        target = 'pdf' # pdf, cdf, 'sf', 'hf', 'chf', 'qtf', 'isf'
-#        a = [-1.5, 0.0, 1.5]
-#        b = [5.1, 6.1, 8.8]
-#        xlim = [-2.0, 8.8]
-#        ylim = None
-#        if target=='hf': ylim=[0, 6]
-#
-#        dlist = []
-#        ltext = []
-#        for j in range(len(a)):
-#            dlist.append(dreal.dist_arcsine(a[j], b[j]))
-#            ltext.append('a=' + str(a[j]) + ', b=' + str(b[j]))
-#
-#        DistPlot(Title = 'Arcsine distribution', dlist=dlist, xlim = xlim, 
-#            ylim = ylim, target = target, ltext = ltext, marker='o')
-        
-        Title = 'Geometric distribution'
-        target = 'isf' # pmf, cdf, 'sf', 'hf', 'chf', 'qtf', 'isf'
-        p = [0.1, 0.5, 0.9]
-        xlim = [0.0, 9.0]
+        Title = 'Arcsine distribution'
+        target = 'pdf' # pdf, cdf, 'sf', 'hf', 'chf', 'qtf', 'isf'
+        a = [-1.5, 0.0, 1.5]
+        b = [5.1, 6.1, 8.8]
+        xlim = [-2.0, 8.8]
         ylim = None
         if target=='hf': ylim=[0, 6]
 
         dlist = []
         ltext = []
-        for j in range(len(p)):
-            dlist.append(dreal.dist_geometric(p[j]))
-            ltext.append('p=' + str(p[j]))
-        DistPlot(Title = Title, dlist=dlist, xlim = xlim,  ylim = ylim, 
-            target = target, ltext = ltext, lattice=True, marker='o')
+        for j in range(len(a)):
+            dlist.append(dreal.dist_arcsine(a[j], b[j]))
+            ltext.append('a=' + str(a[j]) + ', b=' + str(b[j]))
+
+        DistPlot(Title = 'Arcsine distribution', dlist=dlist, xlim = xlim, 
+            ylim = ylim, target = target, ltext = ltext, marker='o')
+        
+#        Title = 'Geometric distribution'
+#        target = 'isf' # pmf, cdf, 'sf', 'hf', 'chf', 'qtf', 'isf'
+#        p = [0.1, 0.5, 0.9]
+#        xlim = [0.0, 9.0]
+#        ylim = None
+#        if target=='hf': ylim=[0, 6]
+#
+#        dlist = []
+#        ltext = []
+#        for j in range(len(p)):
+#            dlist.append(dreal.dist_geometric(p[j]))
+#            ltext.append('p=' + str(p[j]))
+#        DistPlot(Title = Title, dlist=dlist, xlim = xlim,  ylim = ylim, 
+#            target = target, ltext = ltext, lattice=True, marker='o')
 
 
 

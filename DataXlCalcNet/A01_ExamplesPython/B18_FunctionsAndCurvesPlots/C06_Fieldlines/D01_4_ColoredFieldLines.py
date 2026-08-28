@@ -289,7 +289,10 @@ def ColoredFieldLines(**kwargs):
 
 try:
     if __name__ == '__main__':
-        ColoredFieldLines(UseColors=True, Model=4)
+        UseColors_ = True
+        Model_ = 4  # 1, 2, 3, 4
+        ColoredFieldLines(UseColors=UseColors_, Model=Model_)
+
 
 except Exception:
     import traceback

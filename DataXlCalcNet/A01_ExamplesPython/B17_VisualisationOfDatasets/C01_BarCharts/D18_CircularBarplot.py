@@ -16,8 +16,8 @@ def CircularBarplot(**kwargs):
     Title = kwargs['Title'] if 'Title' in kwargs else 'CircularBarplot'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
 #    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'plt'
-#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
+#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
