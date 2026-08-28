@@ -72,7 +72,8 @@ def Contour2dComplex(**kwargs):
 
 try:
     if __name__ == '__main__':
-        Contour2dComplex(func=lambda z:z*z, wclip=20.0, showlevels=True, Title=r'$f(z)=z^2$')
+        Contour2dComplex(func=lambda z:z*z, wclip=20.0, 
+            showlevels=True, Title=r'$f(z)=z^2$')
         #Contour2dComplex(func=np.sqrt, wclip=20.0, Title='f(z)=sqrt(z)')
         #Contour2dComplex(func=np.exp, wclip=20.0, Title='f(z)=exp(z)')
         #Contour2dComplex(func=np.log, wclip=2.5, Title='f(z)=log(z)')

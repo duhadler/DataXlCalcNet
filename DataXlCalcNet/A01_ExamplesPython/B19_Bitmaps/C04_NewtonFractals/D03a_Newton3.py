@@ -1,47 +1,42 @@
 ﻿from xlcalcnet import gui
 import os, re
-from numba import jit
+#from numba import jit
 import numpy as np
 from matplotlib import colors, pyplot as plt
 
 
-@jit(nopython=True)
-def julia(z, maxiter,c0):
-    i = maxiter
-    while ((abs(z) < 2) and (i > 1)):
-        z = np.power(z, 1.5) + c0;
-        i -= 1;
-    return i
+#Classical Newton, Nonconvergence
+#@jit(nopython=True)
+def newton(z,maxiter):
+    c0 = complex(0.3, 1.64)
+    iteration = 0
+    zlast = complex(0.0, 0.0)
+    while True: 
+        if (iteration != 0): zlast = z
+        a = 1.2
+        f = f = (z * z * z + c0 * z - z - c0)
+        df = df = (3 * z * z + c0 - 1)
+        z = z - f / df
+        iteration = iteration + 1
+        if not((abs(z - zlast) > 0.00001) and (iteration < maxiter)):
+            break
+    if (iteration < maxiter): return 1 * iteration
+    else: return maxiter+2
 
 
-@jit(nopython=True)
-def julia_set(xmin,xmax,ymin,ymax,width,height,maxiter):
+#@jit(nopython=True)
+def newton_set(xmin,xmax,ymin,ymax,width,height,maxiter):
     r1 = np.linspace(xmin, xmax, width)
     r2 = np.linspace(ymin, ymax, height)
     n3 = np.empty((width,height))
-    cX = -0.2;
-    cY = 0.0;
-    c0 = complex(cX, cY)
     for i in range(width):
         for j in range(height):
-            n3[i,j] = julia(r1[i] + 1j*r2[j], maxiter, c0)
+            n3[i,j] = newton(r1[i] + 1j*r2[j],maxiter)
     return n3
 
 
-def julia_image(xmin,xmax,ymin,ymax,width=6,height=6,maxiter=80,cmap='hot'):
-    dpi = 96
-    z = julia_set(xmin, xmax, ymin, ymax, dpi * width,dpi * height, maxiter)
-    fig, ax = plt.subplots(figsize=(width, height), dpi=dpi)    
-    norm = colors.PowerNorm(1.0)
-    ax.imshow(z.T, cmap=cmap, norm=norm, origin='lower', extent=[xmin, xmax, ymin, ymax])
 
-    #plt.show()
-    gui.plot(fig, __file__, 'Julia02')
-    plt.close("all")
-
-
-
-def Julia02(**kwargs):
+def Newton3(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'FishCurveXY'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
@@ -51,18 +46,19 @@ def Julia02(**kwargs):
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
     xmin=-1.0
-    xmax=1.5
-    ymin=-1.25
-    ymax=1.25
+    xmax=1.0
+    ymin=-1.0
+    ymax=1.0
     width=6
     height=6
-    maxiter=255
+    maxiter=63
     dpi = 96
     pnorm = 1.0
-    cmap='gist_ncar'
+    #cmap='gist_ncar'
+    cmap='gist_ncar_r'
 # End of custom key word arguments
 
-    z = julia_set(xmin, xmax, ymin, ymax, dpi * width, dpi * height, maxiter)
+    z = newton_set(xmin, xmax, ymin, ymax, dpi * width, dpi * height, maxiter)
     fig, ax = plt.subplots(figsize=(width, height), dpi=dpi)    
     norm = colors.PowerNorm(pnorm)
     ax.imshow(z.T, cmap=cmap, norm=norm, origin='lower', extent=[xmin, xmax, ymin, ymax])
@@ -81,15 +77,7 @@ def Julia02(**kwargs):
 
 try:
     if __name__ == '__main__':
-        Julia02()
-
-#    print()
-#    julia_image(
-#-1.0,
-#1.5,
-#-1.25,
-#1.25,
-#maxiter=255,cmap='gist_ncar')
+        Newton3()
 
 except Exception:
     import traceback
