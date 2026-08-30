@@ -19,9 +19,9 @@ def step_no_vertical_line(x,y, ax=None, where='post', **kwargs):
     return ax.plot(X.flatten(), Y.flatten(), **kwargs)
 
 
-def DistPlot(**kwargs):
+def DistPlotDiscrete(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
-    Title = kwargs['Title'] if 'Title' in kwargs else 'Distribution: pdf'
+    Title = kwargs['Title'] if 'Title' in kwargs else 'DistPlotDiscrete'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
     OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4.5
@@ -138,7 +138,7 @@ try:
         ylim = None
         
         Title = 'Poisson distribution'
-        target = 'cdf' # pmf, cdf, 'sf', 'hf', 'chf', 'qtf', 'isf'
+        target = 'pmf' # pmf, cdf, 'sf', 'hf', 'chf', 'qtf', 'isf'
         mu = [1, 4, 10]
         xlim = [0.0, 20.0]
         ylim = None
@@ -149,7 +149,7 @@ try:
         for j in range(len(mu)):
             dlist.append(dreal.dist_poisson(mu[j]))
             ltext.append('mu=' + str(mu[j]))
-        DistPlot(Title = Title, dlist=dlist, xlim = xlim,  ylim = ylim, 
+        DistPlotDiscrete(Title = Title, dlist=dlist, xlim = xlim,  ylim = ylim, 
             target = target, ltext = ltext, lattice=True, marker='o', 
             markersize=3, vertical_lines=True)
 

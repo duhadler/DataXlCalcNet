@@ -132,17 +132,17 @@ def FuncPlot2d(ctx=None, f=None, xlim=[-5,5], ylim=None, points=200, dpi=None,
 
 try:
     if __name__ == '__main__':
-        #FuncPlot2d(ctx=mpm, f=[mpm.cos, mpm.sin], xlim=[-4, 4], Title = 'Simultaneous plot of sin an cos, using mpm')
+        FuncPlot2d(ctx=mpm, f=[mpm.cos, mpm.sin], xlim=[-4, 4], Title = 'Plot2dCosSin')
         #FuncPlot2d(ctx=math53, f=[math53.cos, math53.sin], xlim=[-4, 4], Title = 'Simultaneous plot of sin and cos, using math53')
         
         #FuncPlot2d(ctx=mpm, f=[mpm.acos, mpm.asin], xlim=[-2, 2], Title = 'Simultaneous plot of asin an acos, using mpm')
         #FuncPlot2d(ctx=math53, f=[math53.acos, math53.asin], xlim=[-2, 2], Title = 'Simultaneous plot of asin and acos, using math53')
 
-        #FuncPlot2d(ctx=mpm, f=mpm.cot, xlim=[-5, 5], ylim=[-5, 5], Title = 'Cot Bad, Mpm')   # bad
-        #FuncPlot2d(ctx=math53, f=math53.cot, xlim=[-5, 5], ylim=[-5, 5], Title = 'Cot Bad, Math53')   # bad
+        #FuncPlot2d(ctx=mpm, f=mpm.cot, xlim=[-5, 5], ylim=[-5, 5], Title = 'Cotangent, singularities not specified, mpm')   
+        #FuncPlot2d(ctx=math53, f=math53.cot, xlim=[-5, 5], ylim=[-5, 5], Title = 'Cotangent, singularities not specified, math53')   
 
-        #FuncPlot2d(ctx=mpm, f=mpm.cot, xlim=[-5, 5], ylim=[-5, 5], singularities=[-mpm.pi, 0, mpm.pi], Title = 'Cot Good, Mpm')   # good
-        FuncPlot2d(ctx=math53, f=math53.cot, xlim=[-5, 5], ylim=[-5, 5], singularities=[-math53.pi(), 0, math53.pi()], Title = 'Cot Good, Math53')   # good
+        #FuncPlot2d(ctx=mpm, f=mpm.cot, xlim=[-5, 5], ylim=[-5, 5], singularities=[-mpm.pi, 0, mpm.pi], Title = 'Cotangent, singularities specified, mpm')  
+        #FuncPlot2d(ctx=math53, f=math53.cot, xlim=[-5, 5], ylim=[-5, 5], singularities=[-math53.pi(), 0, math53.pi()], Title = 'Cotangent, singularities specified, math53') 
 
 
 

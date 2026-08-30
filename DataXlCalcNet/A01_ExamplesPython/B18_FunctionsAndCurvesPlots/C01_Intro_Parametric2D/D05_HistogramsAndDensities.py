@@ -6,9 +6,9 @@ import numpy as np
 # see https://matplotlib.org/stable/gallery/statistics/histogram_normalization.html#sphx-glr-gallery-statistics-histogram-normalization-py
 
 
-def Pdf3Plot(**kwargs):
+def HistogramsAndDensities(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
-    Title = kwargs['Title'] if 'Title' in kwargs else 'FishCurveXY'
+    Title = kwargs['Title'] if 'Title' in kwargs else 'HistogramsAndDensities'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
     OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4

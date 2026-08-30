@@ -7,9 +7,9 @@ import math
 
 
 
-def DistPlot(**kwargs):
+def DistPlotContinuous(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
-    Title = kwargs['Title'] if 'Title' in kwargs else 'Distribution: pdf'
+    Title = kwargs['Title'] if 'Title' in kwargs else 'DistPlotContinuous'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
     OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4.5
@@ -107,13 +107,7 @@ def DistPlot(**kwargs):
 try:
     if __name__ == '__main__':
         ylim = None
-        target = 'pdf' # pdf, cdf, 'sf', 'hf', 'chf', 'qtf', 'isf'
-
-        #Title = 'Arcsine distribution'
-        #a = [-1.5, 0.0, 1.5]
-        #b = [5.1, 6.1, 8.8]
-        #xlim = [-2.0, 8.81]
-        #if target=='hf': ylim=[0, 6]
+        target = 'isf' # pdf, cdf, 'sf', 'hf', 'chf', 'qtf', 'isf'
 
         Title = 'Beta distribution'
         a = [5, 10.0, 20.5]
@@ -127,27 +121,9 @@ try:
             dlist.append(dreal.dist_beta(a[j], b[j]))
             ltext.append('a=' + str(a[j]) + ', b=' + str(b[j]))
 
-        DistPlot(Title = Title, dlist=dlist, xlim = xlim, 
+        DistPlotContinuous(Title = Title, dlist=dlist, xlim = xlim, 
             ylim = ylim, target = target, ltext = ltext, marker='o', 
             markersize=0)
-        
-#        Title = 'Geometric distribution'
-#        target = 'cdf' # pmf, cdf, 'sf', 'hf', 'chf', 'qtf', 'isf'
-#        p = [0.1, 0.5, 0.9]
-#        xlim = [0.0, 9.0]
-#        ylim = None
-#        if target=='hf': ylim=[0, 6]
-#
-#        dlist = []
-#        ltext = []
-#        for j in range(len(p)):
-#            dlist.append(dreal.dist_geometric(p[j]))
-#            ltext.append('p=' + str(p[j]))
-#        DistPlot(Title = Title, dlist=dlist, xlim = xlim,  ylim = ylim, 
-#            target = target, ltext = ltext, lattice=True, marker='o')
-
-
-
 
 
 except Exception:
