@@ -1,0 +1,37 @@
+using System;
+using System.Numerics;
+using FixedPrecNet;
+using ArbPrecNet;
+using UserFixedPrecNet;
+using UserArbPrecNet;
+
+namespace EvaluateCS
+{
+    public class Program
+    {
+        public double[,] test4()
+        {
+
+            int numPoints = 1024;
+            int ExtraDt = 2;
+            double tmin = 0;
+            double tmax = 20;
+            double[,] d3 = new double[3, numPoints+ExtraDt+1];
+            double t = tmin;
+            double dt = (tmax - tmin) / (numPoints);
+            for (int i = 0; i < numPoints +ExtraDt; i++)
+            {
+                // Start function definition
+var x = ((-3.75 * t + 100) * Math.Sin(t * Math.PI)) / 100;
+var y = (20 * t) / 100;
+var z = ((-3.75 * t + 100) * Math.Cos(t * Math.PI)) / 100;
+                // End function definition
+                d3[0, i] = x;
+                d3[1, i] = z;
+                d3[2, i] = -y;
+                t += dt;
+            }
+            return d3;
+        }
+    }
+}
