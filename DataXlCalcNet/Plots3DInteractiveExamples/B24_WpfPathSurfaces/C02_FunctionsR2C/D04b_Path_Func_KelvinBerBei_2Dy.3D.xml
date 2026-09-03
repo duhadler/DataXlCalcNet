@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WpfGraphicsSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Title>Func_KelvinBerBei_2Dy</Title>
-  <Plot3DType1>Path surface</Plot3DType1>
   <CameraAngleTheta>120</CameraAngleTheta>
   <CameraAnglePhi>120</CameraAnglePhi>
   <CameraRadius>1</CameraRadius>
   <CameraIsOrthographic>false</CameraIsOrthographic>
   <ShowAxes>true</ShowAxes>
   <StyleOfAxes>BackPanel</StyleOfAxes>
+  <Plot3DType1>Path surface</Plot3DType1>
   <Code>var a = math53.exp(t / math53.sqrt(2));
 var x = t;
-var y = math53.kelvin_bei(t) / a;
+var y = math53.kelvin_bei(1,t) / a;
 var z = 0;
 </Code>
   <Resolution>1024</Resolution>
@@ -27,7 +27,6 @@ var z = 0;
   <FinalZRotation>0</FinalZRotation>
   <Truncate>0</Truncate>
   <LogLogTransform>false</LogLogTransform>
-  <KeepRatios>false</KeepRatios>
   <CenteredXY>false</CenteredXY>
   <SameScale>None</SameScale>
   <ComplexType>N/A</ComplexType>

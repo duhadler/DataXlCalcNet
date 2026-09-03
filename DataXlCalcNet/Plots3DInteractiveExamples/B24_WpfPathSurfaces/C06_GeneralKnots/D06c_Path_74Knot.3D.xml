@@ -2,10 +2,10 @@
 <WpfGraphicsSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Title>74 Knot</Title>
   <Plot3DType1>Path surface</Plot3DType1>
-  <CameraAngleTheta>180</CameraAngleTheta>
+  <CameraAngleTheta>90</CameraAngleTheta>
   <CameraAnglePhi>90</CameraAnglePhi>
   <CameraRadius>0</CameraRadius>
-  <CameraIsOrthographic>false</CameraIsOrthographic>
+  <CameraIsOrthographic>true</CameraIsOrthographic>
   <ShowAxes>true</ShowAxes>
   <StyleOfAxes>BackPanel</StyleOfAxes>
   <Code>var x = Math.Cos(2 * t + 0.22) / 10;
@@ -17,7 +17,7 @@ var y = Math.Cos(7 * t) / 10;
   <xmin>0.0</xmin>
   <xmax>2 * Pi</xmax>
   <zmin>0.0</zmin>
-  <zmax>0.03</zmax>
+  <zmax>0.012</zmax>
   <RepeatStart>true</RepeatStart>
   <PathEvalOrder>SequenceX</PathEvalOrder>
   <FinalRotationOrder>X-Y-Z</FinalRotationOrder>
@@ -28,15 +28,15 @@ var y = Math.Cos(7 * t) / 10;
   <LogLogTransform>false</LogLogTransform>
   <KeepRatios>false</KeepRatios>
   <CenteredXY>false</CenteredXY>
-  <SameScale>All</SameScale>
+  <SameScale>None</SameScale>
   <ComplexType>N/A</ComplexType>
   <Branchcuts>None</Branchcuts>
   <SurfaceMaterial1>PlainColor</SurfaceMaterial1>
-  <SurfaceColorString>LightSkyBlue</SurfaceColorString>
+  <SurfaceColorString>-16256</SurfaceColorString>
   <SurfaceGradient1>None</SurfaceGradient1>
   <SurfaceColorMap1>None</SurfaceColorMap1>
   <SurfaceTexture1>None</SurfaceTexture1>
-  <SurfaceSmoothing>false</SurfaceSmoothing>
+  <SurfaceSmoothing>true</SurfaceSmoothing>
   <Transparency>0</Transparency>
   <BackMaterial1>PlainColor</BackMaterial1>
   <BackColorString>-8000</BackColorString>

@@ -5,7 +5,7 @@
   <CameraAngleTheta>180</CameraAngleTheta>
   <CameraAnglePhi>90</CameraAnglePhi>
   <CameraRadius>0</CameraRadius>
-  <CameraIsOrthographic>true</CameraIsOrthographic>
+  <CameraIsOrthographic>false</CameraIsOrthographic>
   <ShowAxes>true</ShowAxes>
   <StyleOfAxes>BackPanel</StyleOfAxes>
   <Code>var x = ((2 + Math.Cos(2 * t)) * Math.Cos(3 * t)) / 10;
@@ -17,7 +17,7 @@ var y = (Math.Sin(4 * t)) / 10;
   <xmin>0.0</xmin>
   <xmax>2 * Pi</xmax>
   <zmin>0.0</zmin>
-  <zmax>0.012</zmax>
+  <zmax>0.03</zmax>
   <RepeatStart>true</RepeatStart>
   <PathEvalOrder>SequenceX</PathEvalOrder>
   <FinalRotationOrder>X-Y-Z</FinalRotationOrder>
@@ -32,11 +32,11 @@ var y = (Math.Sin(4 * t)) / 10;
   <ComplexType>N/A</ComplexType>
   <Branchcuts>None</Branchcuts>
   <SurfaceMaterial1>PlainColor</SurfaceMaterial1>
-  <SurfaceColorString>-16256</SurfaceColorString>
+  <SurfaceColorString>LightSkyBlue</SurfaceColorString>
   <SurfaceGradient1>None</SurfaceGradient1>
   <SurfaceColorMap1>None</SurfaceColorMap1>
   <SurfaceTexture1>None</SurfaceTexture1>
-  <SurfaceSmoothing>true</SurfaceSmoothing>
+  <SurfaceSmoothing>false</SurfaceSmoothing>
   <Transparency>0</Transparency>
   <BackMaterial1>PlainColor</BackMaterial1>
   <BackColorString>-8000</BackColorString>

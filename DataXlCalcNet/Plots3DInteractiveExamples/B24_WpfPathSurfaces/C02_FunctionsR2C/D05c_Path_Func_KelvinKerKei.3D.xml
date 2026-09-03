@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WpfGraphicsSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Title>Func_KelvinKerKei</Title>
-  <Plot3DType1>Path surface</Plot3DType1>
   <CameraAngleTheta>109</CameraAngleTheta>
   <CameraAnglePhi>97</CameraAnglePhi>
   <CameraRadius>1</CameraRadius>
   <CameraIsOrthographic>false</CameraIsOrthographic>
   <ShowAxes>true</ShowAxes>
   <StyleOfAxes>BackPanel</StyleOfAxes>
+  <Plot3DType1>Path surface</Plot3DType1>
   <Code>var a = math53.exp(t / math53.sqrt(2));
 var x = t;
-var y = math53.kelvin_kei(t) * a;
-var z = math53.kelvin_ker(t) * a;
+var y = math53.kelvin_kei(1,t) * a;
+var z = math53.kelvin_ker(1,t) * a;
 </Code>
   <Resolution>1024</Resolution>
   <Resolution2>16</Resolution2>
@@ -27,7 +27,6 @@ var z = math53.kelvin_ker(t) * a;
   <FinalZRotation>0</FinalZRotation>
   <Truncate>0</Truncate>
   <LogLogTransform>false</LogLogTransform>
-  <KeepRatios>false</KeepRatios>
   <CenteredXY>false</CenteredXY>
   <SameScale>X, Y</SameScale>
   <ComplexType>N/A</ComplexType>

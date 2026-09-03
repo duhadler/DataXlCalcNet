@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WpfGraphicsSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Title>Hyperbolic Paraboloid</Title>
-  <CameraAngleTheta>135</CameraAngleTheta>
+  <CameraAngleTheta>212</CameraAngleTheta>
   <CameraAnglePhi>140</CameraAnglePhi>
   <CameraRadius>1</CameraRadius>
   <CameraIsOrthographic>false</CameraIsOrthographic>

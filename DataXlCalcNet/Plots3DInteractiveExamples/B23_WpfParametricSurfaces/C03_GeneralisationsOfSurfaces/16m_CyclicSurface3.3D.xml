@@ -2,7 +2,7 @@
 <WpfGraphicsSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Title>Cyclic surface, p=5, a=1, b=2, d=1</Title>
   <CameraAngleTheta>90</CameraAngleTheta>
-  <CameraAnglePhi>88</CameraAnglePhi>
+  <CameraAnglePhi>180</CameraAnglePhi>
   <CameraRadius>0</CameraRadius>
   <CameraIsOrthographic>false</CameraIsOrthographic>
   <ShowAxes>false</ShowAxes>
@@ -39,9 +39,9 @@ var z = R * Math.Sin(v);
   <SurfaceMaterial1>PlainColor</SurfaceMaterial1>
   <SurfaceColorString>-4128832</SurfaceColorString>
   <SurfaceGradient1>None</SurfaceGradient1>
-  <SurfaceColorMap1>LinearGradient0</SurfaceColorMap1>
-  <SurfaceTexture1>GridReal.png</SurfaceTexture1>
-  <SurfaceSmoothing>false</SurfaceSmoothing>
+  <SurfaceColorMap1>None</SurfaceColorMap1>
+  <SurfaceTexture1>None</SurfaceTexture1>
+  <SurfaceSmoothing>true</SurfaceSmoothing>
   <Transparency>0</Transparency>
   <BackMaterial1>PlainColor</BackMaterial1>
   <BackColorString>-8000</BackColorString>

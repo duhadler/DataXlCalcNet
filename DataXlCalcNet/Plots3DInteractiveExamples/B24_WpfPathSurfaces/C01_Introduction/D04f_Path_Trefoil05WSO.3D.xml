@@ -33,17 +33,17 @@ var z = D * Math.Cos(t) - 2 * Math.Cos(2 * t);
   <ComplexType>N/A</ComplexType>
   <Branchcuts>None</Branchcuts>
   <SurfaceMaterial1>GlossyColor</SurfaceMaterial1>
-  <SurfaceColorString>LightGreen</SurfaceColorString>
+  <SurfaceColorString>Aquamarine</SurfaceColorString>
   <SurfaceGradient1>None</SurfaceGradient1>
   <SurfaceColorMap1>None</SurfaceColorMap1>
   <SurfaceTexture1>None</SurfaceTexture1>
   <SurfaceSmoothing>true</SurfaceSmoothing>
-  <Transparency>128</Transparency>
+  <Transparency>192</Transparency>
   <BackMaterial1>PlainColor</BackMaterial1>
   <BackColorString>Salmon</BackColorString>
   <ShowWireframe>true</ShowWireframe>
   <WireframeThickness>0.0015</WireframeThickness>
-  <WireframeColorString>Black</WireframeColorString>
+  <WireframeColorString>DarkGray</WireframeColorString>
   <HighlightVertices>false</HighlightVertices>
   <VerticesThickness>0.01</VerticesThickness>
   <VerticesColorString>Red</VerticesColorString>
