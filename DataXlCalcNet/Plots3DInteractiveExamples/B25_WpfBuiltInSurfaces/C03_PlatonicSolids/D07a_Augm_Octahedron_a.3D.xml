@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WpfGraphicsSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Title>Augmented Geodesic, star radius = 0.25, numdiv = 2</Title>
-  <CameraAngleTheta>115</CameraAngleTheta>
-  <CameraAnglePhi>115</CameraAnglePhi>
+  <Title>Augmented Octahedron, star radius = 2.0</Title>
+  <CameraAngleTheta>118</CameraAngleTheta>
+  <CameraAnglePhi>116</CameraAnglePhi>
   <CameraRadius>0</CameraRadius>
   <CameraIsOrthographic>false</CameraIsOrthographic>
   <ShowAxes>true</ShowAxes>
   <StyleOfAxes>BackPanel</StyleOfAxes>
   <Plot3DType1>Builtin solid</Plot3DType1>
-  <Code>var starRadius = 0.25;
-var numDiv = 2;
-var proc = BuiltIn.SetAugmentedGeodesic(starRadius, numDiv);
+  <Code>var starRadius = 2.0;
+var proc = BuiltIn.SetAugmentedOctahedron(starRadius );
 </Code>
   <Resolution>0</Resolution>
   <Resolution2>0</Resolution2>
@@ -40,9 +39,9 @@ var proc = BuiltIn.SetAugmentedGeodesic(starRadius, numDiv);
   <BackMaterial1>PlainColor</BackMaterial1>
   <BackColorString>-8000</BackColorString>
   <ShowWireframe>true</ShowWireframe>
-  <WireframeThickness>0.015</WireframeThickness>
+  <WireframeThickness>0.01</WireframeThickness>
   <WireframeColorString>Green</WireframeColorString>
-  <HighlightVertices>false</HighlightVertices>
+  <HighlightVertices>true</HighlightVertices>
   <VerticesThickness>0.015</VerticesThickness>
   <VerticesColorString>Red</VerticesColorString>
   <SolidType>None</SolidType>

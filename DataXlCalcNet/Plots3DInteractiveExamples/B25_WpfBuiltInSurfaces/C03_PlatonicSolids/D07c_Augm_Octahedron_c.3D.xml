@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WpfGraphicsSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Title>Augmented Octahedron, star radius = 0.6</Title>
+  <Title>Augmented Octahedron, star radius = 0.3</Title>
   <CameraAngleTheta>118</CameraAngleTheta>
   <CameraAnglePhi>116</CameraAnglePhi>
   <CameraRadius>0</CameraRadius>
@@ -8,7 +8,7 @@
   <ShowAxes>true</ShowAxes>
   <StyleOfAxes>BackPanel</StyleOfAxes>
   <Plot3DType1>Builtin solid</Plot3DType1>
-  <Code>var starRadius = 0.6;
+  <Code>var starRadius = 0.3;
 var proc = BuiltIn.SetAugmentedOctahedron(starRadius );
 </Code>
   <Resolution>0</Resolution>

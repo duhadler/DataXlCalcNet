@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WpfGraphicsSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Title>Augmented Octahedron, star radius = 0.3</Title>
-  <CameraAngleTheta>118</CameraAngleTheta>
-  <CameraAnglePhi>116</CameraAnglePhi>
+  <Title>Augmented Dodecahedron, star radius = 4.0</Title>
+  <CameraAngleTheta>115</CameraAngleTheta>
+  <CameraAnglePhi>115</CameraAnglePhi>
   <CameraRadius>0</CameraRadius>
   <CameraIsOrthographic>false</CameraIsOrthographic>
   <ShowAxes>true</ShowAxes>
   <StyleOfAxes>BackPanel</StyleOfAxes>
   <Plot3DType1>Builtin solid</Plot3DType1>
-  <Code>var starRadius = 0.3;
-var proc = BuiltIn.SetAugmentedOctahedron(starRadius );
+  <Code>var starRadius = 4.0;
+var proc = BuiltIn.SetAugmentedDodecahedron(starRadius );
 </Code>
   <Resolution>0</Resolution>
   <Resolution2>0</Resolution2>
@@ -39,7 +39,7 @@ var proc = BuiltIn.SetAugmentedOctahedron(starRadius );
   <BackMaterial1>PlainColor</BackMaterial1>
   <BackColorString>-8000</BackColorString>
   <ShowWireframe>true</ShowWireframe>
-  <WireframeThickness>0.01</WireframeThickness>
+  <WireframeThickness>0.04</WireframeThickness>
   <WireframeColorString>Green</WireframeColorString>
   <HighlightVertices>true</HighlightVertices>
   <VerticesThickness>0.015</VerticesThickness>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WpfGraphicsSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Title>Augmented Dodecahedron, star radius = 2.3</Title>
+  <Title>Augmented Dodecahedron, star radius = 1.0</Title>
   <CameraAngleTheta>115</CameraAngleTheta>
   <CameraAnglePhi>115</CameraAnglePhi>
   <CameraRadius>0</CameraRadius>
@@ -8,7 +8,7 @@
   <ShowAxes>true</ShowAxes>
   <StyleOfAxes>BackPanel</StyleOfAxes>
   <Plot3DType1>Builtin solid</Plot3DType1>
-  <Code>var starRadius = 2.3;
+  <Code>var starRadius = 1.0;
 var proc = BuiltIn.SetAugmentedDodecahedron(starRadius );
 </Code>
   <Resolution>0</Resolution>

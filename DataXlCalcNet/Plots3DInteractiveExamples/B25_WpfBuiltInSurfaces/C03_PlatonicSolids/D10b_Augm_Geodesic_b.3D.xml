@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WpfGraphicsSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Title>Augmented Geodesic, star radius = 1.5, numdiv = 2</Title>
+  <Title>Augmented Geodesic, star radius = 0.95, numdiv = 2</Title>
   <CameraAngleTheta>115</CameraAngleTheta>
   <CameraAnglePhi>115</CameraAnglePhi>
   <CameraRadius>0</CameraRadius>
@@ -8,7 +8,7 @@
   <ShowAxes>true</ShowAxes>
   <StyleOfAxes>BackPanel</StyleOfAxes>
   <Plot3DType1>Builtin solid</Plot3DType1>
-  <Code>var starRadius = 1.5;
+  <Code>var starRadius = 0.95;
 var numDiv = 2;
 var proc = BuiltIn.SetAugmentedGeodesic(starRadius, numDiv);
 </Code>

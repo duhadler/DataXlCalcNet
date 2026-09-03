@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WpfGraphicsSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Title>Augmented Dodecahedron, star radius = 1.0</Title>
+  <Title>Augmented Geodesic, star radius = 1.5, numdiv = 2</Title>
   <CameraAngleTheta>115</CameraAngleTheta>
   <CameraAnglePhi>115</CameraAnglePhi>
   <CameraRadius>0</CameraRadius>
@@ -8,8 +8,9 @@
   <ShowAxes>true</ShowAxes>
   <StyleOfAxes>BackPanel</StyleOfAxes>
   <Plot3DType1>Builtin solid</Plot3DType1>
-  <Code>var starRadius = 1.0;
-var proc = BuiltIn.SetAugmentedDodecahedron(starRadius );
+  <Code>var starRadius = 1.5;
+var numDiv = 2;
+var proc = BuiltIn.SetAugmentedGeodesic(starRadius, numDiv);
 </Code>
   <Resolution>0</Resolution>
   <Resolution2>0</Resolution2>
@@ -39,9 +40,9 @@ var proc = BuiltIn.SetAugmentedDodecahedron(starRadius );
   <BackMaterial1>PlainColor</BackMaterial1>
   <BackColorString>-8000</BackColorString>
   <ShowWireframe>true</ShowWireframe>
-  <WireframeThickness>0.04</WireframeThickness>
+  <WireframeThickness>0.015</WireframeThickness>
   <WireframeColorString>Green</WireframeColorString>
-  <HighlightVertices>true</HighlightVertices>
+  <HighlightVertices>false</HighlightVertices>
   <VerticesThickness>0.015</VerticesThickness>
   <VerticesColorString>Red</VerticesColorString>
   <SolidType>None</SolidType>
