@@ -9,27 +9,38 @@ namespace EvaluateCS
 {
     public class Program
     {
-        public double[,] test4()
+        public double[,,] test4()
         {
 
-            int numPoints = 1024;
-            int ExtraDt = 3;
-            double tmin = 0;
-            double tmax = 6.28318530717959;
-            double[,] d3 = new double[3, numPoints+ExtraDt+1];
-            double t = tmin;
-            double dt = (tmax - tmin) / (numPoints);
-            for (int i = 0; i < numPoints +ExtraDt; i++)
+            int xResolution = 64;
+            int yResolution = 32;
+            double xmin = 0;
+            double xmax = 6.28318530717959;
+            double ymin = -1.5707963267949;
+            double ymax = 1.5707963267949;
+            double[,,] d3 = new double[3, xResolution+2, yResolution+2];
+            double dx = (xmax - xmin) / xResolution;
+            double dy = (ymax - ymin) / yResolution;
+            double u = 0.0;
+            double v = 0.0;
+            for (int ix = 0; ix <= xResolution + 1; ix++)
             {
-                // Start function definition
-var x = (2 + Math.Cos(3 * t)) * Math.Cos(2 * t);
-var z = (2 + Math.Cos(3 * t)) * Math.Sin(2 * t);
-var y = Math.Sin(3 * t);
-                // End function definition
-                d3[0, i] = x;
-                d3[1, i] = z;
-                d3[2, i] = -y;
-                t += dt;
+                for (int iy = 0; iy <= yResolution + 1; iy++)
+                {
+                    u = xmin + ix * dx;
+                    v = ymin + iy * dy;
+                    // Start function definition
+var a = 3.0;
+var b = 2.0;
+var c = 1.0;
+var x = a * Math.Cos(u) * Math.Cos(v);
+var y = b * Math.Cos(u) * Math.Sin(v);
+var z = c * Math.Sin(u);
+                    // End function definition
+                    d3[0, ix, iy] = x;
+                    d3[1, ix, iy] = z;
+                    d3[2, ix, iy] = -y;
+                }
             }
             return d3;
         }
