@@ -9,27 +9,34 @@ namespace EvaluateCS
 {
     public class Program
     {
-        public double[,] test4()
+        public double[,,] test4()
         {
 
-            int numPoints = 1024;
-            int ExtraDt = 2;
-            double tmin = 0;
-            double tmax = 20;
-            double[,] d3 = new double[3, numPoints+ExtraDt+1];
-            double t = tmin;
-            double dt = (tmax - tmin) / (numPoints);
-            for (int i = 0; i < numPoints +ExtraDt; i++)
+            int xResolution = 128;
+            int yResolution = 128;
+            double xmin = -6;
+            double xmax = 6;
+            double ymin = -6;
+            double ymax = 6;
+            double[,,] d3 = new double[4, xResolution+2, yResolution+2];
+            double dx = (xmax - xmin) / xResolution;
+            double dy = (ymax - ymin) / yResolution;
+            double x = 0.0;
+            double y = 0.0;
+            for (int ix = 0; ix <= xResolution + 1; ix++)
             {
-                // Start function definition
-var x = ((-3.75 * t + 100) * Math.Sin(t * Math.PI)) / 100;
-var y = (20 * t) / 100;
-var z = ((-3.75 * t + 100) * Math.Cos(t * Math.PI)) / 100;
-                // End function definition
-                d3[0, i] = x;
-                d3[1, i] = z;
-                d3[2, i] = -y;
-                t += dt;
+                for (int iy = 0; iy <= yResolution + 1; iy++)
+                {
+                    x = xmin + ix * dx;
+                    y = ymin + iy * dy;
+                    Complex z = new Complex(x, y);
+                    // Start function definition
+var res = cmath53.sqrt(z);                    // End function definition
+                    d3[0, ix, iy] = xmin + ix * dx;
+                    d3[1, ix, iy] = ymin + iy * dy;
+                    d3[2, ix, iy] = res.Real;
+                    d3[3, ix, iy] = res.Imaginary;
+                }
             }
             return d3;
         }
