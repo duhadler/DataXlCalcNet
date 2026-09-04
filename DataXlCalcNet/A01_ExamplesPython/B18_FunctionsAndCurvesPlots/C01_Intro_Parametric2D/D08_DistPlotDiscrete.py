@@ -1,4 +1,5 @@
 ﻿from xlcalcnet import gui
+from pathlib import Path
 from xlcalcnet import sreal, dreal, ereal, qreal, oreal
 import os, re
 import matplotlib.pyplot as plt
@@ -24,6 +25,7 @@ def DistPlotDiscrete(**kwargs):
     Title = kwargs['Title'] if 'Title' in kwargs else 'DistPlotDiscrete'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
     OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
+    #OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4.5
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
@@ -130,28 +132,26 @@ def DistPlotDiscrete(**kwargs):
     plt.close('all')
 
 
+def DistPlotPoisson(target, mu, **kwargs):
+    xlim = [0.0, 20.0]
+    ylim = None
+    if target=='qtf': ylim=[0, 20]
 
+    dlist = []
+    ltext = []
+    for j in range(len(mu)):
+        dlist.append(dreal.dist_poisson(mu[j]))
+        ltext.append('mu=' + str(mu[j]))
+    DistPlotDiscrete(dlist=dlist, xlim = xlim,  ylim = ylim, 
+        target = target, ltext = ltext, lattice=True, marker='o', 
+        markersize=3, vertical_lines=True, **kwargs)
 
 
 try:
     if __name__ == '__main__':
-        ylim = None
-        
-        Title = 'Poisson distribution'
-        target = 'pmf' # pmf, cdf, 'sf', 'hf', 'chf', 'qtf', 'isf'
+        target = 'pmf' # 'pmf', 'cdf', 'sf', 'hf', 'chf', 'qtf', 'isf'
         mu = [1, 4, 10]
-        xlim = [0.0, 20.0]
-        ylim = None
-        if target=='qtf': ylim=[0, 20]
-
-        dlist = []
-        ltext = []
-        for j in range(len(mu)):
-            dlist.append(dreal.dist_poisson(mu[j]))
-            ltext.append('mu=' + str(mu[j]))
-        DistPlotDiscrete(Title = Title, dlist=dlist, xlim = xlim,  ylim = ylim, 
-            target = target, ltext = ltext, lattice=True, marker='o', 
-            markersize=3, vertical_lines=True)
+        DistPlotPoisson(target, mu, Title = 'Poisson distribution')
 
 
 

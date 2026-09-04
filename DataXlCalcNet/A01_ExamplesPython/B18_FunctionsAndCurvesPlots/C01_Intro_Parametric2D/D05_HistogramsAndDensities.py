@@ -64,7 +64,7 @@ def HistogramsAndDensities(**kwargs):
 
 try:
     if __name__ == '__main__':
-        Pdf3Plot()
+        HistogramsAndDensities()
 
 
 except Exception:

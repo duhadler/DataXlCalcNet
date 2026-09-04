@@ -1,4 +1,5 @@
 ﻿from xlcalcnet import gui
+from pathlib import Path
 from xlcalcnet import sreal, dreal, ereal, qreal, oreal
 import os, re
 import matplotlib.pyplot as plt
@@ -12,6 +13,7 @@ def DistPlotContinuous(**kwargs):
     Title = kwargs['Title'] if 'Title' in kwargs else 'DistPlotContinuous'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
     OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
+    #OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4.5
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
@@ -102,17 +104,12 @@ def DistPlotContinuous(**kwargs):
 
 
 
-
-
-try:
-    if __name__ == '__main__':
-        ylim = None
-        target = 'isf' # pdf, cdf, 'sf', 'hf', 'chf', 'qtf', 'isf'
-
-        Title = 'Beta distribution'
+def DistPlotBeta(target, a, b, **kwargs):
         a = [5, 10.0, 20.5]
         b = [20.5, 10.0, 5]
         xlim = [0, 0.999]
+        ylim = None
+
         if target=='hf': ylim=[0, 100]
 
         dlist = []
@@ -121,9 +118,19 @@ try:
             dlist.append(dreal.dist_beta(a[j], b[j]))
             ltext.append('a=' + str(a[j]) + ', b=' + str(b[j]))
 
-        DistPlotContinuous(Title = Title, dlist=dlist, xlim = xlim, 
+        DistPlotContinuous(dlist=dlist, xlim = xlim, 
             ylim = ylim, target = target, ltext = ltext, marker='o', 
-            markersize=0)
+            markersize=0, **kwargs)
+
+
+
+
+try:
+    if __name__ == '__main__':
+        target = 'pdf' # pdf, cdf, 'sf', 'hf', 'chf', 'qtf', 'isf'
+        a = [5, 10.0, 20.5]
+        b = [20.5, 10.0, 5]
+        DistPlotBeta(target, a, b, Title = 'Beta distribution')
 
 
 except Exception:
