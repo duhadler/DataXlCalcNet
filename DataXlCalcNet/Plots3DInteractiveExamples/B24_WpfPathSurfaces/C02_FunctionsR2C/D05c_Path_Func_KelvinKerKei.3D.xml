@@ -10,8 +10,8 @@
   <Plot3DType1>Path surface</Plot3DType1>
   <Code>var a = math53.exp(t / math53.sqrt(2));
 var x = t;
-var y = math53.kelvin_kei(1,t) * a;
-var z = math53.kelvin_ker(1,t) * a;
+var y = math53.kelvin_kei(0,t) * a;
+var z = math53.kelvin_ker(0,t) * a;
 </Code>
   <Resolution>1024</Resolution>
   <Resolution2>16</Resolution2>
