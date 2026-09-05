@@ -1,0 +1,38 @@
+using System;
+using System.Numerics;
+using FixedPrecNet;
+using ArbPrecNet;
+using UserFixedPrecNet;
+using UserArbPrecNet;
+
+namespace EvaluateCS
+{
+    public class Program
+    {
+        public double[,] test4()
+        {
+
+            int numPoints = 1024;
+            int ExtraDt = 2;
+            double tmin = 0.1;
+            double tmax = 50;
+            double[,] d3 = new double[3, numPoints+ExtraDt+1];
+            double t = tmin;
+            double dt = (tmax - tmin) / (numPoints);
+            for (int i = 0; i < numPoints +ExtraDt; i++)
+            {
+                // Start function definition
+var a = math53.exp(t / math53.sqrt(2));
+var x = t;
+var y = 0;
+var z = math53.kelvin_ker(0,t) * a;
+                // End function definition
+                d3[0, i] = x;
+                d3[1, i] = z;
+                d3[2, i] = -y;
+                t += dt;
+            }
+            return d3;
+        }
+    }
+}
