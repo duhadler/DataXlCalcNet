@@ -17,7 +17,7 @@ def PlotTable3(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'PlotTable3'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
@@ -51,7 +51,7 @@ def PlotTable3(**kwargs):
     print(perform)
 
     bundesliga_crests_22_23 = os.sep.join([gui.get_my_documents(), 'DataXlCalcNet', 
-        'DataExamples', 'MainExamples', 'bundesliga_crests_22_23'])
+        'DataExamples', 'MainExamples', 'Flags'])
 
     # mapping teamnames to logo paths
 

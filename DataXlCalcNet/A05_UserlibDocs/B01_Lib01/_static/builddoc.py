@@ -16,8 +16,8 @@ def get_local_appdata_folder():
     return str(buf.value)
 
 
-#target = 'html'
-target = 'latex'
+target = 'html'
+#target = 'latex'
 
 # ʹaaaaʹ  Unicode: 02B9
 

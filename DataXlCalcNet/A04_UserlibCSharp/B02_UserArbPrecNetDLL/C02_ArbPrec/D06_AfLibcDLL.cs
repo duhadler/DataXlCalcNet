@@ -281,8 +281,8 @@ namespace UserArbPrecNet
                 Console.WriteLine("B: {0}", B);
 
                 x1 = (A + B) - a / 3;
-                x2 = -0.5 * (A + B) - a / 3 + 0.5 * aflintc.onei() * aflint.sqrt(3) * (A - B);
-                x3 = -0.5 * (A + B) - a / 3 - 0.5 * aflintc.onei() * aflint.sqrt(3) * (A - B);
+                x2 = -0.5 * (A + B) - a / 3 + 0.5 * aflintc.onej() * aflint.sqrt(3) * (A - B);
+                x3 = -0.5 * (A + B) - a / 3 - 0.5 * aflintc.onej() * aflint.sqrt(3) * (A - B);
             }
             return new Tuple<ArbC, ArbC, ArbC>(x1, x2, x3);
         }

@@ -279,8 +279,8 @@ namespace UserFixedPrecNet
                 Console.WriteLine("B: {0}", B);
 
                 x1 = (A + B) - a / 3;
-                x2 = -0.5 * (A + B) - a / 3 + 0.5 * qcplx.ImaginaryOne() * qreal.sqrt(3) * (A - B);
-                x3 = -0.5 * (A + B) - a / 3 - 0.5 * qcplx.ImaginaryOne() * qreal.sqrt(3) * (A - B);
+                x2 = -0.5 * (A + B) - a / 3 + 0.5 * qcplx.onej() * qreal.sqrt(3) * (A - B);
+                x3 = -0.5 * (A + B) - a / 3 - 0.5 * qcplx.onej() * qreal.sqrt(3) * (A - B);
             }
             return new Tuple<QuadrupleC, QuadrupleC, QuadrupleC>(x1, x2, x3);
         }

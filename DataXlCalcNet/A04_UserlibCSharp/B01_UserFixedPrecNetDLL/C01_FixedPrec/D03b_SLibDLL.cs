@@ -54,7 +54,7 @@ namespace UserFixedPrecNet
         internal static CtxScalar chidens(CtxScalar x, CtxScalar n)
         {
             CtxScalar t1 = Ctx.pow(n, n / 2) * Ctx.pow(x, n - 1) * Ctx.exp(-n * x * x / 2);
-            CtxScalar t2 = Ctx.pow(2, (n - 1) / 2) * Ctx.real_gamma(n / 2);
+            CtxScalar t2 = Ctx.pow(2, (n - 1) / 2) * Ctx.gamma(n / 2);
             CtxScalar res = t1 / t2;
             res = res * Ctx.sqrt(2);
             return res;

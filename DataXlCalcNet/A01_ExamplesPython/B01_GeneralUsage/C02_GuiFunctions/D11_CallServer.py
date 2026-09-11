@@ -31,18 +31,19 @@ def MakeParam(P):
     return PStr
 
 
-##def GetTypedData(Param):
-##    ResultFinal = None
-##    if Param.startswith("$float$"):
-##        ResultFinal = float(Param[7:])
-##    elif Param.startswith("$string$"):
-##        ResultFinal = str(Param[8:])
-##    elif Param.startswith("$list$"):
-##        ResultFinal = String2List(Param)
-##    elif Param.startswith("$bool$"):
-##        if Param == "$bool$True": ResultFinal = True
-##        else: ResultFinal = False
-##    return ResultFinal;
+
+def GetTypedData(Param):
+    ResultFinal = None
+    if Param.startswith("$float$"):
+        ResultFinal = float(Param[7:])
+    elif Param.startswith("$string$"):
+        ResultFinal = str(Param[8:])
+    elif Param.startswith("$list$"):
+        ResultFinal = String2List(Param)
+    elif Param.startswith("$bool$"):
+        if Param == "$bool$True": ResultFinal = True
+        else: ResultFinal = False
+    return ResultFinal;
 
 
 

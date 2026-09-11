@@ -20,7 +20,7 @@ def PlotTable2(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'PlotTable2'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
@@ -70,7 +70,7 @@ def PlotTable2(**kwargs):
 
     col_to_name = dict(zip(cols, colnames))
     country_flags = os.sep.join([gui.get_my_documents(), 'DataXlCalcNet', 
-        'DataExamples', 'MainExamples', 'country_flags'])
+        'DataExamples', 'MainExamples', 'Flags'])
 
     flag_paths = list(Path(country_flags).glob('*.png'))
     country_to_flagpath = {p.stem: p for p in flag_paths}
