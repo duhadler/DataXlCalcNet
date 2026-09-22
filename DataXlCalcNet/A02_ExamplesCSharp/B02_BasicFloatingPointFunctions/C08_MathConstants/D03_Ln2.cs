@@ -31,36 +31,36 @@ public static void Test_Ln2()
 /* No syntax highlighting if HasArbPrecNet is undefined */
     ArbPrec.SetDps(40);
 #endif
-        Double res01 = math53.ln2();
-        Console.WriteLine("math53: ln2(): {0}", res01);
-        Single res02 = sreal.ln2();
-        Console.WriteLine(" sreal: ln2(): {0}",res02);
-        Double res03 = dreal.ln2();
-        Console.WriteLine(" dreal: ln2(): {0}",res03);
-        Extended res04 = ereal.ln2();
-        Console.WriteLine(" ereal: ln2(): {0}",res04);
-        Quadruple res05 = qreal.ln2();
-        Console.WriteLine(" qreal: ln2(): {0}",res05);
-        Octuple res06 = oreal.ln2();
-        Console.WriteLine(" oreal: ln2(): {0}",res06);
+        Double res01 = math53.ln2;
+        Console.WriteLine("math53: ln2: {0}", res01);
+        Single res02 = sreal.ln2;
+        Console.WriteLine(" sreal: ln2: {0}",res02);
+        Double res03 = dreal.ln2;
+        Console.WriteLine(" dreal: ln2: {0}",res03);
+        Extended res04 = ereal.ln2;
+        Console.WriteLine(" ereal: ln2: {0}",res04);
+        Quadruple res05 = qreal.ln2;
+        Console.WriteLine(" qreal: ln2: {0}",res05);
+        Octuple res06 = oreal.ln2;
+        Console.WriteLine(" oreal: ln2: {0}",res06);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
-        Mpfr res07 = mreal.ln2();
-        Console.WriteLine(" mreal: ln2(): {0}",res07);
-        Single res08 = sflint.ln2();
-        Console.WriteLine("sflint: ln2(): {0}",res08);
-        Double res09 = dflint.ln2();
-        Console.WriteLine("dflint: ln2(): {0}",res09);
-        Extended res10 = eflint.ln2();
-        Console.WriteLine("eflint: ln2(): {0}",res10);
-        Quadruple res11 = qflint.ln2();
-        Console.WriteLine("qflint: ln2(): {0}",res11);
-        Octuple res12 = oflint.ln2();
-        Console.WriteLine("oflint: ln2(): {0}",res12);
-        Mpfr res13 = mflint.ln2();
-        Console.WriteLine("mflint: ln2(): {0}",res13);
-        Arb res14 = aflint.ln2();
-        Console.WriteLine("aflint: ln2(): {0}", res14);
+        Mpfr res07 = mreal.ln2;
+        Console.WriteLine(" mreal: ln2: {0}",res07);
+        Single res08 = sflint.ln2;
+        Console.WriteLine("sflint: ln2: {0}",res08);
+        Double res09 = dflint.ln2;
+        Console.WriteLine("dflint: ln2: {0}",res09);
+        Extended res10 = eflint.ln2;
+        Console.WriteLine("eflint: ln2: {0}",res10);
+        Quadruple res11 = qflint.ln2;
+        Console.WriteLine("qflint: ln2: {0}",res11);
+        Octuple res12 = oflint.ln2;
+        Console.WriteLine("oflint: ln2: {0}",res12);
+        Mpfr res13 = mflint.ln2;
+        Console.WriteLine("mflint: ln2: {0}",res13);
+        Arb res14 = aflint.ln2;
+        Console.WriteLine("aflint: ln2: {0}", res14);
 #endif
         Console.WriteLine();
     Console.WriteLine("</H1>");

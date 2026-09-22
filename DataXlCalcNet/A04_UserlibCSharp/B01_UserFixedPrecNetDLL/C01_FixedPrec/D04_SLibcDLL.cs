@@ -255,8 +255,8 @@ namespace UserFixedPrecNet
                 Single SqrtQr = sreal.sqrt(Qr);
                 Single theta = sreal.acos(Rr / (SqrtQr * SqrtQr * SqrtQr));
                 x1 = -2 * SqrtQr * sreal.cos((theta) / 3) - a / 3;
-                x2 = -2 * SqrtQr * sreal.cos((theta + 2 * sreal.pi()) / 3) - a / 3;
-                x3 = -2 * SqrtQr * sreal.cos((theta - 2 * sreal.pi()) / 3) - a / 3;
+                x2 = -2 * SqrtQr * sreal.cos((theta + 2 * sreal.pi) / 3) - a / 3;
+                x3 = -2 * SqrtQr * sreal.cos((theta - 2 * sreal.pi) / 3) - a / 3;
             }
             else
             {
@@ -268,8 +268,8 @@ namespace UserFixedPrecNet
                     D = -D;
                 }
                 SingleC A = -scplx.cbrt(R + D);
-                SingleC B = scplx.zero();
-                if (A != scplx.zero())
+                SingleC B = scplx.zero;
+                if (A != scplx.zero)
                 {
                     B = Q / A;
                 }

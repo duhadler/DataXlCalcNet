@@ -257,8 +257,8 @@ namespace UserFixedPrecNet
                 Quadruple SqrtQr = qreal.sqrt(Qr);
                 Quadruple theta = qreal.acos(Rr / (SqrtQr * SqrtQr * SqrtQr));
                 x1 = -2 * SqrtQr * qreal.cos((theta) / 3) - a / 3;
-                x2 = -2 * SqrtQr * qreal.cos((theta + 2 * qreal.pi()) / 3) - a / 3;
-                x3 = -2 * SqrtQr * qreal.cos((theta - 2 * qreal.pi()) / 3) - a / 3;
+                x2 = -2 * SqrtQr * qreal.cos((theta + 2 * qreal.pi) / 3) - a / 3;
+                x3 = -2 * SqrtQr * qreal.cos((theta - 2 * qreal.pi) / 3) - a / 3;
             }
             else
             {
@@ -270,8 +270,8 @@ namespace UserFixedPrecNet
                     D = -D;
                 }
                 QuadrupleC A = -qcplx.cbrt(R + D);
-                QuadrupleC B = qcplx.zero();
-                if (A != qcplx.zero())
+                QuadrupleC B = qcplx.zero;
+                if (A != qcplx.zero)
                 {
                     B = Q / A;
                 }

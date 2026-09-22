@@ -9,7 +9,7 @@
   <StyleOfAxes>BackPanel</StyleOfAxes>
   <RunAfterLoading>Always, clear previous</RunAfterLoading>
   <Plot3DType1>Altitude surface, complex function</Plot3DType1>
-  <Code>var res = cmath53.elliptic_pi_inc(n:2, phi:dreal.pi()/3.5, k:z);
+  <Code>var res = cmath53.elliptic_pi_inc(n:2, phi:dreal.pi/3.5, k:z);
 </Code>
   <Resolution>128</Resolution>
   <Resolution2>0</Resolution2>

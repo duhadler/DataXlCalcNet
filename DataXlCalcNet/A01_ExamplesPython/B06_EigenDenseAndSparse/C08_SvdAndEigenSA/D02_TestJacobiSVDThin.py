@@ -90,10 +90,10 @@ def DemoAnyJacobiSVDCtx():
     #for (int i = 0, loopTo = S0.rows - 1 i <= loopTo i++)
 
     for i in range(S0.rows):
-        if (S0[i] != Ctx.zero()):
-            SPlus[i] = Ctx.one() / S0[i]
+        if (S0[i] != Ctx.zero):
+            SPlus[i] = Ctx.one / S0[i]
         else:
-            SPlus[i] = Ctx.zero()
+            SPlus[i] = Ctx.zero
     Pinv = V1 * SPlus.AsDiagonal() * U1.Adjoint()
     Pinv.Print('Pinv = V * SPlus * U^T: ', digits)
     A1 = A - A * Pinv * A

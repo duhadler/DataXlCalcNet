@@ -31,36 +31,36 @@ public static void Test_Khinchin()
 /* No syntax highlighting if HasArbPrecNet is undefined */
     ArbPrec.SetDps(40);
 #endif
-        Double res01 = math53.khinchin();
-        Console.WriteLine("math53: khinchin(): {0}", res01);
-        Single res02 = sreal.khinchin();
-        Console.WriteLine(" sreal: khinchin(): {0}",res02);
-        Double res03 = dreal.khinchin();
-        Console.WriteLine(" dreal: khinchin(): {0}",res03);
-        Extended res04 = ereal.khinchin();
-        Console.WriteLine(" ereal: khinchin(): {0}",res04);
-        Quadruple res05 = qreal.khinchin();
-        Console.WriteLine(" qreal: khinchin(): {0}",res05);
-        Octuple res06 = oreal.khinchin();
-        Console.WriteLine(" oreal: khinchin(): {0}",res06);
+        Double res01 = math53.khinchin;
+        Console.WriteLine("math53: khinchin: {0}", res01);
+        Single res02 = sreal.khinchin;
+        Console.WriteLine(" sreal: khinchin: {0}",res02);
+        Double res03 = dreal.khinchin;
+        Console.WriteLine(" dreal: khinchin: {0}",res03);
+        Extended res04 = ereal.khinchin;
+        Console.WriteLine(" ereal: khinchin: {0}",res04);
+        Quadruple res05 = qreal.khinchin;
+        Console.WriteLine(" qreal: khinchin: {0}",res05);
+        Octuple res06 = oreal.khinchin;
+        Console.WriteLine(" oreal: khinchin: {0}",res06);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
-        Mpfr res07 = mreal.khinchin();
-        Console.WriteLine(" mreal: khinchin(): {0}",res07);
-        Single res08 = sflint.khinchin();
-        Console.WriteLine("sflint: khinchin(): {0}",res08);
-        Double res09 = dflint.khinchin();
-        Console.WriteLine("dflint: khinchin(): {0}",res09);
-        Extended res10 = eflint.khinchin();
-        Console.WriteLine("eflint: khinchin(): {0}",res10);
-        Quadruple res11 = qflint.khinchin();
-        Console.WriteLine("qflint: khinchin(): {0}",res11);
-        Octuple res12 = oflint.khinchin();
-        Console.WriteLine("oflint: khinchin(): {0}",res12);
-        Mpfr res13 = mflint.khinchin();
-        Console.WriteLine("mflint: khinchin(): {0}",res13);
-        Arb res14 = aflint.khinchin();
-        Console.WriteLine("aflint: khinchin(): {0}", res14);
+        Mpfr res07 = mreal.khinchin;
+        Console.WriteLine(" mreal: khinchin: {0}",res07);
+        Single res08 = sflint.khinchin;
+        Console.WriteLine("sflint: khinchin: {0}",res08);
+        Double res09 = dflint.khinchin;
+        Console.WriteLine("dflint: khinchin: {0}",res09);
+        Extended res10 = eflint.khinchin;
+        Console.WriteLine("eflint: khinchin: {0}",res10);
+        Quadruple res11 = qflint.khinchin;
+        Console.WriteLine("qflint: khinchin: {0}",res11);
+        Octuple res12 = oflint.khinchin;
+        Console.WriteLine("oflint: khinchin: {0}",res12);
+        Mpfr res13 = mflint.khinchin;
+        Console.WriteLine("mflint: khinchin: {0}",res13);
+        Arb res14 = aflint.khinchin;
+        Console.WriteLine("aflint: khinchin: {0}", res14);
 #endif
         Console.WriteLine();
     Console.WriteLine("</H1>");

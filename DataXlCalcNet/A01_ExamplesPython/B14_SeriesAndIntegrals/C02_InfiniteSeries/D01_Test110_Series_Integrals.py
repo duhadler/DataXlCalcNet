@@ -537,7 +537,7 @@ def demo_8_5_verified_integration(ctx):
 
     def demo_marcumq(ctx):
     #    l = 0
-    #    r = 1*mp.pi()
+    #    r = 1*mp.pi
         a = 6
         b = 4
     #plot(lambda x: mpm.marcumqfx(a, b, x), [l, r])

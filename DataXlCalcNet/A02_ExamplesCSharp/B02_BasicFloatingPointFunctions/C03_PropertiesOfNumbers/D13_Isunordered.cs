@@ -33,10 +33,10 @@ public static void Test_IsUnordered()
     ArbPrec.SetDps(40);
 #endif
 
-    Double[] InputArray1 = {dreal.nan(), dreal.neginf(), -4.333, -0.0, 0.0, 
-        4.333, dreal.inf() };
-    Double[] InputArray2 = {dreal.nan(), dreal.neginf(), -4.333, -0.0, 0.0, 
-        4.333, dreal.inf() };
+    Double[] InputArray1 = {dreal.nan, dreal.neginf, -4.333, -0.0, 0.0, 
+        4.333, dreal.inf };
+    Double[] InputArray2 = {dreal.nan, dreal.neginf, -4.333, -0.0, 0.0, 
+        4.333, dreal.inf };
     foreach (Double x in InputArray1) {
     foreach (Double y in InputArray2) {
         Console.WriteLine("<H2 Title=" + "\"" + "x={0}, y={1}" + "\"" + ">", 

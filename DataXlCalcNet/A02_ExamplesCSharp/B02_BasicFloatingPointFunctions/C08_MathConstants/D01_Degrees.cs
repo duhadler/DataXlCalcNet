@@ -31,36 +31,36 @@ public static void Test_Degree()
 /* No syntax highlighting if HasArbPrecNet is undefined */
     ArbPrec.SetDps(40);
 #endif
-        Double res01 = math53.degree();
-        Console.WriteLine("math53: degree(): {0}", res01);
-        Single res02 = sreal.degree();
-        Console.WriteLine(" sreal: degree(): {0}",res02);
-        Double res03 = dreal.degree();
-        Console.WriteLine(" dreal: degree(): {0}",res03);
-        Extended res04 = ereal.degree();
-        Console.WriteLine(" ereal: degree(): {0}",res04);
-        Quadruple res05 = qreal.degree();
-        Console.WriteLine(" qreal: degree(): {0}",res05);
-        Octuple res06 = oreal.degree();
-        Console.WriteLine(" oreal: degree(): {0}",res06);
+        Double res01 = math53.degree;
+        Console.WriteLine("math53: degree: {0}", res01);
+        Single res02 = sreal.degree;
+        Console.WriteLine(" sreal: degree: {0}",res02);
+        Double res03 = dreal.degree;
+        Console.WriteLine(" dreal: degree: {0}",res03);
+        Extended res04 = ereal.degree;
+        Console.WriteLine(" ereal: degree: {0}",res04);
+        Quadruple res05 = qreal.degree;
+        Console.WriteLine(" qreal: degree: {0}",res05);
+        Octuple res06 = oreal.degree;
+        Console.WriteLine(" oreal: degree: {0}",res06);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
-        Mpfr res07 = mreal.degree();
-        Console.WriteLine(" mreal: degree(): {0}",res07);
-        Single res08 = sflint.degree();
-        Console.WriteLine("sflint: degree(): {0}",res08);
-        Double res09 = dflint.degree();
-        Console.WriteLine("dflint: degree(): {0}",res09);
-        Extended res10 = eflint.degree();
-        Console.WriteLine("eflint: degree(): {0}",res10);
-        Quadruple res11 = qflint.degree();
-        Console.WriteLine("qflint: degree(): {0}",res11);
-        Octuple res12 = oflint.degree();
-        Console.WriteLine("oflint: degree(): {0}",res12);
-        Mpfr res13 = mflint.degree();
-        Console.WriteLine("mflint: degree(): {0}",res13);
-        Arb res14 = aflint.degree();
-        Console.WriteLine("aflint: degree(): {0}", res14);
+        Mpfr res07 = mreal.degree;
+        Console.WriteLine(" mreal: degree: {0}",res07);
+        Single res08 = sflint.degree;
+        Console.WriteLine("sflint: degree: {0}",res08);
+        Double res09 = dflint.degree;
+        Console.WriteLine("dflint: degree: {0}",res09);
+        Extended res10 = eflint.degree;
+        Console.WriteLine("eflint: degree: {0}",res10);
+        Quadruple res11 = qflint.degree;
+        Console.WriteLine("qflint: degree: {0}",res11);
+        Octuple res12 = oflint.degree;
+        Console.WriteLine("oflint: degree: {0}",res12);
+        Mpfr res13 = mflint.degree;
+        Console.WriteLine("mflint: degree: {0}",res13);
+        Arb res14 = aflint.degree;
+        Console.WriteLine("aflint: degree: {0}", res14);
 #endif
         Console.WriteLine();
     Console.WriteLine("</H1>");

@@ -142,7 +142,7 @@ try:
         #FuncPlot2d(ctx=math53, f=math53.cot, xlim=[-5, 5], ylim=[-5, 5], Title = 'Cotangent, singularities not specified, math53')   
 
         #FuncPlot2d(ctx=mpm, f=mpm.cot, xlim=[-5, 5], ylim=[-5, 5], singularities=[-mpm.pi, 0, mpm.pi], Title = 'Cotangent, singularities specified, mpm')  
-        #FuncPlot2d(ctx=math53, f=math53.cot, xlim=[-5, 5], ylim=[-5, 5], singularities=[-math53.pi(), 0, math53.pi()], Title = 'Cotangent, singularities specified, math53') 
+        #FuncPlot2d(ctx=math53, f=math53.cot, xlim=[-5, 5], ylim=[-5, 5], singularities=[-math53.pi, 0, math53.pi], Title = 'Cotangent, singularities specified, math53') 
 
 
 

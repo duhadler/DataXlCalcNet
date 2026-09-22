@@ -254,8 +254,8 @@ namespace UserFixedPrecNet
                 Octuple SqrtQr = oreal.sqrt(Qr);
                 Octuple theta = oreal.acos(Rr / (SqrtQr * SqrtQr * SqrtQr));
                 x1 = -2 * SqrtQr * oreal.cos((theta) / 3) - a / 3;
-                x2 = -2 * SqrtQr * oreal.cos((theta + 2 * oreal.pi()) / 3) - a / 3;
-                x3 = -2 * SqrtQr * oreal.cos((theta - 2 * oreal.pi()) / 3) - a / 3;
+                x2 = -2 * SqrtQr * oreal.cos((theta + 2 * oreal.pi) / 3) - a / 3;
+                x3 = -2 * SqrtQr * oreal.cos((theta - 2 * oreal.pi) / 3) - a / 3;
             }
             else
             {
@@ -267,8 +267,8 @@ namespace UserFixedPrecNet
                     D = -D;
                 }
                 OctupleC A = -ocplx.cbrt(R + D);
-                OctupleC B = ocplx.zero();
-                if (A != ocplx.zero())
+                OctupleC B = ocplx.zero;
+                if (A != ocplx.zero)
                 {
                     B = Q / A;
                 }

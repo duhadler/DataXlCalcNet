@@ -1,59 +1,47 @@
 ﻿
-''' Set use_xlcalcnet2 = False to exclude code requiring xlcalcnet2 '''
-use_xlcalcnet2 = True; use_xlcalcnet = True
-
-if use_xlcalcnet : 
-    from xlcalcnet import FixedPrecNet, math53, sreal, dreal, ereal, qreal, \
-        oreal
-    from FixedPrecNet import cb1SSingle1S, cb1SDouble1S, cb1SExtended1S, \
-        cb1SQuadruple1S, cb1SOctuple1S
-
-if use_xlcalcnet2: 
-    from xlcalcnet import ArbPrecNet, ArbPrec, mreal
-    from ArbPrecNet import cb1SMpfr1S
-
-Ctx = None
-
-''' Uncomment one of the lines below to select the data type '''
-#Ctx = sreal; cb = cb1SSingle1S
-#Ctx = dreal; cb = cb1SDouble1S
-#Ctx = ereal; cb = cb1SExtended1S
-#Ctx = qreal; cb = cb1SQuadruple1S
-#Ctx = oreal; cb = cb1SOctuple1S
-if use_xlcalcnet2: Ctx = mreal; cb = cb1SMpfr1S
+import time
+from xlcalcnet import gui, sreal, dreal, ereal, qreal, oreal
+if gui.has_xlcalcnet2: from xlcalcnet import mreal
 
 
 def main_tests():
-    if Ctx is not None:
-        if use_xlcalcnet2: ArbPrec.SetDps(40)
-        demo_GaussLegendre()
-    else:
-        print('Nothing to do, since Ctx is None.')
+    if gui.has_xlcalcnet2: mreal.dps = 80
+    DemoGaussLegendreCtx()
 
 
-
-def f14(x):
+def F14(x):
+    Ctx = gui.lastctx
     fx = 1 / (5 - 4 * Ctx.cos(x));
     return fx;
 
 
-def demo_GaussLegendre():
-    print('GaussLegendre:')
-    a = Ctx.zero()
-    b = Ctx.t(1.0);
-    max_refinements = 12
-    res = Ctx.GaussLegendre(cb(f14), a, b)
-    print('Ctx.GaussLegendre(cb(f14), a, b): ')
-    integral = res.Item1
-    CondNo = res.Item2
-    print('integral:', integral)
-    print('CondNo:', CondNo)
-    print()
+def DemoGaussLegendreCtx():
+    boost_list = [sreal, dreal, ereal, qreal, oreal]
+    if gui.has_xlcalcnet2: boost_list.append(mreal)
+    for Ctx in boost_list:
+        print('GaussLegendre:')
+        gui.lastctx = Ctx
+        print('Ctx:', gui.lastctx.name)
+        a = Ctx.zero
+        b = Ctx.t(1.0);
+        max_refinements = 12
+        res = Ctx.GaussLegendre(Ctx.cb1SRet1S(F14), a, b)
+        print('Ctx.GaussLegendre(cb(f14), a, b): ')
+        integral = res.Item1
+        CondNo = res.Item2
+        print('integral:', Ctx.fmt(integral))
+        print('CondNo:', Ctx.fmt(CondNo))
+        print()
 
 
 
 try:
-    main_tests()
+    if __name__ == '__main__':
+        start0 = time.time()
+        main_tests()
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
+
 
 except Exception:
     import traceback

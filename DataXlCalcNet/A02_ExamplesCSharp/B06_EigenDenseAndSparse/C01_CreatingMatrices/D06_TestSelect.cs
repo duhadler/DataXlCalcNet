@@ -120,7 +120,7 @@ public static void DemoAnyMatSelectCtx()
     var x1 = Ctx.mat_random(n, 4);
     x1 = x1 - Ctx.t(0.5d);
     x1.Print("AnyMat.Random(n, 4) - 0.5, unsorted: ", digits);
-    x1[0, 0] = Ctx.nan();
+    x1[0, 0] = Ctx.nan;
     x1.Print("Double.NaN, unsorted: ", digits);
     var x3 = x1.SelectRows();
     x3.Print("x1.Select_Rows(): ", digits);

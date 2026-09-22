@@ -31,36 +31,36 @@ public static void Test_Inf()
 /* No syntax highlighting if HasArbPrecNet is undefined */
     ArbPrec.SetDps(40);
 #endif
-        Double res01 = math53.inf();
-        Console.WriteLine("math53: inf(): {0}", res01);
-        Single res02 = sreal.inf();
-        Console.WriteLine(" sreal: inf(): {0}",res02);
-        Double res03 = dreal.inf();
-        Console.WriteLine(" dreal: inf(): {0}",res03);
-        Extended res04 = ereal.inf();
-        Console.WriteLine(" ereal: inf(): {0}",res04);
-        Quadruple res05 = qreal.inf();
-        Console.WriteLine(" qreal: inf(): {0}",res05);
-        Octuple res06 = oreal.inf();
-        Console.WriteLine(" oreal: inf(): {0}",res06);
+        Double res01 = math53.inf;
+        Console.WriteLine("math53: inf: {0}", res01);
+        Single res02 = sreal.inf;
+        Console.WriteLine(" sreal: inf: {0}",res02);
+        Double res03 = dreal.inf;
+        Console.WriteLine(" dreal: inf: {0}",res03);
+        Extended res04 = ereal.inf;
+        Console.WriteLine(" ereal: inf: {0}",res04);
+        Quadruple res05 = qreal.inf;
+        Console.WriteLine(" qreal: inf: {0}",res05);
+        Octuple res06 = oreal.inf;
+        Console.WriteLine(" oreal: inf: {0}",res06);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
-        Mpfr res07 = mreal.inf();
-        Console.WriteLine(" mreal: inf(): {0}",res07);
-        Single res08 = sflint.inf();
-        Console.WriteLine("sflint: inf(): {0}",res08);
-        Double res09 = dflint.inf();
-        Console.WriteLine("dflint: inf(): {0}",res09);
-        Extended res10 = eflint.inf();
-        Console.WriteLine("eflint: inf(): {0}",res10);
-        Quadruple res11 = qflint.inf();
-        Console.WriteLine("qflint: inf(): {0}",res11);
-        Octuple res12 = oflint.inf();
-        Console.WriteLine("oflint: inf(): {0}",res12);
-        Mpfr res13 = mflint.inf();
-        Console.WriteLine("mflint: inf(): {0}",res13);
-        Arb res14 = aflint.inf();
-        Console.WriteLine("aflint: inf(): {0}", res14);
+        Mpfr res07 = mreal.inf;
+        Console.WriteLine(" mreal: inf: {0}",res07);
+        Single res08 = sflint.inf;
+        Console.WriteLine("sflint: inf: {0}",res08);
+        Double res09 = dflint.inf;
+        Console.WriteLine("dflint: inf: {0}",res09);
+        Extended res10 = eflint.inf;
+        Console.WriteLine("eflint: inf: {0}",res10);
+        Quadruple res11 = qflint.inf;
+        Console.WriteLine("qflint: inf: {0}",res11);
+        Octuple res12 = oflint.inf;
+        Console.WriteLine("oflint: inf: {0}",res12);
+        Mpfr res13 = mflint.inf;
+        Console.WriteLine("mflint: inf: {0}",res13);
+        Arb res14 = aflint.inf;
+        Console.WriteLine("aflint: inf: {0}", res14);
 #endif
         Console.WriteLine();
     Console.WriteLine("</H1>");

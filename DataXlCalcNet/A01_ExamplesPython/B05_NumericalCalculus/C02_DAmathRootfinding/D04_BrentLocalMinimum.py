@@ -1,7 +1,6 @@
 ﻿
-import math
-from xlcalcnet import math53, FixedPrecNet
-from FixedPrecNet import cb1SDouble1S as cb
+from xlcalcnet import math53
+cb = math53.cb1SRet1S
 
 
 def main_tests():
@@ -10,8 +9,8 @@ def main_tests():
 
 
 def F1(x):
-    y = -math.exp(-x * x)
-#    print('x: ', x, 'y: ', y)
+    y = -math53.exp(-x * x)
+#    print('x:', x, '  y:', y)
     return y
 
 
@@ -30,7 +29,7 @@ def demo_localmin():
 
 def demo_localmin_lambda():
     print('Local Minimum, lambda expression:')
-    f = cb(lambda x: -math.exp(-x * x))
+    f = cb(lambda x: -math53.exp(-x * x))
     print('f = cb(lambda x: -math.exp(-x * x))')
     res = math53.localmin(f, a=-10.0, b=20.0, eps=1E-6, tol=1E-6)
     print('math53.localmin(f, a=-10.0, b=20.0, eps=1E-6, tol=1E-6): ')

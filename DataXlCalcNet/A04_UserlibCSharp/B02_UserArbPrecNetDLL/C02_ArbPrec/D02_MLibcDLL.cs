@@ -260,8 +260,8 @@ namespace UserArbPrecNet
                 Mpfr SqrtQr = mflint.sqrt(Qr);
                 Mpfr theta = mflint.acos(Rr / (SqrtQr * SqrtQr * SqrtQr));
                 x1 = -2 * SqrtQr * mflint.cos((theta) / 3) - a / 3;
-                x2 = -2 * SqrtQr * mflint.cos((theta + 2 * mflint.pi()) / 3) - a / 3;
-                x3 = -2 * SqrtQr * mflint.cos((theta - 2 * mflint.pi()) / 3) - a / 3;
+                x2 = -2 * SqrtQr * mflint.cos((theta + 2 * mflint.pi) / 3) - a / 3;
+                x3 = -2 * SqrtQr * mflint.cos((theta - 2 * mflint.pi) / 3) - a / 3;
             }
             else
             {
@@ -273,8 +273,8 @@ namespace UserArbPrecNet
                     D = -D;
                 }
                 MpfrC A = -mflintc.cbrt(R + D);
-                MpfrC B = mflintc.zero();
-                if (A != mflintc.zero())
+                MpfrC B = mflintc.zero;
+                if (A != mflintc.zero)
                 {
                     B = Q / A;
                 }

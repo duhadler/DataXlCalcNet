@@ -31,36 +31,36 @@ public static void Test_Phi()
 /* No syntax highlighting if HasArbPrecNet is undefined */
     ArbPrec.SetDps(40);
 #endif
-        Double res01 = math53.phi();
-        Console.WriteLine("math53: phi(): {0}", res01);
-        Single res02 = sreal.phi();
-        Console.WriteLine(" sreal: phi(): {0}",res02);
-        Double res03 = dreal.phi();
-        Console.WriteLine(" dreal: phi(): {0}",res03);
-        Extended res04 = ereal.phi();
-        Console.WriteLine(" ereal: phi(): {0}",res04);
-        Quadruple res05 = qreal.phi();
-        Console.WriteLine(" qreal: phi(): {0}",res05);
-        Octuple res06 = oreal.phi();
-        Console.WriteLine(" oreal: phi(): {0}",res06);
+        Double res01 = math53.phi;
+        Console.WriteLine("math53: phi: {0}", res01);
+        Single res02 = sreal.phi;
+        Console.WriteLine(" sreal: phi: {0}",res02);
+        Double res03 = dreal.phi;
+        Console.WriteLine(" dreal: phi: {0}",res03);
+        Extended res04 = ereal.phi;
+        Console.WriteLine(" ereal: phi: {0}",res04);
+        Quadruple res05 = qreal.phi;
+        Console.WriteLine(" qreal: phi: {0}",res05);
+        Octuple res06 = oreal.phi;
+        Console.WriteLine(" oreal: phi: {0}",res06);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
-        Mpfr res07 = mreal.phi();
-        Console.WriteLine(" mreal: phi(): {0}",res07);
-        Single res08 = sflint.phi();
-        Console.WriteLine("sflint: phi(): {0}",res08);
-        Double res09 = dflint.phi();
-        Console.WriteLine("dflint: phi(): {0}",res09);
-        Extended res10 = eflint.phi();
-        Console.WriteLine("eflint: phi(): {0}",res10);
-        Quadruple res11 = qflint.phi();
-        Console.WriteLine("qflint: phi(): {0}",res11);
-        Octuple res12 = oflint.phi();
-        Console.WriteLine("oflint: phi(): {0}",res12);
-        Mpfr res13 = mflint.phi();
-        Console.WriteLine("mflint: phi(): {0}",res13);
-        Arb res14 = aflint.phi();
-        Console.WriteLine("aflint: phi(): {0}", res14);
+        Mpfr res07 = mreal.phi;
+        Console.WriteLine(" mreal: phi: {0}",res07);
+        Single res08 = sflint.phi;
+        Console.WriteLine("sflint: phi: {0}",res08);
+        Double res09 = dflint.phi;
+        Console.WriteLine("dflint: phi: {0}",res09);
+        Extended res10 = eflint.phi;
+        Console.WriteLine("eflint: phi: {0}",res10);
+        Quadruple res11 = qflint.phi;
+        Console.WriteLine("qflint: phi: {0}",res11);
+        Octuple res12 = oflint.phi;
+        Console.WriteLine("oflint: phi: {0}",res12);
+        Mpfr res13 = mflint.phi;
+        Console.WriteLine("mflint: phi: {0}",res13);
+        Arb res14 = aflint.phi;
+        Console.WriteLine("aflint: phi: {0}", res14);
 #endif
         Console.WriteLine();
     Console.WriteLine("</H1>");

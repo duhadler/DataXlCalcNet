@@ -37,6 +37,8 @@ public static void TestExp10m1Real()
     foreach (var x in InputArray1) {
         Console.WriteLine("<H2 Title=" + "\"" + "exp10m1(x); " + "x={0}" 
             + "\"" + ">", x);
+        Double res00 = math53.exp10(x) - 1;
+        Console.WriteLine("math53:  {0}", res00);
         Double res01 = math53.exp10m1(x);
         Console.WriteLine("math53:  {0}", res01);
         Single res02 = sreal.exp10m1(x);

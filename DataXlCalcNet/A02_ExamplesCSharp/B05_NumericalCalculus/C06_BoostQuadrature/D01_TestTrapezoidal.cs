@@ -78,9 +78,9 @@ public static CtxScalar f13(CtxScalar x)
 public static void DemoTrapezoidal()
 {
     Console.WriteLine("Trapezoidal: " + Ctx.name);
-    var a = Ctx.zero();
-    var b = 2 * Ctx.pi();
-    var res1 = Ctx.Trapezoidal(f13, a, b, tol: Ctx.zero());
+    var a = Ctx.zero;
+    var b = 2 * Ctx.pi;
+    var res1 = Ctx.Trapezoidal(f13, a, b, tol: Ctx.zero);
     Console.WriteLine("res1 (integral, error, cond.no.): {0}", res1);
     Console.WriteLine();
 }

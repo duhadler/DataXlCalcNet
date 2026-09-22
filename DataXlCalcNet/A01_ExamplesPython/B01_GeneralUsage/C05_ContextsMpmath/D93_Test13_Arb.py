@@ -105,7 +105,7 @@ def demo_integral():
     from flint import showgood
 
     print("integral: sin(x)")
-    showgood(lambda: acb.integral(lambda x, _: x.sin(), 0, arb.pi()), dps=25)
+    showgood(lambda: acb.integral(lambda x, _: x.sin(), 0, arb.pi), dps=25)
 
     print("integral: x + gamma(sin(x))")
     showgood(lambda: acb.integral(lambda x, _: (x + x.sin()).gamma(), 1, 1+1j), dps=25)

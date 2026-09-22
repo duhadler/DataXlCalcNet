@@ -17,13 +17,13 @@ def student_t_nc_pdf_moments_quad():
     res = 1
 
     print("start student_t_nc2_pdf_moments_quad():")
-    mu1 = mpm.quad(lambda y: (y*mpm.student_t_nc_pdf(y, n, delta)), [-mpm.inf(), mpm.inf()])
+    mu1 = mpm.quad(lambda y: (y*mpm.student_t_nc_pdf(y, n, delta)), [-mpm.inf, mpm.inf])
     print("mu1:", mu1)
-    mu2 = mpm.quad(lambda y: (y*y*mpm.student_t_nc_pdf(y, n, delta)), [-mpm.inf(), mpm.inf()])
+    mu2 = mpm.quad(lambda y: (y*y*mpm.student_t_nc_pdf(y, n, delta)), [-mpm.inf, mpm.inf])
     print("mu2:", mu2)
-    mu3 = mpm.quad(lambda y: (y*y*y*mpm.student_t_nc_pdf(y, n, delta)), [-mpm.inf(), mpm.inf()])
+    mu3 = mpm.quad(lambda y: (y*y*y*mpm.student_t_nc_pdf(y, n, delta)), [-mpm.inf, mpm.inf])
     print("mu3:", mu3)
-    mu4 = mpm.quad(lambda y: (y*y*y*y*mpm.student_t_nc_pdf(y, n, delta)), [-mpm.inf(), mpm.inf()])
+    mu4 = mpm.quad(lambda y: (y*y*y*y*mpm.student_t_nc_pdf(y, n, delta)), [-mpm.inf, mpm.inf])
     print("mu4:", mu4)
 
     plot(lambda y: (mpm.student_t_nc_pdf(y, n, delta)), [-10, 10])
@@ -116,13 +116,13 @@ def student_t_nc2_pdf_moments_quad():
     res = 1
 
     print("start student_t_nc2_pdf_moments_quad():")
-    mu1 = mpm.quad(lambda y: (y*mpm.student_t_nc2_pdf(y, n, delta, theta)), [-mpm.inf(), mpm.inf()])
+    mu1 = mpm.quad(lambda y: (y*mpm.student_t_nc2_pdf(y, n, delta, theta)), [-mpm.inf, mpm.inf])
     print("mu1:", mu1)
-    mu2 = mpm.quad(lambda y: (y*y*mpm.student_t_nc2_pdf(y, n, delta, theta)), [-mpm.inf(), mpm.inf()])
+    mu2 = mpm.quad(lambda y: (y*y*mpm.student_t_nc2_pdf(y, n, delta, theta)), [-mpm.inf, mpm.inf])
     print("mu2:", mu2)
-    mu3 = mpm.quad(lambda y: (y*y*y*mpm.student_t_nc2_pdf(y, n, delta, theta)), [-mpm.inf(), mpm.inf()])
+    mu3 = mpm.quad(lambda y: (y*y*y*mpm.student_t_nc2_pdf(y, n, delta, theta)), [-mpm.inf, mpm.inf])
     print("mu3:", mu3)
-    mu4 = mpm.quad(lambda y: (y*y*y*y*mpm.student_t_nc2_pdf(y, n, delta, theta)), [-mpm.inf(), mpm.inf()])
+    mu4 = mpm.quad(lambda y: (y*y*y*y*mpm.student_t_nc2_pdf(y, n, delta, theta)), [-mpm.inf, mpm.inf])
     print("mu4:", mu4)
 
     plot(lambda y: (mpm.student_t_nc2_pdf(y, n, delta, theta)), [-10, 10])
@@ -157,13 +157,13 @@ def fisher_f_nc_pdf_moments_quad():
     lambda1 = 10
     #lambda2 = 0
     res = 1
-    mu1 = mpm.quad(lambda y: (y*mpm.fisher_f_nc_pdf(y, n1, n2, lambda1)), [0, mpm.inf()])
+    mu1 = mpm.quad(lambda y: (y*mpm.fisher_f_nc_pdf(y, n1, n2, lambda1)), [0, mpm.inf])
     print("mu1:", mu1)
-    mu2 = mpm.quad(lambda y: (y*y*mpm.fisher_f_nc_pdf(y, n1, n2, lambda1)), [0, mpm.inf()])
+    mu2 = mpm.quad(lambda y: (y*y*mpm.fisher_f_nc_pdf(y, n1, n2, lambda1)), [0, mpm.inf])
     print("mu2:", mu2)
-    mu3 = mpm.quad(lambda y: (y*y*y*mpm.fisher_f_nc_pdf(y, n1, n2, lambda1)), [0, mpm.inf()])
+    mu3 = mpm.quad(lambda y: (y*y*y*mpm.fisher_f_nc_pdf(y, n1, n2, lambda1)), [0, mpm.inf])
     print("mu3:", mu3)
-    mu4 = mpm.quad(lambda y: (y*y*y*y*mpm.fisher_f_nc_pdf(y, n1, n2, lambda1)), [0, mpm.inf()])
+    mu4 = mpm.quad(lambda y: (y*y*y*y*mpm.fisher_f_nc_pdf(y, n1, n2, lambda1)), [0, mpm.inf])
     print("mu4:", mu4)
 
     plot(lambda y: mpm.fisher_f_nc_pdf(y, n1, n2, lambda1), [0, 4])
@@ -234,13 +234,13 @@ def fdisnc2_pdf_moments_quad():
     lambda1 = 10
     lambda2 = 15
     res = 1
-    mu1 = mpm.quad(lambda y: (y*mpm.fisher_f_nc2_pdf(y, n1, n2, lambda1, lambda2)), [0, mpm.inf()])
+    mu1 = mpm.quad(lambda y: (y*mpm.fisher_f_nc2_pdf(y, n1, n2, lambda1, lambda2)), [0, mpm.inf])
     print("mu1:", mu1)
-    mu2 = mpm.quad(lambda y: (y*y*mpm.fisher_f_nc2_pdf(y, n1, n2, lambda1, lambda2)), [0, mpm.inf()])
+    mu2 = mpm.quad(lambda y: (y*y*mpm.fisher_f_nc2_pdf(y, n1, n2, lambda1, lambda2)), [0, mpm.inf])
     print("mu2:", mu2)
-    mu3 = mpm.quad(lambda y: (y*y*y*mpm.fisher_f_nc2_pdf(y, n1, n2, lambda1, lambda2)), [0, mpm.inf()])
+    mu3 = mpm.quad(lambda y: (y*y*y*mpm.fisher_f_nc2_pdf(y, n1, n2, lambda1, lambda2)), [0, mpm.inf])
     print("mu3:", mu3)
-    mu4 = mpm.quad(lambda y: (y*y*y*y*mpm.fisher_f_nc2_pdf(y, n1, n2, lambda1, lambda2)), [0, mpm.inf()])
+    mu4 = mpm.quad(lambda y: (y*y*y*y*mpm.fisher_f_nc2_pdf(y, n1, n2, lambda1, lambda2)), [0, mpm.inf])
     print("mu4:", mu4)
 
     plot(lambda y: (mpm.fisher_f_nc2_pdf(y, n1, n2, lambda1, lambda2)), [0, 4])

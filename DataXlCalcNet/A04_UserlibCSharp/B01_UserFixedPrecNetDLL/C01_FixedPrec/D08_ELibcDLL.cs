@@ -255,8 +255,8 @@ namespace UserFixedPrecNet
                 Extended SqrtQr = ereal.sqrt(Qr);
                 Extended theta = ereal.acos(Rr / (SqrtQr * SqrtQr * SqrtQr));
                 x1 = -2 * SqrtQr * ereal.cos((theta) / 3) - a / 3;
-                x2 = -2 * SqrtQr * ereal.cos((theta + 2 * ereal.pi()) / 3) - a / 3;
-                x3 = -2 * SqrtQr * ereal.cos((theta - 2 * ereal.pi()) / 3) - a / 3;
+                x2 = -2 * SqrtQr * ereal.cos((theta + 2 * ereal.pi) / 3) - a / 3;
+                x3 = -2 * SqrtQr * ereal.cos((theta - 2 * ereal.pi) / 3) - a / 3;
             }
             else
             {
@@ -268,8 +268,8 @@ namespace UserFixedPrecNet
                     D = -D;
                 }
                 ExtendedC A = -ecplx.cbrt(R + D);
-                ExtendedC B = ecplx.zero();
-                if (A != ecplx.zero())
+                ExtendedC B = ecplx.zero;
+                if (A != ecplx.zero)
                 {
                     B = Q / A;
                 }

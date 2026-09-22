@@ -31,36 +31,36 @@ public static void Test_Glaisher()
 /* No syntax highlighting if HasArbPrecNet is undefined */
     ArbPrec.SetDps(40);
 #endif
-        Double res01 = math53.glaisher();
-        Console.WriteLine("math53: glaisher(): {0}", res01);
-        Single res02 = sreal.glaisher();
-        Console.WriteLine(" sreal: glaisher(): {0}",res02);
-        Double res03 = dreal.glaisher();
-        Console.WriteLine(" dreal: glaisher(): {0}",res03);
-        Extended res04 = ereal.glaisher();
-        Console.WriteLine(" ereal: glaisher(): {0}",res04);
-        Quadruple res05 = qreal.glaisher();
-        Console.WriteLine(" qreal: glaisher(): {0}",res05);
-        Octuple res06 = oreal.glaisher();
-        Console.WriteLine(" oreal: glaisher(): {0}",res06);
+        Double res01 = math53.glaisher;
+        Console.WriteLine("math53: glaisher: {0}", res01);
+        Single res02 = sreal.glaisher;
+        Console.WriteLine(" sreal: glaisher: {0}",res02);
+        Double res03 = dreal.glaisher;
+        Console.WriteLine(" dreal: glaisher: {0}",res03);
+        Extended res04 = ereal.glaisher;
+        Console.WriteLine(" ereal: glaisher: {0}",res04);
+        Quadruple res05 = qreal.glaisher;
+        Console.WriteLine(" qreal: glaisher: {0}",res05);
+        Octuple res06 = oreal.glaisher;
+        Console.WriteLine(" oreal: glaisher: {0}",res06);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
-        Mpfr res07 = mreal.glaisher();
-        Console.WriteLine(" mreal: glaisher(): {0}",res07);
-        Single res08 = sflint.glaisher();
-        Console.WriteLine("sflint: glaisher(): {0}",res08);
-        Double res09 = dflint.glaisher();
-        Console.WriteLine("dflint: glaisher(): {0}",res09);
-        Extended res10 = eflint.glaisher();
-        Console.WriteLine("eflint: glaisher(): {0}",res10);
-        Quadruple res11 = qflint.glaisher();
-        Console.WriteLine("qflint: glaisher(): {0}",res11);
-        Octuple res12 = oflint.glaisher();
-        Console.WriteLine("oflint: glaisher(): {0}",res12);
-        Mpfr res13 = mflint.glaisher();
-        Console.WriteLine("mflint: glaisher(): {0}",res13);
-        Arb res14 = aflint.glaisher();
-        Console.WriteLine("aflint: glaisher(): {0}", res14);
+        Mpfr res07 = mreal.glaisher;
+        Console.WriteLine(" mreal: glaisher: {0}",res07);
+        Single res08 = sflint.glaisher;
+        Console.WriteLine("sflint: glaisher: {0}",res08);
+        Double res09 = dflint.glaisher;
+        Console.WriteLine("dflint: glaisher: {0}",res09);
+        Extended res10 = eflint.glaisher;
+        Console.WriteLine("eflint: glaisher: {0}",res10);
+        Quadruple res11 = qflint.glaisher;
+        Console.WriteLine("qflint: glaisher: {0}",res11);
+        Octuple res12 = oflint.glaisher;
+        Console.WriteLine("oflint: glaisher: {0}",res12);
+        Mpfr res13 = mflint.glaisher;
+        Console.WriteLine("mflint: glaisher: {0}",res13);
+        Arb res14 = aflint.glaisher;
+        Console.WriteLine("aflint: glaisher: {0}", res14);
 #endif
         Console.WriteLine();
     Console.WriteLine("</H1>");

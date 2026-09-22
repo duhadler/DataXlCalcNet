@@ -31,36 +31,36 @@ public static void Test_Apery()
 /* No syntax highlighting if HasArbPrecNet is undefined */
     ArbPrec.SetDps(40);
 #endif
-        Double res01 = math53.apery();
-        Console.WriteLine("math53: apery(): {0}", res01);
-        Single res02 = sreal.apery();
-        Console.WriteLine(" sreal: apery(): {0}",res02);
-        Double res03 = dreal.apery();
-        Console.WriteLine(" dreal: apery(): {0}",res03);
-        Extended res04 = ereal.apery();
-        Console.WriteLine(" ereal: apery(): {0}",res04);
-        Quadruple res05 = qreal.apery();
-        Console.WriteLine(" qreal: apery(): {0}",res05);
-        Octuple res06 = oreal.apery();
-        Console.WriteLine(" oreal: apery(): {0}",res06);
+        Double res01 = math53.apery;
+        Console.WriteLine("math53: apery: {0}", res01);
+        Single res02 = sreal.apery;
+        Console.WriteLine(" sreal: apery: {0}",res02);
+        Double res03 = dreal.apery;
+        Console.WriteLine(" dreal: apery: {0}",res03);
+        Extended res04 = ereal.apery;
+        Console.WriteLine(" ereal: apery: {0}",res04);
+        Quadruple res05 = qreal.apery;
+        Console.WriteLine(" qreal: apery: {0}",res05);
+        Octuple res06 = oreal.apery;
+        Console.WriteLine(" oreal: apery: {0}",res06);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
-        Mpfr res07 = mreal.apery();
-        Console.WriteLine(" mreal: apery(): {0}",res07);
-        Single res08 = sflint.apery();
-        Console.WriteLine("sflint: apery(): {0}",res08);
-        Double res09 = dflint.apery();
-        Console.WriteLine("dflint: apery(): {0}",res09);
-        Extended res10 = eflint.apery();
-        Console.WriteLine("eflint: apery(): {0}",res10);
-        Quadruple res11 = qflint.apery();
-        Console.WriteLine("qflint: apery(): {0}",res11);
-        Octuple res12 = oflint.apery();
-        Console.WriteLine("oflint: apery(): {0}",res12);
-        Mpfr res13 = mflint.apery();
-        Console.WriteLine("mflint: apery(): {0}",res13);
-        Arb res14 = aflint.apery();
-        Console.WriteLine("aflint: apery(): {0}", res14);
+        Mpfr res07 = mreal.apery;
+        Console.WriteLine(" mreal: apery: {0}",res07);
+        Single res08 = sflint.apery;
+        Console.WriteLine("sflint: apery: {0}",res08);
+        Double res09 = dflint.apery;
+        Console.WriteLine("dflint: apery: {0}",res09);
+        Extended res10 = eflint.apery;
+        Console.WriteLine("eflint: apery: {0}",res10);
+        Quadruple res11 = qflint.apery;
+        Console.WriteLine("qflint: apery: {0}",res11);
+        Octuple res12 = oflint.apery;
+        Console.WriteLine("oflint: apery: {0}",res12);
+        Mpfr res13 = mflint.apery;
+        Console.WriteLine("mflint: apery: {0}",res13);
+        Arb res14 = aflint.apery;
+        Console.WriteLine("aflint: apery: {0}", res14);
 #endif
         Console.WriteLine();
     Console.WriteLine("</H1>");

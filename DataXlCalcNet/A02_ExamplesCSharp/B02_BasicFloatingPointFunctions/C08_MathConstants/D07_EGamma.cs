@@ -31,36 +31,36 @@ public static void Test_EGamma()
 /* No syntax highlighting if HasArbPrecNet is undefined */
     ArbPrec.SetDps(40);
 #endif
-        Double res01 = math53.egamma();
-        Console.WriteLine("math53: egamma(): {0}", res01);
-        Single res02 = sreal.egamma();
-        Console.WriteLine(" sreal: egamma(): {0}",res02);
-        Double res03 = dreal.egamma();
-        Console.WriteLine(" dreal: egamma(): {0}",res03);
-        Extended res04 = ereal.egamma();
-        Console.WriteLine(" ereal: egamma(): {0}",res04);
-        Quadruple res05 = qreal.egamma();
-        Console.WriteLine(" qreal: egamma(): {0}",res05);
-        Octuple res06 = oreal.egamma();
-        Console.WriteLine(" oreal: egamma(): {0}",res06);
+        Double res01 = math53.egamma;
+        Console.WriteLine("math53: egamma: {0}", res01);
+        Single res02 = sreal.egamma;
+        Console.WriteLine(" sreal: egamma: {0}",res02);
+        Double res03 = dreal.egamma;
+        Console.WriteLine(" dreal: egamma: {0}",res03);
+        Extended res04 = ereal.egamma;
+        Console.WriteLine(" ereal: egamma: {0}",res04);
+        Quadruple res05 = qreal.egamma;
+        Console.WriteLine(" qreal: egamma: {0}",res05);
+        Octuple res06 = oreal.egamma;
+        Console.WriteLine(" oreal: egamma: {0}",res06);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
-        Mpfr res07 = mreal.egamma();
-        Console.WriteLine(" mreal: egamma(): {0}",res07);
-        Single res08 = sflint.egamma();
-        Console.WriteLine("sflint: egamma(): {0}",res08);
-        Double res09 = dflint.egamma();
-        Console.WriteLine("dflint: egamma(): {0}",res09);
-        Extended res10 = eflint.egamma();
-        Console.WriteLine("eflint: egamma(): {0}",res10);
-        Quadruple res11 = qflint.egamma();
-        Console.WriteLine("qflint: egamma(): {0}",res11);
-        Octuple res12 = oflint.egamma();
-        Console.WriteLine("oflint: egamma(): {0}",res12);
-        Mpfr res13 = mflint.egamma();
-        Console.WriteLine("mflint: egamma(): {0}",res13);
-        Arb res14 = aflint.egamma();
-        Console.WriteLine("aflint: egamma(): {0}", res14);
+        Mpfr res07 = mreal.egamma;
+        Console.WriteLine(" mreal: egamma: {0}",res07);
+        Single res08 = sflint.egamma;
+        Console.WriteLine("sflint: egamma: {0}",res08);
+        Double res09 = dflint.egamma;
+        Console.WriteLine("dflint: egamma: {0}",res09);
+        Extended res10 = eflint.egamma;
+        Console.WriteLine("eflint: egamma: {0}",res10);
+        Quadruple res11 = qflint.egamma;
+        Console.WriteLine("qflint: egamma: {0}",res11);
+        Octuple res12 = oflint.egamma;
+        Console.WriteLine("oflint: egamma: {0}",res12);
+        Mpfr res13 = mflint.egamma;
+        Console.WriteLine("mflint: egamma: {0}",res13);
+        Arb res14 = aflint.egamma;
+        Console.WriteLine("aflint: egamma: {0}", res14);
 #endif
         Console.WriteLine();
     Console.WriteLine("</H1>");

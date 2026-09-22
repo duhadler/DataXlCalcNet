@@ -3,8 +3,7 @@ import math
 from xlcalcnet import sreal, scplx, dreal, dcplx, ereal, ecplx, qreal, qcplx, \
     oreal, ocplx
 
-from xlcalcnet import ArbPrecNet, mreal, mcplx, bflint, bflintc, iflint, \
-    iflintc, aflint, aflintc
+from xlcalcnet import ArbPrecNet, mreal, mcplx, aflint, aflintc
 from ArbPrecNet import ArbPrec
 ArbPrec.SetDps(18);
 
@@ -21,10 +20,6 @@ Ctx = dcplx
 
 #Ctx = mreal
 #Ctx = mcplx
-#Ctx = bflint
-#Ctx = bflintc
-#Ctx = iflint
-#Ctx = iflintc
 #Ctx = aflint
 #Ctx = aflintc
 
@@ -135,11 +130,6 @@ def DemoAnyMatCtx():
 
     x1.ConservativeResize(2, 5);
     x1.Print("x1: ", digits);
-
-# TODO: DemoAnyMatSortCtx()
-
-# TODO: DemoAnyMatSelectCtx()
-
 
 
 

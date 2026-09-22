@@ -1112,8 +1112,8 @@ namespace UserFixedPrecNet
             return EllipticE(Math.PI / 2, m);
         }
 
-        // dflintc.m_elliptic_pi_inc(n:2, phi:dreal.pi()/2, m:z);
-        // EllipticFunctions.EllipticE(n:2, phi:dreal.pi()/2, m:z);
+        // dflintc.m_elliptic_pi_inc(n:2, phi:dreal.pi/2, m:z);
+        // EllipticFunctions.EllipticE(n:2, phi:dreal.pi/2, m:z);
 
 
         public static Complex EllipticPI(Complex phi, Complex n, Complex m)

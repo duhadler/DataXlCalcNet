@@ -259,8 +259,8 @@ namespace UserArbPrecNet
                 Arb SqrtQr = aflint.sqrt(Qr);
                 Arb theta = aflint.acos(Rr / (SqrtQr * SqrtQr * SqrtQr));
                 x1 = -2 * SqrtQr * aflint.cos((theta) / 3) - a / 3;
-                x2 = -2 * SqrtQr * aflint.cos((theta + 2 * aflint.pi()) / 3) - a / 3;
-                x3 = -2 * SqrtQr * aflint.cos((theta - 2 * aflint.pi()) / 3) - a / 3;
+                x2 = -2 * SqrtQr * aflint.cos((theta + 2 * aflint.pi) / 3) - a / 3;
+                x3 = -2 * SqrtQr * aflint.cos((theta - 2 * aflint.pi) / 3) - a / 3;
             }
             else
             {
@@ -272,8 +272,8 @@ namespace UserArbPrecNet
                     D = -D;
                 }
                 ArbC A = -aflintc.cbrt(R + D);
-                ArbC B = aflintc.zero();
-                if (A != aflintc.zero())
+                ArbC B = aflintc.zero;
+                if (A != aflintc.zero)
                 {
                     B = Q / A;
                 }

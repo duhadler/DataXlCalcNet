@@ -1,7 +1,6 @@
 ﻿
-import math
-from xlcalcnet import math53, FixedPrecNet
-from FixedPrecNet import cb1SDouble1S as cb
+from xlcalcnet import math53
+cb = math53.cb1SRet1S
 
 
 def main_tests():

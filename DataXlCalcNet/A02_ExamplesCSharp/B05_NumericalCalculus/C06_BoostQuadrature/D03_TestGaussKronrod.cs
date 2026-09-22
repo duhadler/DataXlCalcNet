@@ -79,7 +79,7 @@ public static void DemoGaussKronrod()
 {
     Console.WriteLine("GaussKronrod: " + Ctx.name);
     var a = Ctx.t(0.0);
-    var b = Ctx.inf();
+    var b = Ctx.inf;
     var tol = Ctx.t(0.0);
     var res1 = Ctx.GaussKronrod(f15, a, b, tol);
     Console.WriteLine("res1 (integral, error, cond.no.): {0}", res1);

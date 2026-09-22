@@ -31,36 +31,36 @@ public static void Test_Catalan()
 /* No syntax highlighting if HasArbPrecNet is undefined */
     ArbPrec.SetDps(40);
 #endif
-        Double res01 = math53.catalan();
-        Console.WriteLine("math53: catalan(): {0}", res01);
-        Single res02 = sreal.catalan();
-        Console.WriteLine(" sreal: catalan(): {0}",res02);
-        Double res03 = dreal.catalan();
-        Console.WriteLine(" dreal: catalan(): {0}",res03);
-        Extended res04 = ereal.catalan();
-        Console.WriteLine(" ereal: catalan(): {0}",res04);
-        Quadruple res05 = qreal.catalan();
-        Console.WriteLine(" qreal: catalan(): {0}",res05);
-        Octuple res06 = oreal.catalan();
-        Console.WriteLine(" oreal: catalan(): {0}",res06);
+        Double res01 = math53.catalan;
+        Console.WriteLine("math53: catalan: {0}", res01);
+        Single res02 = sreal.catalan;
+        Console.WriteLine(" sreal: catalan: {0}",res02);
+        Double res03 = dreal.catalan;
+        Console.WriteLine(" dreal: catalan: {0}",res03);
+        Extended res04 = ereal.catalan;
+        Console.WriteLine(" ereal: catalan: {0}",res04);
+        Quadruple res05 = qreal.catalan;
+        Console.WriteLine(" qreal: catalan: {0}",res05);
+        Octuple res06 = oreal.catalan;
+        Console.WriteLine(" oreal: catalan: {0}",res06);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
-        Mpfr res07 = mreal.catalan();
-        Console.WriteLine(" mreal: catalan(): {0}",res07);
-        Single res08 = sflint.catalan();
-        Console.WriteLine("sflint: catalan(): {0}",res08);
-        Double res09 = dflint.catalan();
-        Console.WriteLine("dflint: catalan(): {0}",res09);
-        Extended res10 = eflint.catalan();
-        Console.WriteLine("eflint: catalan(): {0}",res10);
-        Quadruple res11 = qflint.catalan();
-        Console.WriteLine("qflint: catalan(): {0}",res11);
-        Octuple res12 = oflint.catalan();
-        Console.WriteLine("oflint: catalan(): {0}",res12);
-        Mpfr res13 = mflint.catalan();
-        Console.WriteLine("mflint: catalan(): {0}",res13);
-        Arb res14 = aflint.catalan();
-        Console.WriteLine("aflint: catalan(): {0}", res14);
+        Mpfr res07 = mreal.catalan;
+        Console.WriteLine(" mreal: catalan: {0}",res07);
+        Single res08 = sflint.catalan;
+        Console.WriteLine("sflint: catalan: {0}",res08);
+        Double res09 = dflint.catalan;
+        Console.WriteLine("dflint: catalan: {0}",res09);
+        Extended res10 = eflint.catalan;
+        Console.WriteLine("eflint: catalan: {0}",res10);
+        Quadruple res11 = qflint.catalan;
+        Console.WriteLine("qflint: catalan: {0}",res11);
+        Octuple res12 = oflint.catalan;
+        Console.WriteLine("oflint: catalan: {0}",res12);
+        Mpfr res13 = mflint.catalan;
+        Console.WriteLine("mflint: catalan: {0}",res13);
+        Arb res14 = aflint.catalan;
+        Console.WriteLine("aflint: catalan: {0}", res14);
 #endif
         Console.WriteLine();
     Console.WriteLine("</H1>");

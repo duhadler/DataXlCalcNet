@@ -31,8 +31,8 @@ public static void Test_IsRegular()
 /* No syntax highlighting if HasArbPrecNet is undefined */
     ArbPrec.SetDps(40);
 #endif
-    double[] InputArray1 = {dreal.nan(), dreal.neginf(), -4.333, -0.0, 0.0, 
-        4.333, dreal.inf() };
+    double[] InputArray1 = {dreal.nan, dreal.neginf, -4.333, -0.0, 0.0, 
+        4.333, dreal.inf };
     foreach (var x in InputArray1)
     {
         Boolean res01 = math53.isregular(x);

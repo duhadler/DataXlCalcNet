@@ -1,7 +1,6 @@
 ﻿
-import math
-from xlcalcnet import math53, FixedPrecNet
-from FixedPrecNet import cb1SDouble1S as cb
+from xlcalcnet import math53
+cb = math53.cb1SRet1S
 
 
 def main_tests():
@@ -9,7 +8,7 @@ def main_tests():
 
 
 def F3(x):
-    y = math.exp(x) - 1.0
+    y = math53.exp(x) - 1.0
 #    print('x: ', x, 'y: ', y)
     return y
 

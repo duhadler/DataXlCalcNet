@@ -24,7 +24,7 @@ def ConnectionComponents(**kwargs):
 
     G = nx.gnp_random_graph(100, 0.02, seed=10374196)
 
-    degree_sequence = sorted((d for n, d in G.degree()), reverse=True)
+    degree_sequence = sorted((d for n, d in G.degree), reverse=True)
     dmax = max(degree_sequence)
 
     fig = plt.figure("Degree of a random graph", figsize=(FigSizeX, FigSizeY))

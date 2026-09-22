@@ -2,11 +2,11 @@
 
 /* Uncomment one of the defines below to select the precision */
 //#define UsingSingle
-//#define UsingDouble
+#define UsingDouble
 //#define UsingExtended
 //#define UsingQuadruple
 //#define UsingOctuple
-#define UsingMpfr
+//#define UsingMpfr
 
 #region Usings
 

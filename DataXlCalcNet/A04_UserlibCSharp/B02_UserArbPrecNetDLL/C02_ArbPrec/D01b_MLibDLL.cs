@@ -105,7 +105,7 @@ namespace UserArbPrecNet
                 CtxScalar res = (k / b1) * d * Ctx.ndens(z1) * Ctx.ndens(y);
                 return res;
             };
-            var pdf = Ctx.TanhSinh(F2, a: -Ctx.inf(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var pdf = Ctx.TanhSinh(F2, a: -Ctx.inf, b: Ctx.inf, tol: Ctx.t(0.0));
             //Console.WriteLine("pdf (integral, error, cond.no., level): {0}", pdf);
             return pdf.Item1;
         }
@@ -124,7 +124,7 @@ namespace UserArbPrecNet
                 CtxScalar res = d * Ctx.ndens(y);
                 return res;
             };
-            var cdf = Ctx.TanhSinh(F2, a: -Ctx.inf(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var cdf = Ctx.TanhSinh(F2, a: -Ctx.inf, b: Ctx.inf, tol: Ctx.t(0.0));
             //Console.WriteLine("pdf (integral, error, cond.no., level): {0}", cdf);
             return cdf.Item1;
         }
@@ -147,7 +147,7 @@ namespace UserArbPrecNet
                 return res;
             };
 
-            var cdf = Ctx.TanhSinh(F2, a: -Ctx.inf(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var cdf = Ctx.TanhSinh(F2, a: -Ctx.inf, b: Ctx.inf, tol: Ctx.t(0.0));
             Console.WriteLine("cdf (integral, error, cond.no., level): {0}", cdf);
             return cdf.Item1;
         }
@@ -171,7 +171,7 @@ namespace UserArbPrecNet
                 return res;
             };
 
-            var cdf = Ctx.TanhSinh(F2, a: -Ctx.inf(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var cdf = Ctx.TanhSinh(F2, a: -Ctx.inf, b: Ctx.inf, tol: Ctx.t(0.0));
             //Console.WriteLine("cdf (integral, error, cond.no., level): {0}", cdf);
             return cdf.Item1;
         }
@@ -191,7 +191,7 @@ namespace UserArbPrecNet
                 CtxScalar res = (k / b) * d * (Ctx.ndens(z1) + Ctx.ndens(z2)) * Ctx.ndens(y);
                 return res;
             };
-            var pdf = Ctx.TanhSinh(F2, a: -Ctx.inf(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var pdf = Ctx.TanhSinh(F2, a: -Ctx.inf, b: Ctx.inf, tol: Ctx.t(0.0));
             //Console.WriteLine("pdf (integral, error, cond.no., level): {0}", pdf);
             return pdf.Item1;
         }
@@ -211,7 +211,7 @@ namespace UserArbPrecNet
                 CtxScalar res = d * Ctx.ndens(y);
                 return res;
             };
-            var pdf = Ctx.TanhSinh(F2, a: -Ctx.inf(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var pdf = Ctx.TanhSinh(F2, a: -Ctx.inf, b: Ctx.inf, tol: Ctx.t(0.0));
             //Console.WriteLine("pdf (integral, error, cond.no., level): {0}", pdf);
             return pdf.Item1;
         }
@@ -229,7 +229,7 @@ namespace UserArbPrecNet
                 CtxScalar res = d * Ctx.ndens(y) * Ctx.ndens(y - x);
                 return res;
             };
-            var pdf = Ctx.TanhSinh(F2, a: -Ctx.inf(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var pdf = Ctx.TanhSinh(F2, a: -Ctx.inf, b: Ctx.inf, tol: Ctx.t(0.0));
             //Console.WriteLine("pdf (integral, error, cond.no., level): {0}", pdf);
             return pdf.Item1;
         }
@@ -246,7 +246,7 @@ namespace UserArbPrecNet
                 CtxScalar res = d * Ctx.ndens(y);
                 return res;
             };
-            var pdf = Ctx.TanhSinh(F2, a: -Ctx.inf(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var pdf = Ctx.TanhSinh(F2, a: -Ctx.inf, b: Ctx.inf, tol: Ctx.t(0.0));
             //Console.WriteLine("pdf (integral, error, cond.no., level): {0}", pdf);
             return pdf.Item1;
         }
@@ -260,7 +260,7 @@ namespace UserArbPrecNet
                 CtxScalar res = nmax_pdf(x * y, k) * chidens(y, n) * y;
                 return res;
             };
-            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero, b: Ctx.inf, tol: Ctx.t(0.0));
             //Console.WriteLine("pdf (integral, error, cond.no., level): {0}", pdf);
             return pdf.Item1;
         }
@@ -274,7 +274,7 @@ namespace UserArbPrecNet
                 CtxScalar res = nmax_cdf(x * y, k) * chidens(y, n);
                 return res;
             };
-            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero, b: Ctx.inf, tol: Ctx.t(0.0));
             //Console.WriteLine("pdf (integral, error, cond.no., level): {0}", pdf);
             return pdf.Item1;
         }
@@ -288,7 +288,7 @@ namespace UserArbPrecNet
                 CtxScalar res = nmm_pdf(x * y, k) * chidens(y, n) * y;
                 return res;
             };
-            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero, b: Ctx.inf, tol: Ctx.t(0.0));
             //Console.WriteLine("pdf (integral, error, cond.no., level): {0}", pdf);
             return pdf.Item1;
         }
@@ -302,7 +302,7 @@ namespace UserArbPrecNet
                 CtxScalar res = nmm_cdf(x * y, k) * chidens(y, n);
                 return res;
             };
-            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero, b: Ctx.inf, tol: Ctx.t(0.0));
             //Console.WriteLine("pdf (integral, error, cond.no., level): {0}", pdf);
             return pdf.Item1;
         }
@@ -317,8 +317,8 @@ namespace UserArbPrecNet
                 CtxScalar res = nmax_corr_pdf(x * y, k, rho) * chidens(y, n) * y;
                 return res;
             };
-            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero(), b: Ctx.inf(), tol: Ctx.t(0.0));
-            //var pdf = Ctx.TanhSinh(F2, a: Ctx.zero(), b: Ctx.inf(), tol: Ctx.t(1.0E-2));
+            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero, b: Ctx.inf, tol: Ctx.t(0.0));
+            //var pdf = Ctx.TanhSinh(F2, a: Ctx.zero, b: Ctx.inf, tol: Ctx.t(1.0E-2));
             Console.WriteLine("pdf (integral, error, cond.no., level): {0}", pdf);
             return pdf.Item1;
         }
@@ -332,7 +332,7 @@ namespace UserArbPrecNet
                 CtxScalar res = nmax_corr_cdf(x * y, k, rho) * chidens(y, n);
                 return res;
             };
-            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero, b: Ctx.inf, tol: Ctx.t(0.0));
             Console.WriteLine("pdf (integral, error, cond.no., level): {0}", pdf);
             return pdf.Item1;
         }
@@ -347,7 +347,7 @@ namespace UserArbPrecNet
                 CtxScalar res = nmm_corr_pdf(x * y, k, rho) * chidens(y, n) * y;
                 return res;
             };
-            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero, b: Ctx.inf, tol: Ctx.t(0.0));
             Console.WriteLine("pdf (integral, error, cond.no., level): {0}", pdf);
             return pdf.Item1;
         }
@@ -361,7 +361,7 @@ namespace UserArbPrecNet
                 CtxScalar res = nmm_corr_cdf(x * y, k, rho) * chidens(y, n);
                 return res;
             };
-            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero, b: Ctx.inf, tol: Ctx.t(0.0));
             Console.WriteLine("pdf (integral, error, cond.no., level): {0}", pdf);
             return pdf.Item1;
         }
@@ -374,7 +374,7 @@ namespace UserArbPrecNet
                 CtxScalar res = nrange_pdf(x * y, k) * chidens(y, n) * y;
                 return res;
             };
-            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero, b: Ctx.inf, tol: Ctx.t(0.0));
             Console.WriteLine("pdf (integral, error, cond.no., level): {0}", pdf);
             return pdf.Item1;
         }
@@ -388,7 +388,7 @@ namespace UserArbPrecNet
                 CtxScalar res = nrange_cdf(x * y, k) * chidens(y, n);
                 return res;
             };
-            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero(), b: Ctx.inf(), tol: Ctx.t(0.0));
+            var pdf = Ctx.TanhSinh(F2, a: Ctx.zero, b: Ctx.inf, tol: Ctx.t(0.0));
             //Console.WriteLine("pdf (integral, error, cond.no., level): {0}", pdf);
             return pdf.Item1;
         }
