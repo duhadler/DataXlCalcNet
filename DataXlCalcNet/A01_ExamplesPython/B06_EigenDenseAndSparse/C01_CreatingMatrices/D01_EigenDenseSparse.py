@@ -26,7 +26,7 @@ Ctx = dcplx
 
 
 def main_tests():
-    #DemoAnyMatSpeedCtx()
+    DemoAnyMatSpeedCtx()
     #DemoAnyMatSpeedDetCtx()
     #DemoAnyMatCtx()
     #DemoAnyMatSolveCtx()
@@ -37,13 +37,13 @@ def main_tests():
     #DemoAnyMatHouseholderQRCtx()
     #DemoAnyMatColPivHouseholderQRCtx()
     #DemoAnyMatFullPivHouseholderQRCtx()
-    DemoAnyMatCODCtx()
+    #DemoAnyMatCODCtx()
 
 
 def DemoAnyMatSpeedCtx():
     print("DemoAnyMatSpeed: " + Ctx.name);
-    m = 10;
-    n = 10;
+    m = 300;
+    n = 300;
     #start0a = time.time()
     A = Ctx.mat_random(n, m);
     B = Ctx.mat_random(n, m);

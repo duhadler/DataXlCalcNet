@@ -1,4 +1,4 @@
-"""
+﻿"""
 Description of this CPython module
 """
 

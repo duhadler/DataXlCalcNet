@@ -1,5 +1,4 @@
-﻿from xlcalcnet import gui
-import sys
+﻿import sys
 import os
 import pathlib
 import clr

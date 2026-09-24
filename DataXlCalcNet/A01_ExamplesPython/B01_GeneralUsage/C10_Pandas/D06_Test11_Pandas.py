@@ -1,10 +1,10 @@
-# see also: https://pandas.pydata.org/docs/user_guide/basics.html
+﻿# see also: https://pandas.pydata.org/docs/user_guide/basics.html
 
 import numpy as np
 import pandas as pd
 
 from xlcalcnet import dpm, fpm, mpm, ipm
-from mpaddinG import gpm
+#from mpaddinG import gpm
 
 
 def demo_fp():
@@ -66,6 +66,6 @@ def demo_mp():
     #print("df.mean(1): \n", df.mean(1))
 
 
-#demo_fp()
+demo_fp()
 
-demo_mp()
+#demo_mp()
