@@ -47,7 +47,7 @@ def RegressionMarginals(**kwargs):
 
 try:
     if __name__ == '__main__':
-        RegressionMarginals()
+        RegressionMarginals(OutputMode='gui')
 
 
 except Exception:

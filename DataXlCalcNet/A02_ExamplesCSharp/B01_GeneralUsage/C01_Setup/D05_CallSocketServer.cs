@@ -16,7 +16,7 @@ static class Program
 public static void MainTests()
 {
     Console.WriteLine("Demo of call socket server");
-    for (int i = 0; i < 101; i++) 
+    for (int i = 0; i < 1; i++) 
         TestSocketServer();
 }
 
@@ -28,15 +28,15 @@ public static void TestSocketServer()
     bool ShowShape = true;
 
     //string Code2 = "mpm.dps=80; x = mpm.t(5); y = mpm.sqrt(x); z = x + y; result = str(z)+ 'ÖüÄß'";
-    string Code2 = "x = 5.0; y = math.sqrt(x); z = x + y; result = z";
+    //string Code2 = "x = 5.0; y = math.sqrt(x); z = x + y; result = z";
     //string Code2 = "x = 5.0; y = math.sqrt(x); z = x + y; result = z > x";
 
     //string Code2 = "result = getmatB()";
     //string Code2 = "result = sys.path";
 
 
-    //string Code2 = "from A01_ExamplesPython.B18_FunctionsAndCurvesPlots.C02_BasicCurves import D02_Circle;";
-    //Code2 += "D02_Circle.CircleXY(); result = 'Done'";
+    string Code2 = "from A01_ExamplesPython.B18_FunctionsAndCurvesPlots.C02_BasicCurves import D02_Circle;";
+    Code2 += "D02_Circle.CircleXY(); result = 'Done'";
 
 
 //    string Code2 = "result = P1";

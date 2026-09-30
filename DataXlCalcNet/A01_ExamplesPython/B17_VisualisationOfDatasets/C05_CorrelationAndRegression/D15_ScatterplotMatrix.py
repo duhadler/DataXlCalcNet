@@ -16,14 +16,12 @@ def ScatterplotMatrix(**kwargs):
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
 
     plt.style.use(PlotStyle)
 
-    sns.set_theme(style="ticks")
-    df = sns.load_dataset("penguins")
-    sns.pairplot(df, hue="species")
+    sns.set_theme(style='ticks')
+    df = sns.load_dataset('penguins')
+    sns.pairplot(df, hue='species')
     fig = plt.gcf()
 
 # Start of output choices
@@ -43,7 +41,7 @@ def ScatterplotMatrix(**kwargs):
 
 try:
     if __name__ == '__main__':
-        ScatterplotMatrix()
+        ScatterplotMatrix(OutputMode='gui')
 
 
 except Exception:

@@ -1,42 +1,28 @@
 ﻿from xlcalcnet import gui
 from pathlib import Path
 import os
+import seaborn as sns
 import matplotlib.pyplot as plt
-import numpy as np
+
+# See also: https://seaborn.pydata.org/examples/scatterplot_matrix.html
 
 
-def BoxplotSimple(**kwargs):
+def ScatterplotMatrix(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
-    Title = kwargs['Title'] if 'Title' in kwargs else 'BoxplotSimple'
+    Title = kwargs['Title'] if 'Title' in kwargs else 'ScatterplotMatrix'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
 
     plt.style.use(PlotStyle)
 
-    np.random.seed(19680801)
-    fruit_weights = [
-        np.random.normal(130, 10, size=100),
-        np.random.normal(125, 20, size=100),
-        np.random.normal(120, 30, size=100),
-    ]
-    labels = ['peaches', 'oranges', 'tomatoes']
-    colors = ['peachpuff', 'orange', 'tomato']
-
-    fig, ax = plt.subplots()
-    ax.set_ylabel('fruit weight (g)')
-
-    bplot = ax.boxplot(fruit_weights,
-                       patch_artist=True)  # will be used to label x-ticks
-
-    # fill with colors
-    for patch, color in zip(bplot['boxes'], colors):
-        patch.set_facecolor(color)
+    sns.set_theme(style='ticks')
+    df = sns.load_dataset('penguins')
+    sns.pairplot(df, hue='species')
+    fig = plt.gcf()
 
 # Start of output choices
     if (OutputMode == 'plt'):
@@ -55,7 +41,7 @@ def BoxplotSimple(**kwargs):
 
 try:
     if __name__ == '__main__':
-        BoxplotSimple()
+        ScatterplotMatrix(OutputMode='gui')
 
 
 except Exception:
