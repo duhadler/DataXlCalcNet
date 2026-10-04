@@ -9,7 +9,9 @@ system('title ' + 'xlcalcnet socket server 64 bit on port 11958')
 
 import socketserver
 import socket
-import sys, os, platform, math
+import sys, os, platform, math, cmath
+from decimal import Decimal
+from fractions import Fraction
 import traceback, subprocess, pkgutil
 import datetime as dt
 from os import system

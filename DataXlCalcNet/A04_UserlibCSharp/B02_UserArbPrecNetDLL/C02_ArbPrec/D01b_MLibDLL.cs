@@ -8,30 +8,9 @@ using FixedPrecNet;
 using ArbPrecNet;
 using System.Numerics;
 
-
-//using Ctx = FixedPrecNet.sreal;
-//using CtxScalar = System.Single;
-//using cb1SCtx1S =  FixedPrecNet.cb1SSingle1S;
-
-//using Ctx = FixedPrecNet.dreal;
-//using CtxScalar = System.Double;
-//using cb1SCtx1S =  FixedPrecNet.cb1SDouble1S;
-
-//using Ctx = FixedPrecNet.ereal;
-//using CtxScalar = FixedPrecNet.Extended;
-//using cb1SCtx1S =  FixedPrecNet.cb1SExtended1S;
-
-//using Ctx = FixedPrecNet.qreal;
-//using CtxScalar = FixedPrecNet.Quadruple;
-//using cb1SCtx1S =  FixedPrecNet.cb1SQuadruple1S;
-
-//using Ctx = FixedPrecNet.oreal;
-//using CtxScalar = FixedPrecNet.Octuple;
-//using cb1SCtx1S =  FixedPrecNet.cb1SOctuple1S;
-
 using Ctx = ArbPrecNet.mreal;
 using CtxScalar = ArbPrecNet.Mpfr;
-using cb1SCtx1S =  ArbPrecNet.cb1SMpfr1S;
+using cb1SCtx1S = ArbPrecNet.mreal.cb1SRet1S;
 #endregion
 
 

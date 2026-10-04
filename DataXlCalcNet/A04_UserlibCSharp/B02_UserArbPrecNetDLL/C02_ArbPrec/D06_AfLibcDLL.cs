@@ -255,7 +255,7 @@ namespace UserArbPrecNet
             Arb Rr = R.real;
             if ((Q.imag == aflint.t(0.0)) && (R.imag == aflint.t(0.0)) && (Rr * Rr < Qr * Qr * Qr))
             {
-                Console.WriteLine("In aflintc real Case");
+//                Console.WriteLine("In aflintc real Case");
                 Arb SqrtQr = aflint.sqrt(Qr);
                 Arb theta = aflint.acos(Rr / (SqrtQr * SqrtQr * SqrtQr));
                 x1 = -2 * SqrtQr * aflint.cos((theta) / 3) - a / 3;
@@ -264,7 +264,7 @@ namespace UserArbPrecNet
             }
             else
             {
-                Console.WriteLine("In aflintc ArbC Case");
+//                Console.WriteLine("In aflintc ArbC Case");
                 ArbC D = aflintc.sqrt(R * R - Q * Q * Q);
                 ArbC RStar = aflintc.conj(R);
                 if ((RStar * D).real < aflint.t(0))
@@ -281,8 +281,8 @@ namespace UserArbPrecNet
                 Console.WriteLine("B: {0}", B);
 
                 x1 = (A + B) - a / 3;
-                x2 = -0.5 * (A + B) - a / 3 + 0.5 * aflintc.onej() * aflint.sqrt(3) * (A - B);
-                x3 = -0.5 * (A + B) - a / 3 - 0.5 * aflintc.onej() * aflint.sqrt(3) * (A - B);
+                x2 = -0.5 * (A + B) - a / 3 + 0.5 * aflintc.onej * aflint.sqrt(3) * (A - B);
+                x3 = -0.5 * (A + B) - a / 3 - 0.5 * aflintc.onej * aflint.sqrt(3) * (A - B);
             }
             return new Tuple<ArbC, ArbC, ArbC>(x1, x2, x3);
         }

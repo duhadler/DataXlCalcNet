@@ -105,8 +105,8 @@ def DistPlotContinuous(**kwargs):
 
 
 def DistPlotBeta(target, a, b, **kwargs):
-        a = [5, 10.0, 20.5]
-        b = [20.5, 10.0, 5]
+#        a = [5, 10.0, 20.5]
+#        b = [20.5, 10.0, 5]
         xlim = [0, 0.999]
         ylim = None
 
@@ -130,7 +130,8 @@ try:
         target = 'pdf' # pdf, cdf, 'sf', 'hf', 'chf', 'qtf', 'isf'
         a = [5, 10.0, 20.5]
         b = [20.5, 10.0, 5]
-        DistPlotBeta(target, a, b, Title = 'Beta distribution')
+        DistPlotBeta(target, a, b, Title = 'Beta distribution', OutputMode = 'gui')
+        #DistPlotBeta(target, a, b, Title = 'Beta distribution', OutputMode = 'svg')
 
 
 except Exception:

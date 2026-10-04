@@ -1,7 +1,8 @@
 ﻿
 # Note: not working with Decimal
 
-from xlcalcnet import fpm, mpm, ipm, dpm, qpm, gpm, apm, npm, np
+from xlcalcnet import fpm, mpm, ipm, dpm, qpm, gpm, apm, npm
+import numpy as np
 
 ctx_all = [fpm, mpm, ipm, qpm, gpm, apm]
 np.set_printoptions(linewidth=200)
