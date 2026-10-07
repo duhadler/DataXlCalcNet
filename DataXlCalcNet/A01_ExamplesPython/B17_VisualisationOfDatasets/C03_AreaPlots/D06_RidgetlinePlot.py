@@ -5,7 +5,7 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -89,7 +89,10 @@ def RidgetlinePlot(**kwargs):
 
 try:
     if __name__ == '__main__':
-        RidgetlinePlot()
+        start0 = time.time()
+        RidgetlinePlot(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

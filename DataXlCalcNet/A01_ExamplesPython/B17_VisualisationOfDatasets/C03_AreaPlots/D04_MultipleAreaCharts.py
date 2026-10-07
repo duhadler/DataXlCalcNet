@@ -3,7 +3,7 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import numpy as np
 import seaborn as sns
 import pandas as pd
@@ -75,7 +75,10 @@ def MultipleAreaCharts(**kwargs):
 
 try:
     if __name__ == '__main__':
-        MultipleAreaCharts()
+        start0 = time.time()
+        MultipleAreaCharts(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

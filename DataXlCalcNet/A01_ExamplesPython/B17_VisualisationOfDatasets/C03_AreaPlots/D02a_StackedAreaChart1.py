@@ -3,7 +3,7 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import numpy as np
 import seaborn as sns
 import pandas as pd
@@ -20,16 +20,16 @@ def StackedAreaChart1(**kwargs):
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
+    
 # End of custom key word arguments
 
     plt.style.use(PlotStyle)
 
+    fn = gui.get_dataxlcalcnet()
+    fn += r'\DataExamples\MainExamples\Workbooks\Datasets.xlsx'
+    datasets = pd.ExcelFile(fn)
+    df = pd.read_excel(datasets, 'wealth')
 
-
-    my_path = r'C:\Users\DUHad\Documents\DataXlCalcNet\DataExamples\MainExamples\Workbooks\wealth_data.xlsx'
-
-    df = pd.read_excel(my_path)
 
     # Create a pivot table to reshape the data for stacked area chart
     pivot_df = df.pivot(index='year', columns='country', values='total_wealth')
@@ -64,7 +64,10 @@ def StackedAreaChart1(**kwargs):
 
 try:
     if __name__ == '__main__':
-        StackedAreaChart1()
+        start0 = time.time()
+        StackedAreaChart1(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

@@ -4,7 +4,7 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -114,7 +114,10 @@ def Steamgraph3(**kwargs):
 
 try:
     if __name__ == '__main__':
-        Steamgraph3()
+        start0 = time.time()
+        Steamgraph3(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

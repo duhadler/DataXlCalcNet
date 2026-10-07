@@ -3,10 +3,10 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import matplotlib.pyplot as plt
 import seaborn as sns 
-
+import pandas as pd
 
 
 
@@ -26,7 +26,14 @@ def KdePlot3(**kwargs):
 
 
 
-    df = sns.load_dataset('iris')
+    #df = sns.load_dataset('iris')
+
+    fn = gui.get_dataxlcalcnet()
+    fn += r'\DataExamples\MainExamples\Workbooks\Datasets.xlsx'
+    datasets = pd.ExcelFile(fn)
+    df = pd.read_excel(datasets, 'iris')
+
+
 
     sns.set_style("white")
     sns.kdeplot(x=df.sepal_width, y=df.sepal_length,
@@ -53,7 +60,10 @@ def KdePlot3(**kwargs):
 
 try:
     if __name__ == '__main__':
-        KdePlot3()
+        start0 = time.time()
+        KdePlot3(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

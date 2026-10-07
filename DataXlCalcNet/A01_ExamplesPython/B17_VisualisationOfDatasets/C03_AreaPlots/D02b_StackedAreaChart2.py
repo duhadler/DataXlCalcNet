@@ -3,7 +3,7 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import numpy as np
 import seaborn as sns
 import pandas as pd
@@ -26,11 +26,10 @@ def StackedAreaChart2(**kwargs):
 
     plt.style.use(PlotStyle)
 
-
-
-    my_path = r'C:\Users\DUHad\Documents\DataXlCalcNet\DataExamples\MainExamples\Workbooks\wealth_data.xlsx'
-
-    df = pd.read_excel(my_path)
+    fn = gui.get_dataxlcalcnet()
+    fn += r'\DataExamples\MainExamples\Workbooks\Datasets.xlsx'
+    datasets = pd.ExcelFile(fn)
+    df = pd.read_excel(datasets, 'wealth')
 
     # Libraries
     import numpy as np
@@ -78,7 +77,10 @@ def StackedAreaChart2(**kwargs):
 
 try:
     if __name__ == '__main__':
-        StackedAreaChart2()
+        start0 = time.time()
+        StackedAreaChart2(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

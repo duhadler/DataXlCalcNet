@@ -3,9 +3,9 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
  
@@ -20,19 +20,25 @@ def PercentageStackedAreaChart(**kwargs):
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
+
 # End of custom key word arguments
 
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
     # Make data
-    data = pd.DataFrame({  'group_A':[1,4,6,8,9], 'group_B':[2,24,7,10,12], 'group_C':[2,8,5,10,6], }, index=range(1,6))
+    data = pd.DataFrame({  'group_A':[1,4,6,8,9], 'group_B':[2,24,7,10,12], \
+        'group_C':[2,8,5,10,6], }, index=range(1,6))
      
     # We need to transform the data from raw data to percentage (fraction)
     data_perc = data.divide(data.sum(axis=1), axis=0)
      
     # Make the plot
-    plt.stackplot(range(1,6),  data_perc["group_A"],  data_perc["group_B"],  data_perc["group_C"], labels=['A','B','C'])
+    plt.stackplot(range(1,6),  data_perc["group_A"],  data_perc["group_B"],  \
+        data_perc["group_C"], labels=['A','B','C'])
     plt.legend(loc='upper left')
     plt.margins(0,0)
     plt.title('100 % stacked area chart')
@@ -58,7 +64,11 @@ def PercentageStackedAreaChart(**kwargs):
 
 try:
     if __name__ == '__main__':
-        PercentageStackedAreaChart()
+        start0 = time.time()
+        #PercentageStackedAreaChart(OutputMode = 'gui')
+        PercentageStackedAreaChart(OutputMode = 'svg')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

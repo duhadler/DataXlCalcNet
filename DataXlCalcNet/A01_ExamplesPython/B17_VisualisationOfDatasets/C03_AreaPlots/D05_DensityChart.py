@@ -5,7 +5,7 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -100,7 +100,10 @@ def DensityChart(**kwargs):
 
 try:
     if __name__ == '__main__':
-        DensityChart()
+        start0 = time.time()
+        DensityChart(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:
