@@ -2,7 +2,7 @@
 from pathlib import Path
 from xlcalcnet import sreal, dreal, ereal, qreal, oreal
 import os, re
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import numpy as np
 import math
 
@@ -12,8 +12,7 @@ def DistPlotContinuous(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'DistPlotContinuous'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
-    #OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4.5
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
@@ -27,6 +26,14 @@ def DistPlotContinuous(**kwargs):
     markersize = kwargs['markersize'] if 'markersize' in kwargs else 2
     lattice = kwargs['lattice'] if 'lattice' in kwargs else False
 # End of custom key word arguments
+
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    plt.style.use(PlotStyle)
+
+
 
 
     flen=len(dlist)

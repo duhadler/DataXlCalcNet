@@ -14,13 +14,15 @@ def stats_student_t_1sample_test(n, mu0, mean, std, alpha, **kwargs):
     # Add as OutputMode: ListWithDoubles
 
     if OutputMode == 'list':
-        print(tbl.to_list())
+        #print(tbl.to_list())
+        return tbl.to_list()
     elif OutputMode == 'text':
         print(tbl)
+        return str(tbl)
     else:
         LocalDir = gui.get_local_appdata_xlcalcnet()
         FullPath = os.sep.join([LocalDir, 'OutputMonitor', 'TTest1External.' + OutputMode])
-        print(FullPath)
+        #print(FullPath)
         if OutputMode == 'csv': tbl.to_csv(FullPath)
         if OutputMode == 'xlsx': tbl.to_xlsx(FullPath)
 
