@@ -7,7 +7,6 @@ import os, time
 import numpy as np
 import seaborn as sns
 import pandas as pd
-import matplotlib.pyplot as plt
  
 
 
@@ -20,19 +19,23 @@ def MultipleAreaCharts(**kwargs):
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
 
 
     # Create a dataset
-    my_count=["France","Australia","Japan","USA","Germany","Congo","China","England","Spain","Greece","Marocco","South Africa","Indonesia","Peru","Chili","Brazil"]
+    my_count=['France','Australia','Japan','USA','Germany','Congo','China','England','Spain','Greece','Marocco','South Africa','Indonesia','Peru','Chili','Brazil']
     df = pd.DataFrame({
-    "country":np.repeat(my_count, 10),
-    "years":list(range(2000, 2010)) * 16,
-    "value":np.random.rand(160)
+    'country':np.repeat(my_count, 10),
+    'years':list(range(2000, 2010)) * 16,
+    'value':np.random.rand(160)
     })
      
     # Create a grid : initialize it
@@ -42,10 +45,10 @@ def MultipleAreaCharts(**kwargs):
     g = g.map(plt.plot, 'years', 'value')
      
     # Fill the area with fill_between
-    g = g.map(plt.fill_between, 'years', 'value', alpha=0.2).set_titles("{col_name} country")
+    g = g.map(plt.fill_between, 'years', 'value', alpha=0.2).set_titles('{col_name} country')
      
     # Control the title of each facet
-    g = g.set_titles("{col_name}")
+    g = g.set_titles('{col_name}')
      
     # Add a title for the whole plot
     plt.subplots_adjust(top=0.92)

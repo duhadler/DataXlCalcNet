@@ -3,14 +3,13 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
-import matplotlib.pyplot as plt
+import os, time
 from highlight_text import ax_text
 import numpy as np
 import pandas as pd
 
-def tornado_chart(data, labels, midpoint, low_values, high_values, title="<Low> VS <High> values"):
-    """
+def tornado_chart(plt, data, labels, midpoint, low_values, high_values, title='<Low> VS <High> values'):
+    '''
     Parameters
     ----------
     labels : np.array()
@@ -26,7 +25,7 @@ def tornado_chart(data, labels, midpoint, low_values, high_values, title="<Low> 
     high_values : np.array()
         An np.array of the model output resulting from the high variable
         selection. Same length and order as label_range.
-    """
+    '''
 
     color_low = '#e1ceff'
     color_high = '#ff6262'
@@ -76,8 +75,8 @@ def tornado_chart(data, labels, midpoint, low_values, high_values, title="<Low> 
             fontsize=15,
             va='center',
             ha='center',
-            highlight_textprops=[{"color": color_low, "fontweight": 'bold'},
-                                 {"color": color_high, "fontweight": 'bold'}],
+            highlight_textprops=[{'color': color_low, 'fontweight': 'bold'},
+                                 {'color': color_high, 'fontweight': 'bold'}],
             ax=ax)
 
     plt.xlabel('Model output')
@@ -105,27 +104,30 @@ def TornadoChart(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'TornadoChart'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
-#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
 
 
     # data for chart
     labels = np.char.array([
-        "Variable 1\n 1.0 - 5.0",
-        "Variable 2\n 11% - 15%",
-        "Variable 3\n $200 - $300",
-        "Variable 4\n $12 - $14",
-        "Variable 5\n Off - On",
-        "Variable 6\n Low - High",
+        'Variable 1\n 1.0 - 5.0',
+        'Variable 2\n 11% - 15%',
+        'Variable 3\n $200 - $300',
+        'Variable 4\n $12 - $14',
+        'Variable 5\n Off - On',
+        'Variable 6\n Low - High',
     ])
 
     midpoint = 20
@@ -167,7 +169,7 @@ def TornadoChart(**kwargs):
     )
 
 
-    tornado_chart(data, labels, midpoint, data['Low values'], data['High values'])
+    tornado_chart(plt, data, labels, midpoint, data['Low values'], data['High values'])
 
 
     fig = plt.gcf()
@@ -191,7 +193,10 @@ def TornadoChart(**kwargs):
 
 try:
     if __name__ == '__main__':
-        TornadoChart()
+        start0 = time.time()
+        TornadoChart(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

@@ -7,7 +7,6 @@ import os, time
 import numpy as np
 import seaborn as sns
 import pandas as pd
-import matplotlib.pyplot as plt
  
 
 
@@ -21,10 +20,15 @@ def StackedAreaChart1(**kwargs):
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
     
-# End of custom key word arguments
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
+    # Load the dataset from the worksheet 'wealth' in the workbook 'Datasets'
     fn = gui.get_dataxlcalcnet()
     fn += r'\DataExamples\MainExamples\Workbooks\Datasets.xlsx'
     datasets = pd.ExcelFile(fn)

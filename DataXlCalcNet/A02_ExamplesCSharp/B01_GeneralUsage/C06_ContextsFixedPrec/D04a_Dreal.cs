@@ -29,7 +29,7 @@ public static void DrealTest0()
     var res1 = dreal.abs(a);
     Console.WriteLine("dreal.abs(a): {0}", res1);
 
-    var res2 = dreal.bessel_jv(v:0, x:a);
+    var res1 = dreal.bessel_jv(v:0, x:a);
     Console.WriteLine("res2 = dreal.bessel_jv(nu:0, x:a): {0}", res2);
 
     var res3 = dreal.exp(a);

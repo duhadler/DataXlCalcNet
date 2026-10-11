@@ -3,12 +3,9 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 from functools import reduce
-
 import numpy as np
-import matplotlib
-import matplotlib.pyplot as plt
 
 from flexitext import flexitext
 from scipy.special import expit
@@ -20,15 +17,18 @@ def MultipleLinesAndPanels1(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'MultipleLinesAndPanels1'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
-#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    import matplotlib
+    if (OutputMode != 'gui'):
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
 
@@ -167,7 +167,10 @@ def MultipleLinesAndPanels1(**kwargs):
 
 try:
     if __name__ == '__main__':
-        MultipleLinesAndPanels1()
+        start0 = time.time()
+        MultipleLinesAndPanels1(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

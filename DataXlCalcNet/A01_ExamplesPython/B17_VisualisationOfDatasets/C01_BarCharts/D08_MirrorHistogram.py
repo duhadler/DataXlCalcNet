@@ -1,11 +1,9 @@
 ﻿
-
 # See also:https://python-graph-gallery.com/density-mirror/
-
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -17,17 +15,19 @@ def MirrorHistogram(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'MirrorHistogram'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
-#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
-
 
 
     # dataframe
@@ -37,10 +37,10 @@ def MirrorHistogram(**kwargs):
     })
 
     # Fig size
-    plt.rcParams["figure.figsize"]=12,8
+    plt.rcParams['figure.figsize']=12,8
 
     # plot histogram chart for var1
-    sns.histplot(x=df.var1, stat="density", bins=20, edgecolor='black')
+    sns.histplot(x=df.var1, stat='density', bins=20, edgecolor='black')
 
     # plot histogram chart for var2
     n_bins = 20
@@ -53,9 +53,6 @@ def MirrorHistogram(**kwargs):
 
     # plot
     plt.bar(bin_pos, heights, width=bin_width, edgecolor='black')
-
-
-
 
     fig = plt.gcf()
     fig.tight_layout()
@@ -78,7 +75,10 @@ def MirrorHistogram(**kwargs):
 
 try:
     if __name__ == '__main__':
-        MirrorHistogram()
+        start0 = time.time()
+        MirrorHistogram(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

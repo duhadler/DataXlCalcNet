@@ -3,25 +3,27 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
  
 
 def HighlightGroupInLollipop(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'HighlightGroupInLollipop'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
-#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
 
@@ -32,7 +34,7 @@ def HighlightGroupInLollipop(**kwargs):
     ordered_df = df.sort_values(by='values')
     my_range=range(1,len(df.index)+1)
      
-    # Create a color if the group is "B"
+    # Create a color if the group is 'B'
     my_color=np.where(ordered_df ['group']=='B', 'orange', 'skyblue')
     my_size=np.where(ordered_df ['group']=='B', 70, 30)
      
@@ -42,7 +44,7 @@ def HighlightGroupInLollipop(**kwargs):
      
     # Add title and axis names
     plt.yticks(my_range, ordered_df['group'])
-    plt.title("What about the B group?", loc='left')
+    plt.title('What about the B group?', loc='left')
     plt.xlabel('Value of the variable')
     plt.ylabel('Group')
 
@@ -66,6 +68,12 @@ def HighlightGroupInLollipop(**kwargs):
 
 
 try:
+    if __name__ == '__main__':
+        start0 = time.time()
+        HighlightGroupInLollipop(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
+
     if __name__ == '__main__':
         HighlightGroupInLollipop()
 

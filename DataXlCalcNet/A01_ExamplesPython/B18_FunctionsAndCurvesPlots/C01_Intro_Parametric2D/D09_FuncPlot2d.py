@@ -1,10 +1,8 @@
 ﻿
-
-from xlcalcnet import gui, math53
+from xlcalcnet import gui, math53, mpm
 from pathlib import Path
-import os
+import os, time
 import matplotlib.pyplot as plt
-from xlcalcnet import mpm
 
 # This has been adapted from the mpmath.plot function
 # See https://mpmath.readthedocs.io/en/stable/plotting.html
@@ -29,7 +27,6 @@ def xarange(ctx, a, b, dt):
     return result
 
 
-
 def FuncPlot2d(ctx=None, f=None, xlim=[-5,5], ylim=None, points=200, dpi=None, 
     singularities=[], axes=None, **kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
@@ -40,9 +37,11 @@ def FuncPlot2d(ctx=None, f=None, xlim=[-5,5], ylim=None, points=200, dpi=None,
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 5
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    tada = 1;
-# End of custom key word arguments
 
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
     plot_ignore = (ValueError, ArithmeticError, ZeroDivisionError, NoConvergence)
@@ -109,7 +108,6 @@ def FuncPlot2d(ctx=None, f=None, xlim=[-5,5], ylim=None, points=200, dpi=None,
     axes.set_ylabel('f(x)')
     axes.grid(True)
     #axes.legend(['First line', 'Second line'], loc='center right', bbox_to_anchor=(1.25, 0.5))
-
     
     plt.title(Title)
 
@@ -132,6 +130,7 @@ def FuncPlot2d(ctx=None, f=None, xlim=[-5,5], ylim=None, points=200, dpi=None,
 
 try:
     if __name__ == '__main__':
+        start0 = time.time()
         FuncPlot2d(ctx=mpm, f=[mpm.cos, mpm.sin], xlim=[-4, 4], Title = 'Plot2dCosSin')
         #FuncPlot2d(ctx=math53, f=[math53.cos, math53.sin], xlim=[-4, 4], Title = 'Simultaneous plot of sin and cos, using math53')
         
@@ -143,6 +142,8 @@ try:
 
         #FuncPlot2d(ctx=mpm, f=mpm.cot, xlim=[-5, 5], ylim=[-5, 5], singularities=[-mpm.pi, 0, mpm.pi], Title = 'Cotangent, singularities specified, mpm')  
         #FuncPlot2d(ctx=math53, f=math53.cot, xlim=[-5, 5], ylim=[-5, 5], singularities=[-math53.pi, 0, math53.pi], Title = 'Cotangent, singularities specified, math53') 
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 

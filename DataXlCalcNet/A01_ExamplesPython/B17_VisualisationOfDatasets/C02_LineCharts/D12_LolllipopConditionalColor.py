@@ -3,7 +3,7 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
@@ -14,15 +14,18 @@ def LolllipopConditionalColor(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'LolllipopConditionalColor'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
-#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
 
@@ -38,7 +41,7 @@ def LolllipopConditionalColor(**kwargs):
     plt.scatter(x, y, color=my_color, s=1, alpha=1)
      
     # Add title and axis names
-    plt.title("Evolution of the value of ...", loc='left')
+    plt.title('Evolution of the value of ...', loc='left')
     plt.xlabel('Value of the variable')
     plt.ylabel('Group')
 
@@ -64,7 +67,10 @@ def LolllipopConditionalColor(**kwargs):
 
 try:
     if __name__ == '__main__':
-        LolllipopConditionalColor()
+        start0 = time.time()
+        LolllipopConditionalColor(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

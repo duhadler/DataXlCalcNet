@@ -1,11 +1,9 @@
-﻿from xlcalcnet import gui
-from pathlib import Path
+﻿
+from xlcalcnet import gui
 from xlcalcnet import sreal, dreal, ereal, qreal, oreal
-import os, re
-#import matplotlib.pyplot as plt
+from pathlib import Path
+import os, time
 import numpy as np
-import math
-
 
 
 def DistPlotContinuous(**kwargs):
@@ -32,9 +30,6 @@ def DistPlotContinuous(**kwargs):
         matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
-
-
-
 
     flen=len(dlist)
     ctx = dreal
@@ -73,24 +68,19 @@ def DistPlotContinuous(**kwargs):
     flist = []
     for j in range(flen):
         flist.append(np.zeros_like(x, dtype=np.float64))
-
     for j in range(flen):
         for k in range (x.size):
             flist[j][k] = float(f[j](x[k]))
 
 # Format the plot
-    plt.style.use(PlotStyle)
-
     fig, ax = plt.subplots(figsize=(FigSizeX, FigSizeY))
     for j in range(flen):
 #        ax.plot(x, flist[j], marker='o')
         ax.plot(x, flist[j], marker=marker, markersize=markersize)
-
     ax.set(xlabel='x', ylabel=target + '(x)', title=Title + ': ' + title2)
     plt.legend(ltext)
     if ylim:
         ax.set_ylim([float(_) for _ in ylim])
-
     ax.grid()
     fig.tight_layout()
 
@@ -112,33 +102,29 @@ def DistPlotContinuous(**kwargs):
 
 
 def DistPlotBeta(target, a, b, **kwargs):
-#        a = [5, 10.0, 20.5]
-#        b = [20.5, 10.0, 5]
         xlim = [0, 0.999]
         ylim = None
-
         if target=='hf': ylim=[0, 100]
-
         dlist = []
         ltext = []
         for j in range(len(a)):
             dlist.append(dreal.dist_beta(a[j], b[j]))
             ltext.append('a=' + str(a[j]) + ', b=' + str(b[j]))
-
         DistPlotContinuous(dlist=dlist, xlim = xlim, 
             ylim = ylim, target = target, ltext = ltext, marker='o', 
             markersize=0, **kwargs)
 
 
 
-
 try:
     if __name__ == '__main__':
+        start0 = time.time()
         target = 'pdf' # pdf, cdf, 'sf', 'hf', 'chf', 'qtf', 'isf'
         a = [5, 10.0, 20.5]
         b = [20.5, 10.0, 5]
         DistPlotBeta(target, a, b, Title = 'Beta distribution', OutputMode = 'gui')
-        #DistPlotBeta(target, a, b, Title = 'Beta distribution', OutputMode = 'svg')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

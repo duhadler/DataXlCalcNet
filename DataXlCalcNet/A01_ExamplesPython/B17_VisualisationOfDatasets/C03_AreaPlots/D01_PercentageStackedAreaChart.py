@@ -5,7 +5,6 @@ from xlcalcnet import gui
 from pathlib import Path
 import os, time
 import numpy as np
-#import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
  
@@ -37,8 +36,8 @@ def PercentageStackedAreaChart(**kwargs):
     data_perc = data.divide(data.sum(axis=1), axis=0)
      
     # Make the plot
-    plt.stackplot(range(1,6),  data_perc["group_A"],  data_perc["group_B"],  \
-        data_perc["group_C"], labels=['A','B','C'])
+    plt.stackplot(range(1,6),  data_perc['group_A'],  data_perc['group_B'],  \
+        data_perc['group_C'], labels=['A','B','C'])
     plt.legend(loc='upper left')
     plt.margins(0,0)
     plt.title('100 % stacked area chart')
@@ -65,11 +64,9 @@ def PercentageStackedAreaChart(**kwargs):
 try:
     if __name__ == '__main__':
         start0 = time.time()
-        #PercentageStackedAreaChart(OutputMode = 'gui')
-        PercentageStackedAreaChart(OutputMode = 'svg')
+        PercentageStackedAreaChart(OutputMode = 'gui')
         end0 = time.time()
         print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
-
 
 except Exception:
     import traceback

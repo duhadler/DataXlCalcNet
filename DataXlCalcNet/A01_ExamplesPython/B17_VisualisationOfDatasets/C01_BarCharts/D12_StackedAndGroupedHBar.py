@@ -3,7 +3,7 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -13,19 +13,19 @@ def StackedAndGroupedHBar(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'StackedAndGroupedHBar'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
-#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
-
-# Source - https://stackoverflow.com/a/74045490
-# Posted by Redox
-# Retrieved 2026-03-04, License - CC BY-SA 4.0
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    plt.style.use(PlotStyle)
 
     # Your data, some changes to differentiate the values
     female_numbers_2015 = [20882, 31322, 52204, 52205, 31322, 20881]
@@ -40,10 +40,6 @@ def StackedAndGroupedHBar(**kwargs):
     percent_females_2018 = [i /sum(female_numbers_2018) * 100 for i in female_numbers_2018]
 
     myindex = ['Poorest 10%', '10-25%', '25-50%', '50-75%', '75-90%', 'Richest 10%']
-
-    # Source - https://stackoverflow.com/a/74045490
-    # Posted by Redox
-    # Retrieved 2026-03-04, License - CC BY-SA 4.0
 
     Year = []
     Female = []
@@ -61,10 +57,6 @@ def StackedAndGroupedHBar(**kwargs):
     df0 = df.reorder_levels(['index', 'Year']).sort_index()
     df0 = df0.unstack(level=-1)
 
-    # Source - https://stackoverflow.com/a/74045490
-    # Posted by Redox
-    # Retrieved 2026-03-04, License - CC BY-SA 4.0
-
     colors = plt.cm.Paired.colors
     fig, ax = plt.subplots(figsize=(10,5))
     (df0['Female']+df0['Male']).plot(kind='barh', color=[colors[3], colors[2]], rot=0, ax=ax)
@@ -72,8 +64,6 @@ def StackedAndGroupedHBar(**kwargs):
 
     legend_labels = [f'{val} ({context})' for val, context in df0.columns]
     ax.legend(legend_labels)
-
-    #plt.show()
 
 
 # Start of output choices
@@ -93,7 +83,10 @@ def StackedAndGroupedHBar(**kwargs):
 
 try:
     if __name__ == '__main__':
-        StackedAndGroupedHBar()
+        start0 = time.time()
+        StackedAndGroupedHBar(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

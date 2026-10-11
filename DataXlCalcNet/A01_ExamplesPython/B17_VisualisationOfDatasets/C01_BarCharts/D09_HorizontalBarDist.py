@@ -1,7 +1,7 @@
-﻿from xlcalcnet import gui
+﻿
+from xlcalcnet import gui
 from pathlib import Path
-import os
-import matplotlib.pyplot as plt
+import os, time
 import numpy as np
 
 # see https://matplotlib.org/stable/gallery/lines_bars_and_markers/horizontal_barchart_distribution.html#sphx-glr-gallery-lines-bars-and-markers-horizontal-barchart-distribution-py
@@ -17,9 +17,13 @@ def HorizontalBarDist(**kwargs):
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 5
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui' and OutputMode != 'plt'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
 
@@ -94,7 +98,11 @@ def HorizontalBarDist(**kwargs):
 
 try:
     if __name__ == '__main__':
-        HorizontalBarDist()
+        start0 = time.time()
+        HorizontalBarDist(OutputMode = 'plt')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
+
 
 except Exception:
     import traceback

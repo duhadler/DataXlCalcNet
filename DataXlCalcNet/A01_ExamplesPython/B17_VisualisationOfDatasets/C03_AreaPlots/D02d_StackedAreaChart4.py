@@ -7,10 +7,8 @@ import os, time
 import numpy as np
 import seaborn as sns
 import pandas as pd
-import matplotlib.pyplot as plt
 from scipy.interpolate import make_interp_spline
 from PIL import Image # Open the image
-import matplotlib.cm as cm # Add annotations (lines and points)
 
 
 
@@ -23,11 +21,17 @@ def StackedAreaChart4(**kwargs):
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    import matplotlib.cm as cm # Add annotations (lines and points)
     plt.style.use(PlotStyle)
 
+    # Load the dataset from the worksheet 'wealth' in the workbook 'Datasets'
     fn = gui.get_dataxlcalcnet()
     fn += r'\DataExamples\MainExamples\Workbooks\Datasets.xlsx'
     datasets = pd.ExcelFile(fn)
@@ -37,10 +41,10 @@ def StackedAreaChart4(**kwargs):
     pivot_df = df.pivot(index='year', columns='country', values='total_wealth')
 
     # Define custom colors for the countries
-    custom_colors = ["#003f5c","#2f4b7c","#665191","#a05195","#d45087","#f95d6a","#ff7c43","#ffa600"]
+    custom_colors = ['#003f5c','#2f4b7c','#665191','#a05195','#d45087','#f95d6a','#ff7c43','#ffa600']
 
     # Define the desired order of countries
-    desired_order = ["United States", "China", "Japan", "Germany", "United Kingdom", "France", "India", "Other"]
+    desired_order = ['United States', 'China', 'Japan', 'Germany', 'United Kingdom', 'France', 'India', 'Other']
 
     # Reorder the columns of the pivot_df and custom_colors list
     pivot_df = pivot_df[desired_order]
@@ -59,14 +63,14 @@ def StackedAreaChart4(**kwargs):
 
     # Annotations for the values per year
     def add_annotations_year(year):
-        """
+        '''
         Input: a year
         Apply: add to the graph the total wealth of all countries at a given date
                and a line from the bottom of the graph to the total value of wealth
-        """
+        '''
         
         # Calculate total amount of wealth at a given year
-        y_end = df[df["year"]==year]["total_wealth"].sum()
+        y_end = df[df['year']==year]['total_wealth'].sum()
         
         # Set values in areas where the graph does not appear
         # Special case for 2021: we put it on the left instead of upper the line
@@ -104,7 +108,7 @@ def StackedAreaChart4(**kwargs):
         
     # Annotations for the values per country
     def add_annotations_country(country, value_placement, amount, color):
-        """
+        '''
         Adds an annotation to a plot at a specific location with information about a country's amount in millions.
 
         Parameters:
@@ -112,7 +116,7 @@ def StackedAreaChart4(**kwargs):
             value_placement (float): The vertical position where the annotation will be placed on the plot.
             amount (float): The amount in millions that will be displayed in the annotation.
             color (str): The color of the annotation text.
-        """
+        '''
         plt.text(2021.5, value_placement, f'{country} ${amount}M', fontsize=10, color=color, fontweight='bold')
 
     # We manually define the labels, values and position that will be displayed on the right of the graph
@@ -138,10 +142,6 @@ def StackedAreaChart4(**kwargs):
     plt.text(2000, -63000, 'Design:', fontsize=8, color='black', fontweight = 'bold')
     plt.text(2001.9, -63000, 'Gilbert Fontana', fontsize=8, color='black')
 
-
-    ## Add github and twitter credentials
-    #add_logo("github.png", "gilbertfontana", 0.155, -0.03, 0.03)
-    #add_logo("twitter.png", "GilbertFontana", 0.16, -0.06, 0.02)
 
     # Remove the y-axis frame (left, right and top spines)
     ax.spines['left'].set_visible(False)

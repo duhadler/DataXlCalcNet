@@ -7,7 +7,6 @@ from xlcalcnet import gui
 from pathlib import Path
 import os, time
 import seaborn as sns
-import matplotlib.pyplot as plt
 import pandas as pd
 
 
@@ -21,35 +20,39 @@ def DensityChart(**kwargs):
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
 
     # set seaborn whitegrid theme
-    sns.set_theme(style="whitegrid")
+    sns.set_theme(style='whitegrid')
 
     # load dataset from github and convert it to a long format
     data = pd.read_csv(
-        "https://raw.githubusercontent.com/zonination/perceptions/master/probly.csv"
+        'https://raw.githubusercontent.com/zonination/perceptions/master/probly.csv'
     )
-    data = pd.melt(data, var_name="text", value_name="value")
+    data = pd.melt(data, var_name='text', value_name='value')
 
-    # take only "Almost No Chance", "About Even", "Probable", "Almost Certainly"
+    # take only 'Almost No Chance', 'About Even', 'Probable', 'Almost Certainly'
     data = data.loc[
-        data.text.isin(["Almost No Chance", "About Even", "Probable", "Almost Certainly"])
+        data.text.isin(['Almost No Chance', 'About Even', 'Probable', 'Almost Certainly'])
     ]
 
     # density plot
     p = sns.kdeplot(
         data=data,
-        x="value",
-        hue="text",
+        x='value',
+        hue='text',
         fill=True,
         common_norm=False,
         alpha=0.6,
-        palette="viridis",
+        palette='viridis',
         legend=False,
     )
     # control x limit
@@ -58,9 +61,9 @@ def DensityChart(**kwargs):
     # dataframe for annotations
     annot = pd.DataFrame(
         {
-            "x": [5, 53, 65, 79],
-            "y": [0.15, 0.4, 0.06, 0.1],
-            "text": ["Almost No Chance", "About Even", "Probable", "Almost Certainly"],
+            'x': [5, 53, 65, 79],
+            'y': [0.15, 0.4, 0.06, 0.1],
+            'text': ['Almost No Chance', 'About Even', 'Probable', 'Almost Certainly'],
         }
     )
 
@@ -70,13 +73,13 @@ def DensityChart(**kwargs):
             annot.x[point],
             annot.y[point],
             annot.text[point],
-            horizontalalignment="left",
-            size="large",
+            horizontalalignment='left',
+            size='large',
         )
 
     # add axis names
-    plt.xlabel("Assigned Probability (%)")
-    plt.ylabel("")
+    plt.xlabel('Assigned Probability (%)')
+    plt.ylabel('')
 
 
     fig = plt.gcf()

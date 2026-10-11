@@ -3,10 +3,9 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
  
 
 
@@ -14,15 +13,18 @@ def CircularLolllipop2(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'CircularLolllipop2'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
-#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
 
@@ -32,25 +34,25 @@ def CircularLolllipop2(**kwargs):
     df_pw = df_pw.dropna(subset=['password'])
 
     def to_seconds(value, time_unit):
-        if time_unit == "seconds":
+        if time_unit == 'seconds':
             return value
-        elif time_unit == "minutes":
+        elif time_unit == 'minutes':
             return value * 60
-        elif time_unit == "hours":
+        elif time_unit == 'hours':
             return value * 60 * 60
-        elif time_unit == "days":
+        elif time_unit == 'days':
             return value * 60 * 27
-        elif time_unit == "weeks":
+        elif time_unit == 'weeks':
             return value * 60 * 24 * 7
-        elif time_unit == "months":
+        elif time_unit == 'months':
             return value * 60 * 24 * 30
-        elif time_unit == "years":
+        elif time_unit == 'years':
             return value * 60 * 24 * 365
         else:
             return np.nan
 
     TIMES = [
-        to_seconds(row["value"], row["time_unit"])
+        to_seconds(row['value'], row['time_unit'])
         for _, row in df_pw.iterrows()
     ]
 
@@ -62,12 +64,12 @@ def CircularLolllipop2(**kwargs):
         return ((x - TIME_MIN) / (TIME_MAX - TIME_MIN)) * (high - low) + low
 
     # Different sades of grey used in the plot
-    GREY88 = "#e0e0e0"
-    GREY85 = "#d9d9d9"
-    GREY82 = "#d1d1d1"
-    GREY79 = "#c9c9c9"
-    GREY97 = "#f7f7f7"
-    GREY60 = "#999999"
+    GREY88 = '#e0e0e0'
+    GREY85 = '#d9d9d9'
+    GREY82 = '#d1d1d1'
+    GREY79 = '#c9c9c9'
+    GREY97 = '#f7f7f7'
+    GREY60 = '#999999'
 
     # Values for the x axis
     ANGLES = np.linspace(0, 2 * np.pi, len(TIMES), endpoint=False)
@@ -76,11 +78,11 @@ def CircularLolllipop2(**kwargs):
     HEIGHTS = np.array(TIMES)
 
     # Category values for the colors
-    CATEGORY_CODES = pd.Categorical(df_pw["category"]).codes
+    CATEGORY_CODES = pd.Categorical(df_pw['category']).codes
 
     # Colormap taken from https://carto.com/carto-colors/
-    COLORMAP = ["#5F4690", "#1D6996", "#38A6A5", "#0F8554", "#73AF48", 
-                "#EDAD08", "#E17C05", "#CC503E", "#94346E", "#666666"]
+    COLORMAP = ['#5F4690', '#1D6996', '#38A6A5', '#0F8554', '#73AF48', 
+                '#EDAD08', '#E17C05', '#CC503E', '#94346E', '#666666']
 
     # Select colors for each password according to its category.
     COLORS = np.array(COLORMAP)[CATEGORY_CODES]
@@ -90,23 +92,23 @@ def CircularLolllipop2(**kwargs):
     # Don't worry if it doesn't make much sense yet, you're going to see it in action below
     PLUS = 1000
     # Create a data frame with the information for the four passwords that are going to be labeled
-    LABELS_DF = df_pw[df_pw["value"] > 90].reset_index()
+    LABELS_DF = df_pw[df_pw['value'] > 90].reset_index()
     # Create labels
-    LABELS_DF["label"] = [
-        f"{pswrd}\nRank: {int(rank)}" 
-        for pswrd, rank in zip(LABELS_DF["password"], LABELS_DF["rank"])
+    LABELS_DF['label'] = [
+        f'{pswrd}\nRank: {int(rank)}' 
+        for pswrd, rank in zip(LABELS_DF['password'], LABELS_DF['rank'])
     ]
 
     # Set positions for the labels
-    LABELS_DF["x"] = [40, 332, 401, 496]
-    LABELS_DF["y"] = [160000000, 90000000, 45000000, 48498112]
+    LABELS_DF['x'] = [40, 332, 401, 496]
+    LABELS_DF['y'] = [160000000, 90000000, 45000000, 48498112]
 
     # Initialize layout in polar coordinates
-    fig, ax = plt.subplots(figsize=(8, 8), subplot_kw={"projection": "polar"})
+    fig, ax = plt.subplots(figsize=(8, 8), subplot_kw={'projection': 'polar'})
 
     # Set background color to white, both axis and figure.
-    fig.patch.set_facecolor("white")
-    ax.set_facecolor("white")
+    fig.patch.set_facecolor('white')
+    ax.set_facecolor('white')
 
     # Use logarithmic scale for the radial axis
     ax.set_rscale('symlog')
@@ -124,8 +126,8 @@ def CircularLolllipop2(**kwargs):
     ax.scatter(ANGLES, HEIGHTS + PLUS, s=scale_to_interval(HEIGHTS), color=COLORS);
 
     # Start by removing spines for both axes
-    ax.spines["start"].set_color("none")
-    ax.spines["polar"].set_color("none")
+    ax.spines['start'].set_color('none')
+    ax.spines['polar'].set_color('none')
 
     # Remove grid lines, ticks, and tick labels.
     ax.grid(False)
@@ -143,12 +145,12 @@ def CircularLolllipop2(**kwargs):
     # Add labels for the four selected passwords, which are the most complicated
     # passwords to crack.
     for idx, row in LABELS_DF.iterrows():
-        color = COLORS[row["index"]]
+        color = COLORS[row['index']]
         ax.text(
-            x=ANGLES[row["x"]], y=row["y"], s=row["label"], color=color,
-            ha="right", va="center", ma="center", size=8,
-            #family="Roboto Mono", 
-            weight="bold"
+            x=ANGLES[row['x']], y=row['y'], s=row['label'], color=color,
+            ha='right', va='center', ma='center', size=8,
+            #family='Roboto Mono', 
+            weight='bold'
         )
 
     # If you have a look at the beginning of this post, you'll see the inner circle is not white.
@@ -160,23 +162,23 @@ def CircularLolllipop2(**kwargs):
     # instead of having to use the coordinates of the data.
     # (0.5, 0.5) represents the middle of the axis in this transformed coordinate system
     ax.text(
-        x=0.5, y=0.58, s="********\nCracking\nYour Favorite\nPassword\n********",
-        color=GREY60, va="center", ha="center", ma="center", 
-        #fontfamily="Roboto Mono",
-        fontsize=18, fontweight="bold", linespacing=0.87, transform=ax.transAxes
+        x=0.5, y=0.58, s='********\nCracking\nYour Favorite\nPassword\n********',
+        color=GREY60, va='center', ha='center', ma='center', 
+        #fontfamily='Roboto Mono',
+        fontsize=18, fontweight='bold', linespacing=0.87, transform=ax.transAxes
     )
 
     ax.text(
-        x=0.5, y=0.46, s="Time it takes to crack the 500 most\ncommon passwords by online guessing.\nSorted by rank and colored by category.",
-        color=GREY60, va="center", ha="center",  ma="center", 
-        #fontfamily="Roboto Mono",
+        x=0.5, y=0.46, s='Time it takes to crack the 500 most\ncommon passwords by online guessing.\nSorted by rank and colored by category.',
+        color=GREY60, va='center', ha='center',  ma='center', 
+        #fontfamily='Roboto Mono',
         fontsize=7, linespacing=0.87, transform=ax.transAxes
     )
 
     ax.text(
-        x=0.5, y=0.39, s="Time is displayed on a logarithmic scale\nwith the rings representing one day,\none week, one month, and one year\n(from inner to outer ring).",
-        color=GREY60, va="center", ha="center",  ma="center", 
-        #fontfamily="Roboto Mono",
+        x=0.5, y=0.39, s='Time is displayed on a logarithmic scale\nwith the rings representing one day,\none week, one month, and one year\n(from inner to outer ring).',
+        color=GREY60, va='center', ha='center',  ma='center', 
+        #fontfamily='Roboto Mono',
         fontsize=7, linespacing=0.87, transform=ax.transAxes
     )
 
@@ -202,7 +204,10 @@ def CircularLolllipop2(**kwargs):
 
 try:
     if __name__ == '__main__':
-        CircularLolllipop2()
+        start0 = time.time()
+        CircularLolllipop2(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

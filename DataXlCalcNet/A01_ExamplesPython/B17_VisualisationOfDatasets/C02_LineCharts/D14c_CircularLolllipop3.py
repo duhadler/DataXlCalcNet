@@ -3,10 +3,9 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
  
 
 
@@ -14,15 +13,18 @@ def CircularLolllipop3(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'CircularLolllipop3'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
-#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
 
@@ -32,25 +34,25 @@ def CircularLolllipop3(**kwargs):
     df_pw = df_pw.dropna(subset=['password'])
 
     def to_seconds(value, time_unit):
-        if time_unit == "seconds":
+        if time_unit == 'seconds':
             return value
-        elif time_unit == "minutes":
+        elif time_unit == 'minutes':
             return value * 60
-        elif time_unit == "hours":
+        elif time_unit == 'hours':
             return value * 60 * 60
-        elif time_unit == "days":
+        elif time_unit == 'days':
             return value * 60 * 27
-        elif time_unit == "weeks":
+        elif time_unit == 'weeks':
             return value * 60 * 24 * 7
-        elif time_unit == "months":
+        elif time_unit == 'months':
             return value * 60 * 24 * 30
-        elif time_unit == "years":
+        elif time_unit == 'years':
             return value * 60 * 24 * 365
         else:
             return np.nan
 
     TIMES = [
-        to_seconds(row["value"], row["time_unit"])
+        to_seconds(row['value'], row['time_unit'])
         for _, row in df_pw.iterrows()
     ]
 
@@ -63,12 +65,12 @@ def CircularLolllipop3(**kwargs):
 
 
     # Different shades of grey used in the plot
-    GREY88 = "#e0e0e0"
-    GREY85 = "#d9d9d9"
-    GREY82 = "#d1d1d1"
-    GREY79 = "#c9c9c9"
-    GREY97 = "#f7f7f7"
-    GREY60 = "#999999"
+    GREY88 = '#e0e0e0'
+    GREY85 = '#d9d9d9'
+    GREY82 = '#d1d1d1'
+    GREY79 = '#c9c9c9'
+    GREY97 = '#f7f7f7'
+    GREY60 = '#999999'
 
 
 
@@ -79,12 +81,12 @@ def CircularLolllipop3(**kwargs):
     HEIGHTS = np.array(TIMES)
 
     # Category values for the colors
-    CATEGORY_CODES = pd.Categorical(df_pw["category"]).codes
+    CATEGORY_CODES = pd.Categorical(df_pw['category']).codes
 
 
     # Colormap taken from https://carto.com/carto-colors/
-    COLORMAP = ["#5F4690", "#1D6996", "#38A6A5", "#0F8554", "#73AF48", 
-                "#EDAD08", "#E17C05", "#CC503E", "#94346E", "#666666"]
+    COLORMAP = ['#5F4690', '#1D6996', '#38A6A5', '#0F8554', '#73AF48', 
+                '#EDAD08', '#E17C05', '#CC503E', '#94346E', '#666666']
 
 
     # Select colors for each password according to its category.
@@ -99,14 +101,14 @@ def CircularLolllipop3(**kwargs):
 
 
     def circular_plot(angles, heights, colors, lw, ax):
-        ax.set_facecolor("white")
+        ax.set_facecolor('white')
         
-        ax.set_rscale("symlog")
+        ax.set_rscale('symlog')
         ax.set_theta_offset(np.pi / 2)
         ax.set_theta_direction(-1)
         
-        ax.spines["start"].set_color("none")
-        ax.spines["polar"].set_color("none")
+        ax.spines['start'].set_color('none')
+        ax.spines['polar'].set_color('none')
         
         ax.grid(False)
         ax.set_xticks([])
@@ -129,25 +131,25 @@ def CircularLolllipop3(**kwargs):
         ax.set_rmax(ax.get_rmax() * 2)
 
     def map_category(category):
-        if category == "cool-macho":
-            return "cool-\nmacho"
-        elif category == "nerdy-pop":
-            return "nerdy-\npop"
-        elif category == "password-related":
-            return "password-\nrelated"
-        elif category == "rebellious-rude":
-            return "rebel-\nlious-\nrude"
-        elif category == "simple-alphanumeric":
-            return "simple-\nalpha-\nnumeric"
+        if category == 'cool-macho':
+            return 'cool-\nmacho'
+        elif category == 'nerdy-pop':
+            return 'nerdy-\npop'
+        elif category == 'password-related':
+            return 'password-\nrelated'
+        elif category == 'rebellious-rude':
+            return 'rebel-\nlious-\nrude'
+        elif category == 'simple-alphanumeric':
+            return 'simple-\nalpha-\nnumeric'
         else:
             return category
 
-    CATEGORIES = sorted(pd.Categorical(df_pw["category"]).unique())
+    CATEGORIES = sorted(pd.Categorical(df_pw['category']).unique())
     LABELS = [map_category(category) for category in CATEGORIES]
 
     # The plot consists of 2 rows and 5 columns (10 categories in total)
-    fig, axes = plt.subplots(2, 5, figsize=(14, 6), subplot_kw={"projection": "polar"})
-    fig.patch.set_facecolor("white")
+    fig, axes = plt.subplots(2, 5, figsize=(14, 6), subplot_kw={'projection': 'polar'})
+    fig.patch.set_facecolor('white')
 
     # Define the slices used to iterate through 'axes'.
     # It iterates in a rowwise manner.
@@ -160,7 +162,7 @@ def CircularLolllipop3(**kwargs):
         ax = axes[slice_]
         
         # Select indexes corresponding to the passwords in this category
-        idx = df_pw.index[df_pw["category"] == category].tolist()
+        idx = df_pw.index[df_pw['category'] == category].tolist()
         
         # Subset ANGLES, HEIGHTS, and COLORS to use the ones for this category.
         angles = ANGLES[idx]
@@ -172,10 +174,10 @@ def CircularLolllipop3(**kwargs):
         
         # Add text within the inner circle representing the category
         ax.text(
-            x=0.5, y=0.5, s=label, color=colors[0], va="center", ha="center",
-            ma="center", 
-            #fontfamily="Roboto Mono", 
-            fontsize=14, fontweight="bold",
+            x=0.5, y=0.5, s=label, color=colors[0], va='center', ha='center',
+            ma='center', 
+            #fontfamily='Roboto Mono', 
+            fontsize=14, fontweight='bold',
             linespacing=0.87, transform=ax.transAxes
         )
 
@@ -204,7 +206,10 @@ def CircularLolllipop3(**kwargs):
 
 try:
     if __name__ == '__main__':
-        CircularLolllipop3()
+        start0 = time.time()
+        CircularLolllipop3(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

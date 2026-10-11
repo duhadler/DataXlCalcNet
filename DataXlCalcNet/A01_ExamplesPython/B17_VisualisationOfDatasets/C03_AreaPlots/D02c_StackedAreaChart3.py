@@ -7,7 +7,6 @@ import os, time
 import numpy as np
 import seaborn as sns
 import pandas as pd
-import matplotlib.pyplot as plt
 from scipy.interpolate import make_interp_spline
 
 
@@ -21,11 +20,16 @@ def StackedAreaChart3(**kwargs):
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
+    # Load the dataset from the worksheet 'wealth' in the workbook 'Datasets'
     fn = gui.get_dataxlcalcnet()
     fn += r'\DataExamples\MainExamples\Workbooks\Datasets.xlsx'
     datasets = pd.ExcelFile(fn)
@@ -36,10 +40,10 @@ def StackedAreaChart3(**kwargs):
     pivot_df = df.pivot(index='year', columns='country', values='total_wealth')
 
     # Define custom colors for the countries
-    custom_colors = ["#003f5c","#2f4b7c","#665191","#a05195","#d45087","#f95d6a","#ff7c43","#ffa600"]
+    custom_colors = ['#003f5c','#2f4b7c','#665191','#a05195','#d45087','#f95d6a','#ff7c43','#ffa600']
 
     # Define the desired order of countries
-    desired_order = ["United States", "China", "Japan", "Germany", "United Kingdom", "France", "India", "Other"]
+    desired_order = ['United States', 'China', 'Japan', 'Germany', 'United Kingdom', 'France', 'India', 'Other']
 
     # Reorder the columns of the pivot_df and custom_colors list
     pivot_df = pivot_df[desired_order]

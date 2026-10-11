@@ -3,9 +3,8 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
 
 
@@ -14,17 +13,19 @@ def GroupedStackedBarPlot(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'GroupedStackedBarPlot'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
-#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
-
 
 
     # Data
@@ -42,15 +43,15 @@ def GroupedStackedBarPlot(**kwargs):
     barWidth = 0.85
     names = ('A','B','C','D','E')
     # Create green Bars
-    plt.bar(r, greenBars, color='#b5ffb9', edgecolor='white', width=barWidth, label="group A")
+    plt.bar(r, greenBars, color='#b5ffb9', edgecolor='white', width=barWidth, label='group A')
     # Create orange Bars
-    plt.bar(r, orangeBars, bottom=greenBars, color='#f9bc86', edgecolor='white', width=barWidth, label="group B")
+    plt.bar(r, orangeBars, bottom=greenBars, color='#f9bc86', edgecolor='white', width=barWidth, label='group B')
     # Create blue Bars
-    plt.bar(r, blueBars, bottom=[i+j for i,j in zip(greenBars, orangeBars)], color='#a3acff', edgecolor='white', width=barWidth, label="group C")
+    plt.bar(r, blueBars, bottom=[i+j for i,j in zip(greenBars, orangeBars)], color='#a3acff', edgecolor='white', width=barWidth, label='group C')
 
     # Custom x axis
     plt.xticks(r, names)
-    plt.xlabel("group")
+    plt.xlabel('group')
 
 
     ## Legend and show
@@ -82,7 +83,10 @@ def GroupedStackedBarPlot(**kwargs):
 
 try:
     if __name__ == '__main__':
-        GroupedStackedBarPlot()
+        start0 = time.time()
+        GroupedStackedBarPlot(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

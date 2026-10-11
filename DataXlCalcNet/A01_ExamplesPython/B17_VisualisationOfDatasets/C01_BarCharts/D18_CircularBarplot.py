@@ -3,8 +3,7 @@
 
 from xlcalcnet import gui
 from pathlib import Path
-import os
-import matplotlib.pyplot as plt
+import os, time
 import numpy as np
 import pandas as pd
 
@@ -15,16 +14,18 @@ def CircularBarplot(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'CircularBarplot'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'plt'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
-#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
 
@@ -68,26 +69,26 @@ def CircularBarplot(**kwargs):
         width=width, 
         bottom=lowerLimit,
         linewidth=2, 
-        edgecolor="white",
-        color="#61a4b2",
+        edgecolor='white',
+        color='#61a4b2',
     )
 
     # little space between the bar and the label
     labelPadding = 4
 
     # Add labels
-    for bar, angle, height, label in zip(bars,angles, heights, df["Name"]):
+    for bar, angle, height, label in zip(bars,angles, heights, df['Name']):
 
         # Labels are rotated. Rotation must be specified in degrees :(
         rotation = np.rad2deg(angle)
 
         # Flip some labels upside down
-        alignment = ""
+        alignment = ''
         if angle >= np.pi/2 and angle < 3*np.pi/2:
-            alignment = "right"
+            alignment = 'right'
             rotation = rotation + 180
         else: 
-            alignment = "left"
+            alignment = 'left'
 
         # Finally add the labels
         ax.text(
@@ -97,7 +98,7 @@ def CircularBarplot(**kwargs):
             ha=alignment, 
             va='center', 
             rotation=rotation, 
-            rotation_mode="anchor") 
+            rotation_mode='anchor') 
 
     fig = plt.gcf()
     #fig.tight_layout()
@@ -120,7 +121,10 @@ def CircularBarplot(**kwargs):
 
 try:
     if __name__ == '__main__':
-        CircularBarplot()
+        start0 = time.time()
+        CircularBarplot(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

@@ -1,10 +1,8 @@
 ﻿from xlcalcnet import gui
-from pathlib import Path
 from xlcalcnet import sreal, dreal, ereal, qreal, oreal
-import os, re
-import matplotlib.pyplot as plt
+from pathlib import Path
+import os, time
 import numpy as np
-import math
 
 
 def step_no_vertical_line(x,y, ax=None, where='post', **kwargs):
@@ -24,8 +22,7 @@ def DistPlotDiscrete(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'DistPlotDiscrete'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
-    #OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
     FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4.5
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
@@ -42,6 +39,12 @@ def DistPlotDiscrete(**kwargs):
     xoffset = kwargs['xoffset'] if 'xoffset' in kwargs else 0.20
     stemlinewidth = kwargs['stemlinewidth'] if 'stemlinewidth' in kwargs else 0.3
 # End of custom key word arguments
+
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    plt.style.use(PlotStyle)
 
 
     flen=len(dlist)
@@ -149,13 +152,12 @@ def DistPlotPoisson(target, mu, **kwargs):
 
 try:
     if __name__ == '__main__':
+        start0 = time.time()
         target = 'pmf' # 'pmf', 'cdf', 'sf', 'hf', 'chf', 'qtf', 'isf'
         mu = [1, 4, 10]
-        DistPlotPoisson(target, mu, Title = 'Poisson distribution')
-
-
-
-
+        DistPlotPoisson(target, mu, Title = 'Poisson distribution', OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 except Exception:
     import traceback

@@ -1,7 +1,6 @@
 ﻿from xlcalcnet import gui
 from pathlib import Path
-import os
-import matplotlib.pyplot as plt
+import os, time
 import numpy as np
 
 # see https://matplotlib.org/stable/gallery/lines_bars_and_markers/fill_between_alpha.html#sphx-glr-gallery-lines-bars-and-markers-fill-between-alpha-py
@@ -11,15 +10,18 @@ def LineErrorBars(**kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'LineErrorBars'
     PlotStyle = kwargs['PlotStyle'] if 'PlotStyle' in kwargs else 'default'
-    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'gui'
-#    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
-    FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 4
+    OutputMode = kwargs['OutputMode'] if 'OutputMode' in kwargs else 'svg'
+    FigSizeX = float(kwargs['FigSizeX']) if 'FigSizeX' in kwargs else 8
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
     # example data
@@ -33,7 +35,7 @@ def LineErrorBars(**kwargs):
 
 
     fig, (ax0, ax1, ax2) = plt.subplots(nrows=1, ncols=3, sharex=True,
-                                        figsize=(12, 6))
+                                        figsize=(FigSizeX, FigSizeY))
 
     ax0.set_title('all errorbars')
     ax0.errorbar(x, y1, yerr=y1err)
@@ -48,10 +50,6 @@ def LineErrorBars(**kwargs):
     ax2.errorbar(x, y2, yerr=y2err, errorevery=(3, 6))
 
     fig.suptitle('Errorbar subsampling')
-
-    #plt.show()
-#    gui.plot(fig, __file__, 'ErrorBar3')
-#    plt.close("all")
 
 # Start of output choices
     if (OutputMode == 'plt'):
@@ -70,7 +68,10 @@ def LineErrorBars(**kwargs):
 
 try:
     if __name__ == '__main__':
-        LineErrorBars()
+        start0 = time.time()
+        LineErrorBars(OutputMode = 'gui')
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 
 except Exception:

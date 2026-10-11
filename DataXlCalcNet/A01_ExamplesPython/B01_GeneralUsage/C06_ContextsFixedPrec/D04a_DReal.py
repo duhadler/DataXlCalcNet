@@ -4,7 +4,6 @@ from xlcalcnet import dreal
 from decimal import Decimal
 from fractions import Fraction
 i = 2329456398453948563945639364827346384753984573984573
-print("ÄÄÖÖÜÜßß")
 
 
 def main_tests():

@@ -1,9 +1,10 @@
 ﻿
+import time
 import numpy as np
 from xlcalcnet import dpm
     
 
-def demo_mp():
+def NumpyWithDecimals(**kwargs):
     r = 8
     c = 2
     dpm.dps = 30
@@ -15,21 +16,26 @@ def demo_mp():
     print(R)
     print()
     res = np.mean(R)
-    print("res = np.mean(R): \n", res, type(res))
+    print('res = np.mean(R): \n', res, type(res))
     print()
     res = np.mean(R, axis=0)
-    print("res = np.mean(R, axis=0): \n", res, type(res))
+    print('res = np.mean(R, axis=0): \n', res, type(res))
     print()
     res = np.mean(R, axis=1)
-    print("res = np.mean(R, axis=1): \n", res, type(res))
+    print('res = np.mean(R, axis=1): \n', res, type(res))
 
 
 
-def demo_all():
-    demo_mp()
+try:
+    if __name__ == '__main__':
+        start0 = time.time()
+        NumpyWithDecimals()
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
-demo_all()
-
+except Exception:
+    import traceback
+    print(traceback.format_exc())
 
 
 

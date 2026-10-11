@@ -1,8 +1,8 @@
-﻿from xlcalcnet import gui
+﻿
+from xlcalcnet import gui
 from pathlib import Path
-import os
+import os, time
 import seaborn as sns
-import matplotlib.pyplot as plt
 
 # See also: https://seaborn.pydata.org/examples/scatterplot_matrix.html
 
@@ -16,6 +16,12 @@ def ScatterplotMatrix(**kwargs):
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
+    
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
 
     plt.style.use(PlotStyle)
 
@@ -41,8 +47,10 @@ def ScatterplotMatrix(**kwargs):
 
 try:
     if __name__ == '__main__':
+        start0 = time.time()
         ScatterplotMatrix(OutputMode='gui')
-
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 except Exception:
     import traceback

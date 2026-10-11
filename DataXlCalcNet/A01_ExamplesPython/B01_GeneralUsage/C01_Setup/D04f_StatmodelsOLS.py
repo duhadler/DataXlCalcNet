@@ -1,7 +1,7 @@
-﻿import matplotlib.pyplot as plt
+﻿
+import time
 import numpy as np
 import pandas as pd
-
 import statsmodels.api as sm
 
 # See also: https://www.statsmodels.org/stable/examples/notebooks/generated/ols.html
@@ -23,18 +23,14 @@ def OLS(**kwargs):
     model = sm.OLS(y, X)
     results = model.fit()
     print(results.summary())
-    print()
-    print(dir(results))
-    print()
-
-    for item in results:
-       print(item)
 
 
 try:
     if __name__ == '__main__':
+        start0 = time.time()
         OLS()
-
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
 
 except Exception:
     import traceback

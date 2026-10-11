@@ -4,7 +4,7 @@ import pandas as pd
 
 
 
-def main_tests():
+def main_tests(**kwargs):
     get_irisdata()
 
 

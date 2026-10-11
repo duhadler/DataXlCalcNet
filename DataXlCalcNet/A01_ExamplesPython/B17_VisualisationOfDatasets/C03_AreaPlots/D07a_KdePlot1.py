@@ -4,7 +4,6 @@
 from xlcalcnet import gui
 from pathlib import Path
 import os, time
-import matplotlib.pyplot as plt
 import seaborn as sns 
 import pandas as pd
 
@@ -18,9 +17,13 @@ def KdePlot1(**kwargs):
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
     #df = sns.load_dataset('iris')
@@ -29,7 +32,7 @@ def KdePlot1(**kwargs):
     datasets = pd.ExcelFile(fn)
     df = pd.read_excel(datasets, 'iris')
 
-    sns.set_style("white")
+    sns.set_style('white')
     sns.kdeplot(x=df.sepal_width, y=df.sepal_length)
 
     fig = plt.gcf()

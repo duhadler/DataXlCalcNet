@@ -7,7 +7,6 @@ from pathlib import Path
 import os, time
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 
 
 
@@ -20,13 +19,17 @@ def Steamgraph2(**kwargs):
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 4
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
-    a = 1;
-# End of custom key word arguments
+    
 
+    # Choose 'Agg' as backend unless we want to display the graphics
+    if (OutputMode != 'gui'):
+        import matplotlib
+        matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
     plt.style.use(PlotStyle)
 
 
-
+    # load the data from github
     url = 'https://raw.githubusercontent.com/holtzy/The-Python-Graph-Gallery/master/static/data/mutant_moneyball.csv'
     df = pd.read_csv(url)
 
