@@ -21,7 +21,7 @@ public static void MainTests()
 /* No syntax highlighting if HasArbPrecNet is undefined */
     ArbPrec.SetDps(80);
 #endif
-//    TestCarlsonRjReal();
+    TestCarlsonRjReal();
     TestCarlsonRjCplx();
     TestCarlsonRjRealImag();
 }
