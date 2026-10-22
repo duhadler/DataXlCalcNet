@@ -24,6 +24,11 @@ public static void MainTests()
     TestLogReal();
     TestLogCplx();
     TestLogRealImag();
+
+    TestLogbaseReal();
+    TestLogbaseCplx();
+    TestLogbaseRealImag();
+
 }
 
 
@@ -209,6 +214,198 @@ public static void TestLogRealImag()
 }
 
 #endregion
+
+
+#region TestLogbaseReal
+
+public static void TestLogbaseReal()
+{
+    Console.WriteLine("<H1 Title=" + "\"" + "TestLogbaseReal" + "\"" + ">");
+    Double[] InputArray1 = {0.0, 4.333000001, 8 };
+    Double[] InputArray2 = {2, 10 };
+    foreach (Double x in InputArray1) {
+    foreach (Double b in InputArray2) {
+        Console.WriteLine("<H2 Title=" + "\"" + "log(x, b); x={0}, b={1}" 
+            + "\"" + ">", x, b);
+        Double res01 = math53.log(x, b);
+        Console.WriteLine("math53:  {0}", res01);
+        Single res02 = sreal.log(x, b);
+        Console.WriteLine(" sreal:  {0}", res02);
+        Double res03 = dreal.log(x, b);
+        Console.WriteLine(" dreal:  {0}", res03);
+        Extended res04 = ereal.log(x, b);
+        Console.WriteLine(" ereal:  {0}", res04);
+        Quadruple res05 = qreal.log(x, b);
+        Console.WriteLine(" qreal:  {0}", res05);
+        Octuple res06 = oreal.log(x, b);
+        Console.WriteLine(" oreal:  {0}", res06);
+#if HasArbPrecNet
+/* No syntax highlighting if HasArbPrecNet is undefined */
+        Mpfr res07 = mreal.log(x, b);
+        Console.WriteLine(" mreal:  {0}", res07);
+        Single res08 = sflint.log(x, b);
+        Console.WriteLine("sflint:  {0}", res08);
+        Double res09 = dflint.log(x, b);
+        Console.WriteLine("dflint:  {0}", res09);
+        Extended res10 = eflint.log(x, b);
+        Console.WriteLine("eflint:  {0}", res10);
+        Quadruple res11 = qflint.log(x, b);
+        Console.WriteLine("qflint:  {0}", res11);
+        Octuple res12 = oflint.log(x, b);
+        Console.WriteLine("oflint:  {0}", res12);
+        Mpfr res13 = mflint.log(x, b);
+        Console.WriteLine("mflint:  {0}", res13);
+        Arb res16 = aflint.log(x, b);
+        Console.WriteLine("aflint: {0}", res16);
+#endif
+    Console.WriteLine();
+    Console.WriteLine("</H2>");
+    } }
+    Console.WriteLine("</H1>");
+}
+
+#endregion
+
+
+#region TestLogbaseCplx
+
+public static void TestLogbaseCplx()
+{
+    Console.WriteLine("<H1 Title=" + "\"" + "TestLogbaseCplx" + "\"" + ">");
+    Complex[] InputArray1C = {dcplx.t(-4.333, 1.0), dcplx.t(0.0, 1.0), 
+        dcplx.t(4.333, 1.0)};
+    Complex[] InputArray2C = {dcplx.t(-4.333, 1.0), dcplx.t(0.0, 1.0), 
+        dcplx.t(4.333, 1.0)};
+    foreach (Complex x in InputArray1C) {
+    foreach (Complex b in InputArray2C) {
+        Console.WriteLine("<H2 Title=" + "\"" + "log(x, b); x={0}, b={1}" 
+        + "\"" + ">", x, b);
+        Complex res01 = cmath53.log(x, b);
+        Console.WriteLine("cmath53:  {0}", res01);
+        SingleC res02 = scplx.log(x, b);
+        Console.WriteLine("  scplx:  {0}", res02);
+        Complex res03 = dcplx.log(x, b);
+        Console.WriteLine("  dcplx:  {0}", res03);
+        ExtendedC res04 = ecplx.log(x, b);
+        Console.WriteLine("  ecplx:  {0}", res04);
+        QuadrupleC res05 = qcplx.log(x, b);
+        Console.WriteLine("  qcplx:  {0}", res05);
+        OctupleC res06 = ocplx.log(x, b);
+        Console.WriteLine("  ocplx:  {0}", res06);
+#if HasArbPrecNet
+/* No syntax highlighting if HasArbPrecNet is undefined */
+        MpfrC res07 = mcplx.log(x, b);
+        Console.WriteLine("  mcplx:  {0}", res07);
+        SingleC res08 = sflintc.log(x, b);
+        Console.WriteLine("sflintc:  {0}", res08);
+        Complex res09 = dflintc.log(x, b);
+        Console.WriteLine("dflintc:  {0}", res09);
+        ExtendedC res10 = eflintc.log(x, b);
+        Console.WriteLine("eflintc:  {0}", res10);
+        QuadrupleC res11 = qflintc.log(x, b);
+        Console.WriteLine("qflintc:  {0}", res11);
+        OctupleC res12 = oflintc.log(x, b);
+        Console.WriteLine("oflintc:  {0}", res12);
+        MpfrC res13 = mflintc.log(x, b);
+        Console.WriteLine("mflintc:  {0}", res13);
+        ArbC res16 = aflintc.log(x, b);
+        Console.WriteLine("aflintc: {0}", res16);
+#endif
+    Console.WriteLine("</H2>");
+    Console.WriteLine();
+    } }
+    Console.WriteLine("</H1>");
+}
+
+#endregion
+
+
+#region TestLogbaseRealImag
+
+public static void TestLogbaseRealImag()
+{
+    Console.WriteLine("<H1 Title=" + "\"" + "TestLogbaseRealImag" + "\"" + ">");
+    bool[] ReImArray = {true, false};
+    Complex[] InputArray1C = {dcplx.t(-4.333, 1.0), dcplx.t(0.0, 1.0), 
+        dcplx.t(4.333, 1.0)};
+    Complex[] InputArray2C = {dcplx.t(-4.333, 1.0), dcplx.t(0.0, 1.0), 
+        dcplx.t(4.333, 1.0)};
+    foreach (Complex x in InputArray1C) {
+    foreach (Complex b in InputArray2C) {
+    foreach (var IsReal in ReImArray) {
+        string ReIm = IsReal ? "Re(" : "Im(";
+        Console.WriteLine("<H2 Title=" + "\"" + ReIm + "log(x, b)); x={0}, b={1}" 
+            + "\"" + ">", x, b);
+
+        Complex res01c = cmath53.log(x, b);
+        Double res01 = IsReal ? res01c.Real : res01c.Imaginary;
+        Console.WriteLine("cmath53:  {0}", res01);
+
+        SingleC res02c = scplx.log(x, b);
+        Single res02 = IsReal ? res02c.real : res02c.imag;
+        Console.WriteLine("  scplx:  {0}", res02);
+
+        Complex res03c = dcplx.log(x, b);
+        Double res03 = IsReal ? res03c.Real : res03c.Imaginary;
+        Console.WriteLine("  dcplx:  {0}", res03);
+
+        ExtendedC res04c = ecplx.log(x, b);
+        Extended res04 = IsReal ? res04c.real : res04c.imag;
+        Console.WriteLine("  ecplx:  {0}", res04);
+
+        QuadrupleC res05c = qcplx.log(x, b);
+        Quadruple res05 = IsReal ? res05c.real : res05c.imag;
+        Console.WriteLine("  qcplx:  {0}", res05);
+
+        OctupleC res06c = ocplx.log(x, b);
+        Octuple res06 = IsReal ? res06c.real : res06c.imag;
+        Console.WriteLine("  ocplx:  {0}", res06);
+
+#if HasArbPrecNet
+/* No syntax highlighting if HasArbPrecNet is undefined */
+        MpfrC res07c = mcplx.log(x, b);
+        Mpfr res07 = IsReal ? res07c.real : res07c.imag;
+        Console.WriteLine("  mcplx:  {0}", res07);
+
+        SingleC res08c = sflintc.log(x, b);
+        Single res08 = IsReal ? res08c.real : res08c.imag;
+        Console.WriteLine("sflintc:  {0}", res08);
+
+        Complex res09c = dflintc.log(x, b);
+        Double res09 = IsReal ? res09c.Real : res09c.Imaginary;
+        Console.WriteLine("dflintc:  {0}", res09);
+
+        ExtendedC res10c = eflintc.log(x, b);
+        Extended res10 = IsReal ? res10c.real : res10c.imag;
+        Console.WriteLine("eflintc:  {0}", res10);
+
+        QuadrupleC res11c = qflintc.log(x, b);
+        Quadruple res11 = IsReal ? res11c.real : res11c.imag;
+        Console.WriteLine("qflintc:  {0}", res11);
+
+        OctupleC res12c = oflintc.log(x, b);
+        Octuple res12 = IsReal ? res12c.real : res12c.imag;
+        Console.WriteLine("oflintc:  {0}", res12);
+
+        MpfrC res13c = mflintc.log(x, b);
+        Mpfr res13 = IsReal ? res13c.real : res13c.imag;
+        Console.WriteLine("mflintc:  {0}", res13);
+
+        ArbC res16c = aflintc.log(x, b);
+        Arb res16 = IsReal ? res16c.real : res16c.imag;
+        Console.WriteLine("aflintc: {0}", res16);
+#endif
+        Console.WriteLine("</H2>");
+        Console.WriteLine();
+    }
+    } }
+    Console.WriteLine("</H1>");
+}
+
+#endregion
+
+
+
 
 
 /* This region contains the program entry point. Do not change */
