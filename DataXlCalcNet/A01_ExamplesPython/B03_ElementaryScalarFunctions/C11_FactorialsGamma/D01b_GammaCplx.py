@@ -4,21 +4,21 @@ from xlcalcnet import math53, sreal, dreal, ereal, qreal, qcplx, oreal
 from xlcalcnet import ArbPrec, mreal
 ArbPrec.SetDps(80);
 
-ctxlist = [math53]
+ctxlist = [math53, sreal, dreal, ereal, qreal, oreal, mreal]
 
 
 def main_tests():
-    demo_real_lgamma_s()
+    demo_real_gamma()
 
 
-def demo_real_lgamma_s():
-    print('demo_real_lgamma_s: ')
+def demo_real_gamma():
+    print('demo_real_gamma: ')
     xlist = [5.1, 8.8]
     for x in xlist:
         for ctx in ctxlist:
             name = FormatName(ctx.name)
-            res = ctx.real_lgamma_s(x)
-            print(name, ': lgamma_s(x=' + str(x) + '): ', ctx.fmt(res.Item1)+',', res.Item2)
+            res = ctx.real_gamma(x)
+            print(name, ': gamma(x=' + str(x) + '): ', ctx.fmt(res))
         print()
     print()
 

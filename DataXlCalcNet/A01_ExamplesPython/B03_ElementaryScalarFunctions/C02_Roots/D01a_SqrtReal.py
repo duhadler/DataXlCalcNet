@@ -1,6 +1,4 @@
 ﻿
-# change dpm, ipm to use complex for negative numbers
-
 import time
 from xlcalcnet import gui, fpm, mpm, dpm, ipm
 if gui.has_gpm: from xlcalcnet import gpm

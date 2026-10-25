@@ -12,12 +12,12 @@ static class Program
 public static void MainTests()
 {
     Console.WriteLine("<H1 Title=" + "\"" + "Test" + "\"" + ">");
-    double[] InputArray1 = { 1.2, 2.4, 3.7, 4.8 };
-    double[] InputArray2 = { -4.333, 0.0, 4.333 };
+    int[] InputArray1 = { 13, 24, 37, 48 };
+    int[] InputArray2 = { 3, 8, 12 };
     foreach (var n in InputArray1) {
     foreach (var k in InputArray2) {
-        Double res = math53.logaddexp(n, k);
-        Console.WriteLine("math53.logaddexp(n={0}, k={1}): {2}", n, k, res);
+        Double res = math53.logbinomial(n, k);
+        Console.WriteLine("math53.logbinomial(n={0}, k={1}): {2}", n, k, res);
     } }
     Console.WriteLine("</H1>");
 }

@@ -12,93 +12,99 @@ def main_tests():
     demo_manual_cplx_short()
     demo_manual_cplx_real_part()
     demo_manual_cplx_imag_part()
-    demo_sin_cplx_ctx()
-    demo_sin_cplx_re_im_ctx()
-    demo_sin_cplx_explicit()
+    demo_pow_cplx_ctx()
+    demo_pow_cplx_re_im_ctx()
+    demo_pow_cplx_explicit()
 
 
 def demo_manual_cplx_short():
     print('<H1 Title="demo_manual_cplx_short">')
     #from xlcalcnet import *
-    x = -5.1+2j; gui.setdps(50)
-    for ctx in [fpm, mpm, cmath53, qcplx]: print(ctx.fmtname + ': ' + ctx.fmt(ctx.sin(x)))
+    x = -5.1+2j;  n = 3; gui.setdps(50)
+    for ctx in [fpm, mpm, cmath53, qcplx]: print(ctx.fmtname + ': ' + ctx.fmt(ctx.pow_si(x, n)))
     print('</H1>')
 
 
 def demo_manual_cplx_real_part():
     print('<H1 Title="demo_manual_cplx_real_part">')
     #from xlcalcnet import *
-    x = -5.1+2j; gui.setdps(90)
-    for ctx in gui.ctxlist_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.sin(x))))
+    x = -5.1+2j;  n = 3; gui.setdps(50)
+    for ctx in gui.ctxlist_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.pow_si(x, n))))
     print('</H1>')
 
 
 def demo_manual_cplx_imag_part():
     print('<H1 Title="demo_manual_cplx_imag_part">')
     #from xlcalcnet import *
-    x = -5.1+2j; gui.setdps(90)
-    for ctx in gui.ctxlist_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(ctx.sin(x))))
+    x = -5.1+2j;  n = 3; gui.setdps(90)
+    for ctx in gui.ctxlist_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(ctx.pow_si(x, n))))
     print('</H1>')
 
 
 
 
-def demo_sin_cplx_ctx():
-    print('<H1 Title="sin_cplx_ctx">')
+def demo_pow_cplx_ctx():
+    print('<H1 Title="pow_cplx_ctx">')
     xlist = [-5.1+2j, 8.8+2j]; gui.setdps(50)
+    nlist = [2, 3, 4]
     for x in xlist:
-        print('<H2 Title="sin(x); x=' + str(x) + '">')
-        for ctx in gui.ctxlist_cplx:
-            res = ctx.sin(x)
-            print(ctx.fmtname + ': ' + ctx.fmt(res))
-        print('</H2>')
-        print()
+        for n in nlist:
+            print('<H2 Title="pow_si(x, n); x=' + str(x) + ' n=' + str(n) + '">')
+            for ctx in gui.ctxlist_cplx:
+                res = ctx.pow_si(x, n)
+                print(ctx.fmtname + ': ' + ctx.fmt(res))
+            print('</H2>')
+            print()
     print('</H1>')
     print()
 
 
-def demo_sin_cplx_re_im_ctx():
-    print('<H1 Title="sin_cplx_re_im_ctx">')
+def demo_pow_cplx_re_im_ctx():
+    print('<H1 Title="pow_cplx_re_im_ctx">')
     xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
+    nlist = [2, 3, 4]
     for x in xlist:
-        print('<H2 Title="Re(sin(x)); x=' + str(x) + '">')
-        for ctx in gui.ctxlist_cplx:
-            res = ctx.sin(x)
-            print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(res)))
-        print('</H2>')
-        print()
-        print('<H2 Title="Im(sin(x)); x=' + str(x) + '">')
-        for ctx in gui.ctxlist_cplx:
-            res = ctx.sin(x)
-            print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(res)))
-        print('</H2>')
-        print()
+        for n in nlist:
+            print('<H2 Title="Re(pow_si(x, n)); x=' + str(x) + '">')
+            for ctx in gui.ctxlist_cplx:
+                res = ctx.pow_si(x, n)
+                print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(res)))
+            print('</H2>')
+            print()
+            print('<H2 Title="Im(pow_si(x, n)); x=' + str(x) + '">')
+            for ctx in gui.ctxlist_cplx:
+                res = ctx.pow_si(x, n)
+                print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(res)))
+            print('</H2>')
+            print()
     print('</H1>')
     print()
 
 
-def demo_sin_cplx_explicit():
-    print('<H1 Title="demo_sin_cplx_explicit">')
+def demo_pow_cplx_explicit():
+    print('<H1 Title="demo_pow_cplx_explicit">')
     xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
+    nlist = [2, 3, 4]
     for x in xlist:
-        print('<H2 Title="sin(x); x=' + str(x) + '">')
-        res = cmath53.sin(x); print('cmath53: ' + cmath53.fmt(res))
-        res = scplx.sin(x); print('  scplx: ' + scplx.fmt(res))
-        res = dcplx.sin(x); print('  dcplx: ' + dcplx.fmt(res))
-        res = ecplx.sin(x); print('  ecplx: ' + ecplx.fmt(res))
-        res = qcplx.sin(x); print('  qcplx: ' + qcplx.fmt(res))
-        res = ocplx.sin(x); print('  ocplx: ' + ocplx.fmt(res))
-        if gui.has_xlcalcnet2:
-            res = mcplx.sin(x); print('  mcplx: ' + mcplx.fmt(res))
-            res = sflintc.sin(x); print('sflintc: ' + sflintc.fmt(res))
-            res = dflintc.sin(x); print('dflintc: ' + dflintc.fmt(res))
-            res = eflintc.sin(x); print('eflintc: ' + eflintc.fmt(res))
-            res = qflintc.sin(x); print('qflintc: ' + qflintc.fmt(res))
-            res = oflintc.sin(x); print('oflintc: ' + oflintc.fmt(res))
-            res = mflintc.sin(x); print('mflintc: ' + mflintc.fmt(res))
-            res = aflintc.sin(x); print('aflintc: ' + aflintc.fmt(res))
-        print('</H2>')
-        print()
+        for n in nlist:
+            print('<H2 Title="pow_si(x, n); x=' + str(x) + '">')
+            res = cmath53.pow_si(x, n); print('cmath53: ' + cmath53.fmt(res))
+            res = scplx.pow_si(x, n); print('  scplx: ' + scplx.fmt(res))
+            res = dcplx.pow_si(x, n); print('  dcplx: ' + dcplx.fmt(res))
+            res = ecplx.pow_si(x, n); print('  ecplx: ' + ecplx.fmt(res))
+            res = qcplx.pow_si(x, n); print('  qcplx: ' + qcplx.fmt(res))
+            res = ocplx.pow_si(x, n); print('  ocplx: ' + ocplx.fmt(res))
+            if gui.has_xlcalcnet2:
+                res = mcplx.pow_si(x, n); print('  mcplx: ' + mcplx.fmt(res))
+                res = sflintc.pow_si(x, n); print('sflintc: ' + sflintc.fmt(res))
+                res = dflintc.pow_si(x, n); print('dflintc: ' + dflintc.fmt(res))
+                res = eflintc.pow_si(x, n); print('eflintc: ' + eflintc.fmt(res))
+                res = qflintc.pow_si(x, n); print('qflintc: ' + qflintc.fmt(res))
+                res = oflintc.pow_si(x, n); print('oflintc: ' + oflintc.fmt(res))
+                res = mflintc.pow_si(x, n); print('mflintc: ' + mflintc.fmt(res))
+                res = aflintc.pow_si(x, n); print('aflintc: ' + aflintc.fmt(res))
+            print('</H2>')
+            print()
     print('</H1>')
     print()
 

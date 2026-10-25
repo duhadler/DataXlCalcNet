@@ -12,7 +12,7 @@ static class Program
 public static void MainTests()
 {
     Console.WriteLine("<H1 Title=" + "\"" + "voigt_v(x, t)" + "\"" + ">");
-    double[] InputArray1 = { -4.333, 0.1, 4.333 };
+    double[] InputArray1 = { -4.333, 0.0, 4.333 };
     double[] InputArray2 = { 0.13, 0.21, 4.3 };
     foreach (var x in InputArray1) {
     foreach (var t in InputArray2) {

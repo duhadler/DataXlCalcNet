@@ -10,6 +10,7 @@ from xlcalcnet import math53, sreal, dreal, ereal, qreal, oreal
 
 
 def main_tests():
+    print('real expjpi(x)')
     demo_manual_real()
     demo_expjpi_real_ctx()
     demo_expjpi_real_explicit()

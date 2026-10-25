@@ -9,26 +9,27 @@ from xlcalcnet import math53, sreal, dreal, ereal, qreal, oreal
 
 
 def main_tests():
-    demo_manual_real()
-    demo_sin_real_ctx()
-    demo_sin_real_explicit()
+#    demo_manual_real()
+    demo_log10p1_real_ctx()
+    demo_log10p1_real_explicit()
 
 
 def demo_manual_real():
     print('<H1 Title="demo_manual_real">')
     #from xlcalcnet import *
-    x = -5.1; gui.setdps(90)
-    for ctx in gui.ctxlist_real: print(ctx.fmtname + ': ' + ctx.fmt(ctx.sin(x)))
+    x = 5.1; gui.setdps(90)
+    for ctx in gui.ctxlist_real: print(ctx.fmtname + ': ' + ctx.fmt(ctx.log10p1(x)))
     print('</H1>')
 
 
-def demo_sin_real_ctx():
-    print('<H1 Title="demo_sin_real_ctx">')
-    xlist = [-5.1, 8.8]; gui.setdps(90)
+def demo_log10p1_real_ctx():
+    print('<H1 Title="demo_log10p1_real_ctx">')
+    xlist = [5.1, 8.8]; gui.setdps(90)
     for x in xlist:
-        print('<H2 Title="sin(x); x=' + str(x) + '">')
+        print('<H2 Title="log10p1(x); x=' + str(x) + '">')
         for ctx in gui.ctxlist_real:
-            res = ctx.sin(x)
+#        for ctx in [ipm]:
+            res = ctx.log10p1(x)
             print(ctx.fmtname + ': ' + ctx.fmt(res))
         print('</H2>')
         print()
@@ -36,26 +37,26 @@ def demo_sin_real_ctx():
     print()
 
 
-def demo_sin_real_explicit():
-    print('<H1 Title="demo_sin_real_explicit">')
-    xlist = [-5.1, 8.8]; gui.setdps(90)
+def demo_log10p1_real_explicit():
+    print('<H1 Title="demo_log10p1_real_explicit">')
+    xlist = [5.1, 8.8]; gui.setdps(90)
     for x in xlist:
-        print('<H2 Title="sin(x); x=' + str(x) + '">')
-        res = math53.sin(x); print('math53: ' + math53.fmt(res))
-        res = sreal.sin(x); print(' sreal: ' + sreal.fmt(res))
-        res = dreal.sin(x); print(' dreal: ' + dreal.fmt(res))
-        res = ereal.sin(x); print(' ereal: ' + ereal.fmt(res))
-        res = qreal.sin(x); print(' qreal: ' + qreal.fmt(res))
-        res = oreal.sin(x); print(' oreal: ' + oreal.fmt(res))
+        print('<H2 Title="log10p1(x); x=' + str(x) + '">')
+        res = math53.log10p1(x); print('math53: ' + math53.fmt(res))
+        res = sreal.log10p1(x); print(' sreal: ' + sreal.fmt(res))
+        res = dreal.log10p1(x); print(' dreal: ' + dreal.fmt(res))
+        res = ereal.log10p1(x); print(' ereal: ' + ereal.fmt(res))
+        res = qreal.log10p1(x); print(' qreal: ' + qreal.fmt(res))
+        res = oreal.log10p1(x); print(' oreal: ' + oreal.fmt(res))
         if gui.has_xlcalcnet2:
-            res = mreal.sin(x); print(' mreal: ' + mreal.fmt(res))
-            res = sflint.sin(x); print('sflint: ' + sflint.fmt(res))
-            res = dflint.sin(x); print('dflint: ' + dflint.fmt(res))
-            res = eflint.sin(x); print('eflint: ' + eflint.fmt(res))
-            res = qflint.sin(x); print('qflint: ' + qflint.fmt(res))
-            res = oflint.sin(x); print('oflint: ' + oflint.fmt(res))
-            res = mflint.sin(x); print('mflint: ' + mflint.fmt(res))
-            res = aflint.sin(x); print('aflint: ' + aflint.fmt(res))
+            res = mreal.log10p1(x); print(' mreal: ' + mreal.fmt(res))
+            res = sflint.log10p1(x); print('sflint: ' + sflint.fmt(res))
+            res = dflint.log10p1(x); print('dflint: ' + dflint.fmt(res))
+            res = eflint.log10p1(x); print('eflint: ' + eflint.fmt(res))
+            res = qflint.log10p1(x); print('qflint: ' + qflint.fmt(res))
+            res = oflint.log10p1(x); print('oflint: ' + oflint.fmt(res))
+            res = mflint.log10p1(x); print('mflint: ' + mflint.fmt(res))
+            res = aflint.log10p1(x); print('aflint: ' + aflint.fmt(res))
         print('</H2>')
         print()
     print('</H1>')

@@ -1,8 +1,4 @@
 ﻿
-# change dpm, ipm to use complex for negative numbers
-# change cbrt so that cbrt(-8) = 2.
-# new function cuberoot for standard behaviour
-
 import time
 from xlcalcnet import gui, fpm, mpm, dpm, ipm
 if gui.has_gpm: from xlcalcnet import gpm

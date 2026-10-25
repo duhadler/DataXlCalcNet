@@ -1,7 +1,4 @@
-﻿# !!! not yet implemented
-
-
-import time
+﻿import time
 import math
 from xlcalcnet import math53, sreal, dreal, ereal, qreal, qcplx, oreal
 from xlcalcnet import ArbPrec, mreal
@@ -11,19 +8,21 @@ ctxlist = [math53, sreal, dreal, ereal, qreal, oreal, mreal]
 
 
 def main_tests():
-    demo_real_gamma()
+    demo_real_rising_factorial()
 
 
-def demo_real_gamma():
-    print('demo_real_gamma: ')
+def demo_real_rising_factorial():
+    print('demo_real_rising_factorial: ')
     xlist = [5.1, 8.8]
+    nlist = [15.1, 2.8]
     for x in xlist:
-        for ctx in ctxlist:
-            name = FormatName(ctx.name)
-            res = ctx.real_gamma(x)
-            print(name, ': gamma(x=' + str(x) + '): ', ctx.fmt(res))
+        for n in nlist:
+            for ctx in ctxlist:
+                name = FormatName(ctx.name)
+                res = ctx.real_rising_factorial(x, n)
+                print(name, ': rising_factorial(x=' + str(x) + ', n=' + str(n),'): ', ctx.fmt(res))
+            print()
         print()
-    print()
 
 
 def FormatName(name):

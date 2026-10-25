@@ -12,16 +12,16 @@ def main_tests():
     demo_manual_cplx_short()
     demo_manual_cplx_real_part()
     demo_manual_cplx_imag_part()
-    demo_sin_cplx_ctx()
-    demo_sin_cplx_re_im_ctx()
-    demo_sin_cplx_explicit()
+    demo_cube_cplx_ctx()
+    demo_cube_cplx_re_im_ctx()
+    demo_cube_cplx_explicit()
 
 
 def demo_manual_cplx_short():
     print('<H1 Title="demo_manual_cplx_short">')
     #from xlcalcnet import *
     x = -5.1+2j; gui.setdps(50)
-    for ctx in [fpm, mpm, cmath53, qcplx]: print(ctx.fmtname + ': ' + ctx.fmt(ctx.sin(x)))
+    for ctx in [fpm, mpm, cmath53, qcplx]: print(ctx.fmtname + ': ' + ctx.fmt(ctx.cube(x)))
     print('</H1>')
 
 
@@ -29,7 +29,7 @@ def demo_manual_cplx_real_part():
     print('<H1 Title="demo_manual_cplx_real_part">')
     #from xlcalcnet import *
     x = -5.1+2j; gui.setdps(90)
-    for ctx in gui.ctxlist_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.sin(x))))
+    for ctx in gui.ctxlist_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.cube(x))))
     print('</H1>')
 
 
@@ -37,19 +37,19 @@ def demo_manual_cplx_imag_part():
     print('<H1 Title="demo_manual_cplx_imag_part">')
     #from xlcalcnet import *
     x = -5.1+2j; gui.setdps(90)
-    for ctx in gui.ctxlist_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(ctx.sin(x))))
+    for ctx in gui.ctxlist_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(ctx.cube(x))))
     print('</H1>')
 
 
 
 
-def demo_sin_cplx_ctx():
-    print('<H1 Title="sin_cplx_ctx">')
+def demo_cube_cplx_ctx():
+    print('<H1 Title="cube_cplx_ctx">')
     xlist = [-5.1+2j, 8.8+2j]; gui.setdps(50)
     for x in xlist:
-        print('<H2 Title="sin(x); x=' + str(x) + '">')
+        print('<H2 Title="cube(x); x=' + str(x) + '">')
         for ctx in gui.ctxlist_cplx:
-            res = ctx.sin(x)
+            res = ctx.cube(x)
             print(ctx.fmtname + ': ' + ctx.fmt(res))
         print('</H2>')
         print()
@@ -57,19 +57,19 @@ def demo_sin_cplx_ctx():
     print()
 
 
-def demo_sin_cplx_re_im_ctx():
-    print('<H1 Title="sin_cplx_re_im_ctx">')
+def demo_cube_cplx_re_im_ctx():
+    print('<H1 Title="cube_cplx_re_im_ctx">')
     xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
     for x in xlist:
-        print('<H2 Title="Re(sin(x)); x=' + str(x) + '">')
+        print('<H2 Title="Re(cube(x)); x=' + str(x) + '">')
         for ctx in gui.ctxlist_cplx:
-            res = ctx.sin(x)
+            res = ctx.cube(x)
             print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(res)))
         print('</H2>')
         print()
-        print('<H2 Title="Im(sin(x)); x=' + str(x) + '">')
+        print('<H2 Title="Im(cube(x)); x=' + str(x) + '">')
         for ctx in gui.ctxlist_cplx:
-            res = ctx.sin(x)
+            res = ctx.cube(x)
             print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(res)))
         print('</H2>')
         print()
@@ -77,26 +77,26 @@ def demo_sin_cplx_re_im_ctx():
     print()
 
 
-def demo_sin_cplx_explicit():
-    print('<H1 Title="demo_sin_cplx_explicit">')
+def demo_cube_cplx_explicit():
+    print('<H1 Title="demo_cube_cplx_explicit">')
     xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
     for x in xlist:
-        print('<H2 Title="sin(x); x=' + str(x) + '">')
-        res = cmath53.sin(x); print('cmath53: ' + cmath53.fmt(res))
-        res = scplx.sin(x); print('  scplx: ' + scplx.fmt(res))
-        res = dcplx.sin(x); print('  dcplx: ' + dcplx.fmt(res))
-        res = ecplx.sin(x); print('  ecplx: ' + ecplx.fmt(res))
-        res = qcplx.sin(x); print('  qcplx: ' + qcplx.fmt(res))
-        res = ocplx.sin(x); print('  ocplx: ' + ocplx.fmt(res))
+        print('<H2 Title="cube(x); x=' + str(x) + '">')
+        res = cmath53.cube(x); print('cmath53: ' + cmath53.fmt(res))
+        res = scplx.cube(x); print('  scplx: ' + scplx.fmt(res))
+        res = dcplx.cube(x); print('  dcplx: ' + dcplx.fmt(res))
+        res = ecplx.cube(x); print('  ecplx: ' + ecplx.fmt(res))
+        res = qcplx.cube(x); print('  qcplx: ' + qcplx.fmt(res))
+        res = ocplx.cube(x); print('  ocplx: ' + ocplx.fmt(res))
         if gui.has_xlcalcnet2:
-            res = mcplx.sin(x); print('  mcplx: ' + mcplx.fmt(res))
-            res = sflintc.sin(x); print('sflintc: ' + sflintc.fmt(res))
-            res = dflintc.sin(x); print('dflintc: ' + dflintc.fmt(res))
-            res = eflintc.sin(x); print('eflintc: ' + eflintc.fmt(res))
-            res = qflintc.sin(x); print('qflintc: ' + qflintc.fmt(res))
-            res = oflintc.sin(x); print('oflintc: ' + oflintc.fmt(res))
-            res = mflintc.sin(x); print('mflintc: ' + mflintc.fmt(res))
-            res = aflintc.sin(x); print('aflintc: ' + aflintc.fmt(res))
+            res = mcplx.cube(x); print('  mcplx: ' + mcplx.fmt(res))
+            res = sflintc.cube(x); print('sflintc: ' + sflintc.fmt(res))
+            res = dflintc.cube(x); print('dflintc: ' + dflintc.fmt(res))
+            res = eflintc.cube(x); print('eflintc: ' + eflintc.fmt(res))
+            res = qflintc.cube(x); print('qflintc: ' + qflintc.fmt(res))
+            res = oflintc.cube(x); print('oflintc: ' + oflintc.fmt(res))
+            res = mflintc.cube(x); print('mflintc: ' + mflintc.fmt(res))
+            res = aflintc.cube(x); print('aflintc: ' + aflintc.fmt(res))
         print('</H2>')
         print()
     print('</H1>')

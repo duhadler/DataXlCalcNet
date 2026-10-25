@@ -15,8 +15,8 @@ public static void MainTests()
     Console.WriteLine("<H1 Title=" + "\"" + "real: acotc" + "\"" + ">");
     double[] InputArray1 = { -4.333, 0.0, 4.333 };
     foreach (var x in InputArray1) {
-        Complex res = cmath53.acotc(x);
-        Console.WriteLine("cmath53.acotc(x={0}): {1}", x, res);
+        Double res = math53.acotc(x);
+        Console.WriteLine("math53.acotc(x={0}): {1}", x, res);
     }
     Console.WriteLine("</H1>");
 

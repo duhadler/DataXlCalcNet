@@ -9,6 +9,7 @@ from xlcalcnet import math53, sreal, dreal, ereal, qreal, oreal
 
 
 def main_tests():
+    print('real expm1(x)')
     demo_manual_real()
     demo_expm1_real_ctx()
     demo_expm1_real_explicit()

@@ -1,27 +1,24 @@
-﻿# math53 needs to change from int to double
-
-import time
+﻿import time
 import math
 from xlcalcnet import math53, sreal, dreal, ereal, qreal, qcplx, oreal
 from xlcalcnet import ArbPrec, mreal
 ArbPrec.SetDps(80);
 
-#ctxlist = [math53, sreal, dreal, ereal, qreal, oreal, mreal]
-ctxlist = [math53]
+ctxlist = [math53, sreal, dreal, ereal, qreal, oreal, mreal]
 
 
 def main_tests():
-    demo_real_logfactorial()
+    demo_real_lgamma()
 
 
-def demo_real_logfactorial():
-    print('demo_real_factorial: ')
-    xlist = [5, 8]
+def demo_real_lgamma():
+    print('demo_real_lgamma: ')
+    xlist = [5.1, 8.8]
     for x in xlist:
         for ctx in ctxlist:
             name = FormatName(ctx.name)
-            res = ctx.real_logfactorial(x)
-            print(name, ': logfactorial(x=' + str(x) + '): ', ctx.fmt(res))
+            res = ctx.real_lgamma(x)
+            print(name, ': lgamma(x=' + str(x) + '): ', ctx.fmt(res))
         print()
     print()
 

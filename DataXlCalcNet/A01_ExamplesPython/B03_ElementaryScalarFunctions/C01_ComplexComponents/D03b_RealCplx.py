@@ -1,134 +1,108 @@
 ﻿
-dps = 40; ctx2 = []
 import time
-from xlcalcnet import use_gpm, use_apm, use_xlcalcnet2
-
+from xlcalcnet import gui, fpm, mpm, dpm, ipm
+if gui.has_gpm: from xlcalcnet import gpm
+if gui.has_apm: from xlcalcnet import apm
+if gui.has_xlcalcnet2: from xlcalcnet import ArbPrec, mcplx, sflintc, dflintc, \
+    eflintc, qflintc, oflintc, mflintc, aflintc
 from xlcalcnet import cmath53, scplx, dcplx, ecplx, qcplx, ocplx
-ctx1 = [cmath53, scplx, dcplx, ecplx, qcplx, ocplx]
-
-from xlcalcnet import fpm, mpm, dpm, ipm
-ctx3 = [fpm, mpm, dpm, ipm]
-mpm.dps = dpm.dps = ipm.dps = dps
-
-if use_gpm:
-    from xlcalcnet import gpm
-    gpm.dps = dps
-    ctx3.append(gpm)
-
-if use_apm:
-    from xlcalcnet import apm
-    apm.dps = dps
-    ctx3.append(apm)
-
-if use_xlcalcnet2:
-    from xlcalcnet import ArbPrec, mcplx, sflintc, dflintc, eflintc, qflintc, \
-        oflintc, mflintc, aflintc
-    ctx2 = [mcplx, sflintc, dflintc, eflintc, qflintc, oflintc, mflintc, \
-            aflintc]
-    ArbPrec.SetDps(dps);
-
-ctxlist = ctx1 + ctx2 + ctx3
 
 
 def main_tests():
-    """ A doc string """
-    demo_real_cplx()
-    demo_real_cplx_ctx()
-    demo_real_cplx_re_im_ctx()
-    demo_real_cplx_mpm_ctx()
+    demo_manual_cplx_short()
+    demo_manual_cplx_real_part()
+    demo_manual_cplx_imag_part()
+    demo_cot_cplx_ctx()
+    demo_cot_cplx_re_im_ctx()
+    demo_cot_cplx_explicit()
+
+
+def demo_manual_cplx_short():
+    print('<H1 Title="demo_manual_cplx_short">')
+    #from xlcalcnet import *
+    x = -5.1+2j; gui.setdps(50)
+    for ctx in [fpm, mpm, cmath53, qcplx]: print(ctx.fmtname + ': ' + ctx.fmt(ctx.real(x)))
+    print('</H1>')
+
+
+def demo_manual_cplx_real_part():
+    print('<H1 Title="demo_manual_cplx_real_part">')
+    #from xlcalcnet import *
+    x = -5.1+2j; gui.setdps(90)
+    for ctx in gui.ctxlist_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.real(x))))
+    print('</H1>')
+
+
+def demo_manual_cplx_imag_part():
+    print('<H1 Title="demo_manual_cplx_imag_part">')
+    #from xlcalcnet import *
+    x = -5.1+2j; gui.setdps(90)
+    for ctx in gui.ctxlist_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(ctx.real(x))))
+    print('</H1>')
 
 
 
-def demo_real_cplx():
-    print('<H1 Title="real_cplx">')
-    xlist = [-5.1+2j, 8.8+2j]
+
+def demo_cot_cplx_ctx():
+    print('<H1 Title="cot_cplx_ctx">')
+    xlist = [-5.1+2j, 8.8+2j]; gui.setdps(50)
     for x in xlist:
-        res = cmath53.real(x)
-        print('cmath53: real(x=' + str(x) + '): ' + cmath53.fmt(res))
-        res = scplx.real(x)
-        print('  scplx: real(x=' + str(x) + '): ' + scplx.fmt(res))
-        res = dcplx.real(x)
-        print('  dcplx: real(x=' + str(x) + '): ' + dcplx.fmt(res))
-        res = ecplx.real(x)
-        print('  ecplx: real(x=' + str(x) + '): ' + ecplx.fmt(res))
-        res = qcplx.real(x)
-        print('  qcplx: real(x=' + str(x) + '): ' + qcplx.fmt(res))
-        res = ocplx.real(x)
-        print('  ocplx: real(x=' + str(x) + '): ' + ocplx.fmt(res))
-
-        if use_xlcalcnet2:
-            res = mcplx.real(x)
-            print('  mcplx: real(x=' + str(x) + '): ' + mcplx.fmt(res))
-            res = sflintc.real(x)
-            print('sflintc: real(x=' + str(x) + '): ' + sflintc.fmt(res))
-            res = dflintc.real(x)
-            print('dflintc: real(x=' + str(x) + '): ' + dflintc.fmt(res))
-            res = eflintc.real(x)
-            print('eflintc: real(x=' + str(x) + '): ' + eflintc.fmt(res))
-            res = qflintc.real(x)
-            print('qflintc: real(x=' + str(x) + '): ' + qflintc.fmt(res))
-            res = oflintc.real(x)
-            print('oflintc: real(x=' + str(x) + '): ' + oflintc.fmt(res))
-            res = mflintc.real(x)
-            print('mflintc: real(x=' + str(x) + '): ' + mflintc.fmt(res))
-            res = aflintc.real(x)
-            print('aflintc: real(x=' + str(x) + '): ' + aflintc.fmt(res))
+        print('<H2 Title="cot(x); x=' + str(x) + '">')
+        for ctx in gui.ctxlist_cplx:
+            res = ctx.real(x)
+            print(ctx.fmtname + ': ' + ctx.fmt(res))
+        print('</H2>')
         print()
     print('</H1>')
     print()
 
 
-def demo_real_cplx_ctx():
-    print('<H1 Title="real_cplx_ctx">')
-    xlist = [-5.1+2j, 8.8+2j]
+def demo_cot_cplx_re_im_ctx():
+    print('<H1 Title="cot_cplx_re_im_ctx">')
+    xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
     for x in xlist:
-        for ctx in ctxlist:
-            name = FormatCtxNameC(ctx.name)
+        print('<H2 Title="Re(cot(x)); x=' + str(x) + '">')
+        for ctx in gui.ctxlist_cplx:
             res = ctx.real(x)
-            print(name + ': real(x=' + str(x) + '): ' + ctx.fmt(res))
+            print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(res)))
+        print('</H2>')
+        print()
+        print('<H2 Title="Im(cot(x)); x=' + str(x) + '">')
+        for ctx in gui.ctxlist_cplx:
+            res = ctx.real(x)
+            print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(res)))
+        print('</H2>')
         print()
     print('</H1>')
     print()
 
 
-def demo_real_cplx_re_im_ctx():
-    print('<H1 Title="real_cplx_re_im_ctx">')
-    xlist = [-5.1+2j, 8.8+2j]
+def demo_cot_cplx_explicit():
+    print('<H1 Title="demo_cot_cplx_explicit">')
+    xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
     for x in xlist:
-        for ctx in ctxlist:
-            name = FormatCtxNameC(ctx.name)
-            res = ctx.real(x)
-            print(name + ': Re(real(x=' + str(x) + ')): ' + \
-                    ctx.realctx.fmt(ctx.real(res)))
-        print()
-        for ctx in ctxlist:
-            name = FormatCtxNameC(ctx.name)
-            res = ctx.real(x)
-            print(name + ': Im(real(x=' + str(x) + ')): ' + \
-                    ctx.realctx.fmt(ctx.imag(res)))
+        print('<H2 Title="cot(x); x=' + str(x) + '">')
+        res = cmath53.real(x); print('cmath53: ' + cmath53.fmt(res))
+        res = scplx.real(x); print('  scplx: ' + scplx.fmt(res))
+        res = dcplx.real(x); print('  dcplx: ' + dcplx.fmt(res))
+        res = ecplx.real(x); print('  ecplx: ' + ecplx.fmt(res))
+        res = qcplx.real(x); print('  qcplx: ' + qcplx.fmt(res))
+        res = ocplx.real(x); print('  ocplx: ' + ocplx.fmt(res))
+        if gui.has_xlcalcnet2:
+            res = mcplx.real(x); print('  mcplx: ' + mcplx.fmt(res))
+            res = sflintc.real(x); print('sflintc: ' + sflintc.fmt(res))
+            res = dflintc.real(x); print('dflintc: ' + dflintc.fmt(res))
+            res = eflintc.real(x); print('eflintc: ' + eflintc.fmt(res))
+            res = qflintc.real(x); print('qflintc: ' + qflintc.fmt(res))
+            res = oflintc.real(x); print('oflintc: ' + oflintc.fmt(res))
+            res = mflintc.real(x); print('mflintc: ' + mflintc.fmt(res))
+            res = aflintc.real(x); print('aflintc: ' + aflintc.fmt(res))
+        print('</H2>')
         print()
     print('</H1>')
     print()
 
 
-def demo_real_cplx_mpm_ctx():
-    print('<H1 Title="real_cplx_mpm_ctx">')
-    xlist = [-5.1+2j, 8.8+2j]
-    for x in xlist:
-        for ctx in ctx3:
-            res = ctx.real(x)
-            print(ctx.name + ': real(x=' + str(x) + '): ' + str(res))
-        print()
-    print()
-
-
-
-
-def FormatCtxNameC(name):
-    if (len(name)==3): name = '    ' + name
-    if (len(name)==4): name = '   ' + name
-    if (len(name)==5): name = '  ' + name
-    return name
 
 
 try:
@@ -137,6 +111,7 @@ try:
         main_tests()
         end0 = time.time()
         print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
+
 
 except Exception:
     import traceback

@@ -9,6 +9,7 @@ from xlcalcnet import cmath53, scplx, dcplx, ecplx, qcplx, ocplx
 
 
 def main_tests():
+    print('cplx exp2m1(x)')
     demo_manual_cplx_short()
     demo_manual_cplx_real_part()
     demo_manual_cplx_imag_part()

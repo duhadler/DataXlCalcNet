@@ -13,7 +13,7 @@ public static void MainTests()
 {
     Console.WriteLine("<H1 Title=" + "\"" + "Test" + "\"" + ">");
     double[] InputArray1 = { 1.2, 2.4, 3.7, 4.8 };
-    double[] InputArray2 = { -4.333, 0.0, 4.333 };
+    double[] InputArray2 = { -4.333, 0.1, 4.333 };
     foreach (var x in InputArray1) {
     foreach (var y in InputArray2) {
         Double res = math53.logbeta(x, y);

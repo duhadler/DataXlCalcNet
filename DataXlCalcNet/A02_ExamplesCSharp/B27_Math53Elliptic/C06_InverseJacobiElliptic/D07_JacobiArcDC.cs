@@ -17,7 +17,7 @@ public static void MainTests()
     foreach (var x in InputArray1) {
     foreach (var k in InputArray2) {
         Double res = math53.jacobi_arcdc(x, k);
-        Console.WriteLine("math53.jacobi_arcdc(x={0}, x={1}): {2}", x, k, res);
+        Console.WriteLine("math53.jacobi_arcdc(x={0}, k={1}): {2}", x, k, res);
     } }
     Console.WriteLine("</H1>");
 }
