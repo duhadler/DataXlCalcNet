@@ -1,37 +1,117 @@
-﻿import time
-import math
-from xlcalcnet import math53, sreal, dreal, ereal, qreal, qcplx, oreal
-from xlcalcnet import ArbPrec, mreal
-ArbPrec.SetDps(80);
-
-ctxlist = [math53, sreal, dreal, ereal, qreal, oreal, mreal]
+﻿
+import time
+from xlcalcnet import gui, fpm, mpm, dpm, ipm
+if gui.has_gpm: from xlcalcnet import gpm
+if gui.has_apm: from xlcalcnet import apm
+if gui.has_xlcalcnet2: from xlcalcnet import ArbPrec, mcplx, sflintc, dflintc, \
+    eflintc, qflintc, oflintc, mflintc, aflintc
+from xlcalcnet import cmath53, scplx, dcplx, ecplx, qcplx, ocplx
 
 
 def main_tests():
-    demo_real_rising_factorial()
+    demo_manual_cplx_short()
+    demo_manual_cplx_real_part()
+    demo_manual_cplx_imag_part()
+    demo_rising_factorial_cplx_ctx()
+    demo_rising_factorial_cplx_re_im_ctx()
+    demo_rising_factorial_cplx_explicit()
 
 
-def demo_real_rising_factorial():
-    print('demo_real_rising_factorial: ')
-    xlist = [5.1, 8.8]
-    nlist = [15.1, 2.8]
+def demo_manual_cplx_short():
+    print('<H1 Title="demo_manual_cplx_short">')
+    #from xlcalcnet import *
+    x = -5.1+2j;  y = 2.7+3j; gui.setdps(50)
+    for ctx in [fpm, mpm, cmath53]: print(ctx.fmtname + ': ' + ctx.fmt(ctx.rising_factorial(x, y)))
+    print('</H1>')
+
+
+def demo_manual_cplx_real_part():
+    print('<H1 Title="demo_manual_cplx_real_part">')
+    #from xlcalcnet import *
+    x = -5.1+2j;  y = 2.7+3j; gui.setdps(90)
+    for ctx in gui.ctxlist_noboost_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.rising_factorial(x, y))))
+    print('</H1>')
+
+
+def demo_manual_cplx_imag_part():
+    print('<H1 Title="demo_manual_cplx_imag_part">')
+    #from xlcalcnet import *
+    x = -5.1+2j;  y = 2.7+3j; gui.setdps(90)
+    for ctx in gui.ctxlist_noboost_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(ctx.rising_factorial(x, y))))
+    print('</H1>')
+
+
+
+
+def demo_rising_factorial_cplx_ctx():
+    print('<H1 Title="rising_factorial_cplx_ctx">')
+    xlist = [-5.1+2j, 8.8+2j]; gui.setdps(50)
+    ylist = [1.5+3j, 2.7+3j];
     for x in xlist:
-        for n in nlist:
-            for ctx in ctxlist:
-                name = FormatName(ctx.name)
-                res = ctx.real_rising_factorial(x, n)
-                print(name, ': rising_factorial(x=' + str(x) + ', n=' + str(n),'): ', ctx.fmt(res))
+        for y in ylist:
+            print('<H2 Title="rising_factorial(x, y); x=' + str(x) + ' y=' + str(y) + '">')
+            for ctx in gui.ctxlist_noboost_cplx:
+                res = ctx.rising_factorial(x, y)
+                print(ctx.fmtname + ': ' + ctx.fmt(res))
+            print('</H2>')
             print()
-        print()
+    print('</H1>')
+    print()
 
 
-def FormatName(name):
-    if (len(name)==5): name = ' ' + name
-    return name
+def demo_rising_factorial_cplx_re_im_ctx():
+    print('<H1 Title="rising_factorial_cplx_re_im_ctx">')
+    xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
+    ylist = [1.5+23, 2.7+3j];
+    for x in xlist:
+        for y in ylist:
+            print('<H2 Title="Re(rising_factorial(x, y)); x=' + str(x) + '">')
+            for ctx in gui.ctxlist_noboost_cplx:
+                res = ctx.rising_factorial(x, y)
+                print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(res)))
+            print('</H2>')
+            print()
+            print('<H2 Title="Im(rising_factorial(x, y)); x=' + str(x) + '">')
+            for ctx in gui.ctxlist_noboost_cplx:
+                res = ctx.rising_factorial(x, y)
+                print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(res)))
+            print('</H2>')
+            print()
+    print('</H1>')
+    print()
+
+
+def demo_rising_factorial_cplx_explicit():
+    print('<H1 Title="demo_rising_factorial_cplx_explicit">')
+    xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
+    ylist = [1.5+3j, 2.7+3j];
+    for x in xlist:
+        for y in ylist:
+            print('<H2 Title="rising_factorial(x, y); x=' + str(x) + '">')
+            res = cmath53.rising_factorial(x, y); print('cmath53: ' + cmath53.fmt(res))
+            if gui.has_xlcalcnet2:
+                res = sflintc.rising_factorial(x, y); print('sflintc: ' + sflintc.fmt(res))
+                res = dflintc.rising_factorial(x, y); print('dflintc: ' + dflintc.fmt(res))
+                res = eflintc.rising_factorial(x, y); print('eflintc: ' + eflintc.fmt(res))
+                res = qflintc.rising_factorial(x, y); print('qflintc: ' + qflintc.fmt(res))
+                res = oflintc.rising_factorial(x, y); print('oflintc: ' + oflintc.fmt(res))
+                res = mflintc.rising_factorial(x, y); print('mflintc: ' + mflintc.fmt(res))
+                res = aflintc.rising_factorial(x, y); print('aflintc: ' + aflintc.fmt(res))
+            print('</H2>')
+            print()
+    print('</H1>')
+    print()
+
+
 
 
 try:
-    main_tests()
+    if __name__ == '__main__':
+        start0 = time.time()
+        main_tests()
+        end0 = time.time()
+        print('Elapsed time:', format(end0 - start0, '.4g'), 'seconds' )
+
 
 except Exception:
     import traceback

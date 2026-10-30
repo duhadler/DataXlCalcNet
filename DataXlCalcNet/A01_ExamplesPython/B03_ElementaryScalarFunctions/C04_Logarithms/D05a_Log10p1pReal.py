@@ -28,7 +28,6 @@ def demo_log10p1_real_ctx():
     for x in xlist:
         print('<H2 Title="log10p1(x); x=' + str(x) + '">')
         for ctx in gui.ctxlist_real:
-#        for ctx in [ipm]:
             res = ctx.log10p1(x)
             print(ctx.fmtname + ': ' + ctx.fmt(res))
         print('</H2>')

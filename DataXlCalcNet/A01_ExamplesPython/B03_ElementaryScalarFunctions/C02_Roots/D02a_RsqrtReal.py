@@ -10,23 +10,23 @@ from xlcalcnet import math53, sreal, dreal, ereal, qreal, oreal
 
 def main_tests():
     demo_manual_real()
-    demo_cot_real_ctx()
-    demo_cot_real_explicit()
+    demo_rsqrt_real_ctx()
+    demo_rsqrt_real_explicit()
 
 
 def demo_manual_real():
     print('<H1 Title="demo_manual_real">')
     #from xlcalcnet import *
-    x = -5.1; gui.setdps(90)
+    x = 5.1; gui.setdps(90)
     for ctx in gui.ctxlist_real: print(ctx.fmtname + ': ' + ctx.fmt(ctx.rsqrt(x)))
     print('</H1>')
 
 
-def demo_cot_real_ctx():
-    print('<H1 Title="demo_cot_real_ctx">')
+def demo_rsqrt_real_ctx():
+    print('<H1 Title="demo_rsqrt_real_ctx">')
     xlist = [-5.1, 8.8]; gui.setdps(90)
     for x in xlist:
-        print('<H2 Title="cot(x); x=' + str(x) + '">')
+        print('<H2 Title="rsqrt(x); x=' + str(x) + '">')
         for ctx in gui.ctxlist_real:
             res = ctx.rsqrt(x)
             print(ctx.fmtname + ': ' + ctx.fmt(res))
@@ -36,11 +36,11 @@ def demo_cot_real_ctx():
     print()
 
 
-def demo_cot_real_explicit():
-    print('<H1 Title="demo_cot_real_explicit">')
+def demo_rsqrt_real_explicit():
+    print('<H1 Title="demo_rsqrt_real_explicit">')
     xlist = [-5.1, 8.8]; gui.setdps(90)
     for x in xlist:
-        print('<H2 Title="cot(x); x=' + str(x) + '">')
+        print('<H2 Title="rsqrt(x); x=' + str(x) + '">')
         res = math53.rsqrt(x); print('math53: ' + math53.fmt(res))
         res = sreal.rsqrt(x); print(' sreal: ' + sreal.fmt(res))
         res = dreal.rsqrt(x); print(' dreal: ' + dreal.fmt(res))

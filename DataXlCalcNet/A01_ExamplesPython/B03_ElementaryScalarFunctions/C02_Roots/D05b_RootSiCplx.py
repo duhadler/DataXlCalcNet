@@ -20,7 +20,7 @@ def main_tests():
 def demo_manual_cplx_short():
     print('<H1 Title="demo_manual_cplx_short">')
     #from xlcalcnet import *
-    x = -5.1+2j;  n = 3; gui.setdps(50)
+    x = -5.1+2j;  n = 3; gui.setdps(40)
     for ctx in [fpm, mpm, cmath53, qcplx]: print(ctx.fmtname + ': ' + ctx.fmt(ctx.root_si(x, n)))
     print('</H1>')
 
@@ -28,7 +28,7 @@ def demo_manual_cplx_short():
 def demo_manual_cplx_real_part():
     print('<H1 Title="demo_manual_cplx_real_part">')
     #from xlcalcnet import *
-    x = -5.1+2j;  n = 3; gui.setdps(50)
+    x = -5.1+2j;  n = 3; gui.setdps(90)
     for ctx in gui.ctxlist_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.root_si(x, n))))
     print('</H1>')
 

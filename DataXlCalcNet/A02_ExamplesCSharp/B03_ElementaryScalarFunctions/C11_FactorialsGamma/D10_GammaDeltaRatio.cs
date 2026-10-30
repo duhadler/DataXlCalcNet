@@ -1,8 +1,7 @@
 ﻿
+#region Usings
 /* If defined includes code requiring ArbPrecNet. Is set automatically */
 #define HasArbPrecNet
-
-#region Usings
 using System;
 using System.Numerics;
 using FixedPrecNet;
@@ -18,61 +17,165 @@ static class Program
 
 public static void MainTests()
 {
-    Test_Real_Gamma_Delta_Ratio();
+#if HasArbPrecNet
+/* No syntax highlighting if HasArbPrecNet is undefined */
+    ArbPrec.SetDps(80);
+#endif
+    TestGammaDeltaRatioReal();
+    TestGammaDeltaRatioCplx();
+    TestGammaDeltaRatioRealImag();
 }
 
 
-#region Test_Real_Gamma_Delta_Ratio
+#region TestGammaDeltaRatioReal
 
-public static void Test_Real_Gamma_Delta_Ratio()
+public static void TestGammaDeltaRatioReal()
 {
-    Console.WriteLine("<H1 Title=" + "\"" + "Test_Real_Gamma_Delta_Ratio" + "\"" + ">");
-
-#if HasArbPrecNet
-/* No syntax highlighting if HasArbPrecNet is undefined */
-    ArbPrec.SetDps(40);
-#endif
-
-    Double[] InputArray1 = { -4.333d, 0.0d, 1.0d, 1.5d, 4.333d };
-    Double[] InputArray2 = { -4.333d, 0.0d, 1.0d, 1.5d, 4.333d };
+    Console.WriteLine("<H1 Title=" + "\"" + "TestGammaDeltaRatioReal" + "\"" + ">");
+//    Double[] InputArray1 = { -4.333, 0.0, 4.333000001 };
+//    Double[] InputArray2 = { -4.333, 0.0, 4.333 };
+    Double[] InputArray1 = {0.0, 4.333000001 };
+    Double[] InputArray2 = {4.333 };
     foreach (Double x in InputArray1) {
     foreach (Double y in InputArray2) {
-        Console.WriteLine("<H2 Title=" + "\"" + "x={0}, y={1}" + "\"" + ">", 
-            x, y);
+        Console.WriteLine("<H2 Title=" + "\"" + "gamma_delta_ratio(x, y); x={0}, y={1}" 
+            + "\"" + ">", x, y);
         Double res01 = math53.gamma_delta_ratio(x, y);
-        Console.WriteLine("math53: gamma_delta_ratio(x, y) =  {0}", res01);
+        Console.WriteLine("math53:  {0}", res01);
         Single res02 = sreal.gamma_delta_ratio(x, y);
-        Console.WriteLine(" sreal: gamma_delta_ratio(x, y) =  {0}", res02);
+        Console.WriteLine(" sreal:  {0}", res02);
         Double res03 = dreal.gamma_delta_ratio(x, y);
-        Console.WriteLine(" dreal: gamma_delta_ratio(x, y) =  {0}", res03);
+        Console.WriteLine(" dreal:  {0}", res03);
         Extended res04 = ereal.gamma_delta_ratio(x, y);
-        Console.WriteLine(" ereal: gamma_delta_ratio(x, y) =  {0}", res04);
+        Console.WriteLine(" ereal:  {0}", res04);
         Quadruple res05 = qreal.gamma_delta_ratio(x, y);
-        Console.WriteLine(" qreal: gamma_delta_ratio(x, y) =  {0}", res05);
+        Console.WriteLine(" qreal:  {0}", res05);
         Octuple res06 = oreal.gamma_delta_ratio(x, y);
-        Console.WriteLine(" oreal: gamma_delta_ratio(x, y) =  {0}", res06);
-
+        Console.WriteLine(" oreal:  {0}", res06);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
         Mpfr res07 = mreal.gamma_delta_ratio(x, y);
-        Console.WriteLine(" mreal: gamma_delta_ratio(x, y) =  {0}", res07);
-//        Single res08 = sflint.gamma_delta_ratio(x, y);
-//        Console.WriteLine("sflint: gamma_delta_ratio(x, y) =  {0}", res08);
-//        Double res09 = dflint.gamma_delta_ratio(x, y);
-//        Console.WriteLine("dflint: gamma_delta_ratio(x, y) =  {0}", res09);
-//        Extended res10 = eflint.gamma_delta_ratio(x, y);
-//        Console.WriteLine("eflint: gamma_delta_ratio(x, y) =  {0}", res10);
-//        Quadruple res11 = qflint.gamma_delta_ratio(x, y);
-//        Console.WriteLine("qflint: gamma_delta_ratio(x, y) =  {0}", res11);
-//        Octuple res12 = oflint.gamma_delta_ratio(x, y);
-//        Console.WriteLine("oflint: gamma_delta_ratio(x, y) =  {0}", res12);
-//        Mpfr res13 = mflint.gamma_delta_ratio(x, y);
-//        Console.WriteLine("mflint: gamma_delta_ratio(x, y) =  {0}", res13);
-//        Arb res16 = aflint.gamma_delta_ratio(x, y);
-//        Console.WriteLine("aflint: gamma_delta_ratio(x, y) = {0}", res16);
+        Console.WriteLine(" mreal:  {0}", res07);
+        Single res08 = sflint.gamma_delta_ratio(x, y);
+        Console.WriteLine("sflint:  {0}", res08);
+        Double res09 = dflint.gamma_delta_ratio(x, y);
+        Console.WriteLine("dflint:  {0}", res09);
+        Extended res10 = eflint.gamma_delta_ratio(x, y);
+        Console.WriteLine("eflint:  {0}", res10);
+        Quadruple res11 = qflint.gamma_delta_ratio(x, y);
+        Console.WriteLine("qflint:  {0}", res11);
+        Octuple res12 = oflint.gamma_delta_ratio(x, y);
+        Console.WriteLine("oflint:  {0}", res12);
+        Mpfr res13 = mflint.gamma_delta_ratio(x, y);
+        Console.WriteLine("mflint:  {0}", res13);
+        Arb res16 = aflint.gamma_delta_ratio(x, y);
+        Console.WriteLine("aflint: {0}", res16);
 #endif
-    Console.WriteLine();
     Console.WriteLine("</H2>");
+    Console.WriteLine();
+    } }
+    Console.WriteLine("</H1>");
+}
+
+#endregion
+
+
+#region TestGammaDeltaRatioCplx
+
+public static void TestGammaDeltaRatioCplx()
+{
+    Console.WriteLine("<H1 Title=" + "\"" + "TestGammaDeltaRatioCplx" + "\"" + ">");
+    Complex[] InputArray1C = {dcplx.t(-4.333, 1.0), dcplx.t(0.0, 1.0), 
+        dcplx.t(4.333, 1.0)};
+    Complex[] InputArray2C = {dcplx.t(-4.333, 1.0), dcplx.t(0.0, 1.0), 
+        dcplx.t(4.333, 1.0)};
+    foreach (Complex x in InputArray1C) {
+    foreach (Complex y in InputArray2C) {
+        Console.WriteLine("<H2 Title=" + "\"" + "gamma_delta_ratio(x, y); x={0}, y={1}" 
+        + "\"" + ">", x, y);
+        Complex res01 = cmath53.gamma_delta_ratio(x, y);
+        Console.WriteLine("cmath53:  {0}", res01);
+#if HasArbPrecNet
+/* No syntax highlighting if HasArbPrecNet is undefined */
+        SingleC res08 = sflintc.gamma_delta_ratio(x, y);
+        Console.WriteLine("sflintc:  {0}", res08);
+        Complex res09 = dflintc.gamma_delta_ratio(x, y);
+        Console.WriteLine("dflintc:  {0}", res09);
+        ExtendedC res10 = eflintc.gamma_delta_ratio(x, y);
+        Console.WriteLine("eflintc:  {0}", res10);
+        QuadrupleC res11 = qflintc.gamma_delta_ratio(x, y);
+        Console.WriteLine("qflintc:  {0}", res11);
+        OctupleC res12 = oflintc.gamma_delta_ratio(x, y);
+        Console.WriteLine("oflintc:  {0}", res12);
+        MpfrC res13 = mflintc.gamma_delta_ratio(x, y);
+        Console.WriteLine("mflintc:  {0}", res13);
+        ArbC res16 = aflintc.gamma_delta_ratio(x, y);
+        Console.WriteLine("aflintc: {0}", res16);
+#endif
+    Console.WriteLine("</H2>");
+    Console.WriteLine();
+    } }
+    Console.WriteLine("</H1>");
+}
+
+#endregion
+
+
+#region TestGammaDeltaRatioRealImag
+
+public static void TestGammaDeltaRatioRealImag()
+{
+    Console.WriteLine("<H1 Title=" + "\"" + "TestGammaDeltaRatioRealImag" + "\"" + ">");
+    bool[] ReImArray = {true, false};
+    Complex[] InputArray1C = {dcplx.t(-4.333, 1.0), dcplx.t(0.0, 1.0), 
+        dcplx.t(4.333, 1.0)};
+    Complex[] InputArray2C = {dcplx.t(-4.333, 1.0), dcplx.t(0.0, 1.0), 
+        dcplx.t(4.333, 1.0)};
+    foreach (Complex x in InputArray1C) {
+    foreach (Complex y in InputArray2C) {
+    foreach (var IsReal in ReImArray) {
+        string ReIm = IsReal ? "Re(" : "Im(";
+        Console.WriteLine("<H2 Title=" + "\"" + ReIm + "gamma_delta_ratio(x, y)); x={0}, y={1}" 
+            + "\"" + ">", x, y);
+
+        Complex res01c = cmath53.gamma_delta_ratio(x, y);
+        Double res01 = IsReal ? res01c.Real : res01c.Imaginary;
+        Console.WriteLine("cmath53:  {0}", res01);
+
+#if HasArbPrecNet
+/* No syntax highlighting if HasArbPrecNet is undefined */
+
+        SingleC res08c = sflintc.gamma_delta_ratio(x, y);
+        Single res08 = IsReal ? res08c.real : res08c.imag;
+        Console.WriteLine("sflintc:  {0}", res08);
+
+        Complex res09c = dflintc.gamma_delta_ratio(x, y);
+        Double res09 = IsReal ? res09c.Real : res09c.Imaginary;
+        Console.WriteLine("dflintc:  {0}", res09);
+
+        ExtendedC res10c = eflintc.gamma_delta_ratio(x, y);
+        Extended res10 = IsReal ? res10c.real : res10c.imag;
+        Console.WriteLine("eflintc:  {0}", res10);
+
+        QuadrupleC res11c = qflintc.gamma_delta_ratio(x, y);
+        Quadruple res11 = IsReal ? res11c.real : res11c.imag;
+        Console.WriteLine("qflintc:  {0}", res11);
+
+        OctupleC res12c = oflintc.gamma_delta_ratio(x, y);
+        Octuple res12 = IsReal ? res12c.real : res12c.imag;
+        Console.WriteLine("oflintc:  {0}", res12);
+
+        MpfrC res13c = mflintc.gamma_delta_ratio(x, y);
+        Mpfr res13 = IsReal ? res13c.real : res13c.imag;
+        Console.WriteLine("mflintc:  {0}", res13);
+
+        ArbC res16c = aflintc.gamma_delta_ratio(x, y);
+        Arb res16 = IsReal ? res16c.real : res16c.imag;
+        Console.WriteLine("aflintc: {0}", res16);
+#endif
+        Console.WriteLine("</H2>");
+        Console.WriteLine();
+    }
     } }
     Console.WriteLine("</H1>");
 }

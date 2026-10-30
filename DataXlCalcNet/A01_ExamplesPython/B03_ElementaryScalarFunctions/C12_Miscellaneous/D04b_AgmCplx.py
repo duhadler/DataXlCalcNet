@@ -12,93 +12,93 @@ def main_tests():
     demo_manual_cplx_short()
     demo_manual_cplx_real_part()
     demo_manual_cplx_imag_part()
-    demo_sin_cplx_ctx()
-    demo_sin_cplx_re_im_ctx()
-    demo_sin_cplx_explicit()
+    demo_agm_cplx_ctx()
+    demo_agm_cplx_re_im_ctx()
+    demo_agm_cplx_explicit()
 
 
 def demo_manual_cplx_short():
     print('<H1 Title="demo_manual_cplx_short">')
     #from xlcalcnet import *
-    x = -5.1+2j; gui.setdps(50)
-    for ctx in [fpm, mpm, cmath53, qcplx]: print(ctx.fmtname + ': ' + ctx.fmt(ctx.sin(x)))
+    x = 5.1+2j;  y = 2.7+3j; gui.setdps(50)
+    for ctx in [fpm, mpm, cmath53]: print(ctx.fmtname + ': ' + ctx.fmt(ctx.agm(x, y)))
     print('</H1>')
 
 
 def demo_manual_cplx_real_part():
     print('<H1 Title="demo_manual_cplx_real_part">')
     #from xlcalcnet import *
-    x = -5.1+2j; gui.setdps(90)
-    for ctx in gui.ctxlist_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.sin(x))))
+    x = 5.1+2j;  y = 2.7+3j; gui.setdps(90)
+    for ctx in gui.ctxlist_noboost_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.agm(x, y))))
     print('</H1>')
 
 
 def demo_manual_cplx_imag_part():
     print('<H1 Title="demo_manual_cplx_imag_part">')
     #from xlcalcnet import *
-    x = -5.1+2j; gui.setdps(90)
-    for ctx in gui.ctxlist_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(ctx.sin(x))))
+    x = 5.1+2j;  y = 2.7+3j; gui.setdps(90)
+    for ctx in gui.ctxlist_noboost_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(ctx.agm(x, y))))
     print('</H1>')
 
 
 
 
-def demo_sin_cplx_ctx():
-    print('<H1 Title="sin_cplx_ctx">')
-    xlist = [-5.1+2j, 8.8+2j]; gui.setdps(50)
+def demo_agm_cplx_ctx():
+    print('<H1 Title="agm_cplx_ctx">')
+    xlist = [5.1+2j, 8.8+2j]; gui.setdps(50)
+    ylist = [1.5+3j, 2.7+3j];
     for x in xlist:
-        print('<H2 Title="sin(x); x=' + str(x) + '">')
-        for ctx in gui.ctxlist_cplx:
-            res = ctx.sin(x)
-            print(ctx.fmtname + ': ' + ctx.fmt(res))
-        print('</H2>')
-        print()
-    print('</H1>')
-    print()
-
-
-def demo_sin_cplx_re_im_ctx():
-    print('<H1 Title="sin_cplx_re_im_ctx">')
-    xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
-    for x in xlist:
-        print('<H2 Title="Re(sin(x)); x=' + str(x) + '">')
-        for ctx in gui.ctxlist_cplx:
-            res = ctx.sin(x)
-            print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(res)))
-        print('</H2>')
-        print()
-        print('<H2 Title="Im(sin(x)); x=' + str(x) + '">')
-        for ctx in gui.ctxlist_cplx:
-            res = ctx.sin(x)
-            print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(res)))
-        print('</H2>')
-        print()
+        for y in ylist:
+            print('<H2 Title="agm(x, y); x=' + str(x) + ' y=' + str(y) + '">')
+            for ctx in gui.ctxlist_noboost_cplx:
+                res = ctx.agm(x, y)
+                print(ctx.fmtname + ': ' + ctx.fmt(res))
+            print('</H2>')
+            print()
     print('</H1>')
     print()
 
 
-def demo_sin_cplx_explicit():
-    print('<H1 Title="demo_sin_cplx_explicit">')
-    xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
+def demo_agm_cplx_re_im_ctx():
+    print('<H1 Title="agm_cplx_re_im_ctx">')
+    xlist = [5.1+2j, 8.8+2j]; gui.setdps(90)
+    ylist = [1.5+3j, 2.7+3j];
     for x in xlist:
-        print('<H2 Title="sin(x); x=' + str(x) + '">')
-        res = cmath53.sin(x); print('cmath53: ' + cmath53.fmt(res))
-        res = scplx.sin(x); print('  scplx: ' + scplx.fmt(res))
-        res = dcplx.sin(x); print('  dcplx: ' + dcplx.fmt(res))
-        res = ecplx.sin(x); print('  ecplx: ' + ecplx.fmt(res))
-        res = qcplx.sin(x); print('  qcplx: ' + qcplx.fmt(res))
-        res = ocplx.sin(x); print('  ocplx: ' + ocplx.fmt(res))
-        if gui.has_xlcalcnet2:
-            res = mcplx.sin(x); print('  mcplx: ' + mcplx.fmt(res))
-            res = sflintc.sin(x); print('sflintc: ' + sflintc.fmt(res))
-            res = dflintc.sin(x); print('dflintc: ' + dflintc.fmt(res))
-            res = eflintc.sin(x); print('eflintc: ' + eflintc.fmt(res))
-            res = qflintc.sin(x); print('qflintc: ' + qflintc.fmt(res))
-            res = oflintc.sin(x); print('oflintc: ' + oflintc.fmt(res))
-            res = mflintc.sin(x); print('mflintc: ' + mflintc.fmt(res))
-            res = aflintc.sin(x); print('aflintc: ' + aflintc.fmt(res))
-        print('</H2>')
-        print()
+        for y in ylist:
+            print('<H2 Title="Re(agm(x, y)); x=' + str(x) + '">')
+            for ctx in gui.ctxlist_noboost_cplx:
+                res = ctx.agm(x, y)
+                print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(res)))
+            print('</H2>')
+            print()
+            print('<H2 Title="Im(agm(x, y)); x=' + str(x) + '">')
+            for ctx in gui.ctxlist_noboost_cplx:
+                res = ctx.agm(x, y)
+                print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(res)))
+            print('</H2>')
+            print()
+    print('</H1>')
+    print()
+
+
+def demo_agm_cplx_explicit():
+    print('<H1 Title="demo_agm_cplx_explicit">')
+    xlist = [5.1+2j, 8.8+2j]; gui.setdps(90)
+    ylist = [1.5+3j, 2.7+3j];
+    for x in xlist:
+        for y in ylist:
+            print('<H2 Title="agm(x, y); x=' + str(x) + '">')
+            res = cmath53.agm(x, y); print('cmath53: ' + cmath53.fmt(res))
+            if gui.has_xlcalcnet2:
+                res = sflintc.agm(x, y); print('sflintc: ' + sflintc.fmt(res))
+                res = dflintc.agm(x, y); print('dflintc: ' + dflintc.fmt(res))
+                res = eflintc.agm(x, y); print('eflintc: ' + eflintc.fmt(res))
+                res = qflintc.agm(x, y); print('qflintc: ' + qflintc.fmt(res))
+                res = oflintc.agm(x, y); print('oflintc: ' + oflintc.fmt(res))
+                res = mflintc.agm(x, y); print('mflintc: ' + mflintc.fmt(res))
+                res = aflintc.agm(x, y); print('aflintc: ' + aflintc.fmt(res))
+            print('</H2>')
+            print()
     print('</H1>')
     print()
 

@@ -12,9 +12,9 @@ def main_tests():
     demo_manual_cplx_short()
     demo_manual_cplx_real_part()
     demo_manual_cplx_imag_part()
-    demo_pow_cplx_ctx()
-    demo_pow_cplx_re_im_ctx()
-    demo_pow_cplx_explicit()
+    demo_pow_si_cplx_ctx()
+    demo_pow_si_cplx_re_im_ctx()
+    demo_pow_si_cplx_explicit()
 
 
 def demo_manual_cplx_short():
@@ -28,7 +28,7 @@ def demo_manual_cplx_short():
 def demo_manual_cplx_real_part():
     print('<H1 Title="demo_manual_cplx_real_part">')
     #from xlcalcnet import *
-    x = -5.1+2j;  n = 3; gui.setdps(50)
+    x = -5.1+2j;  n = 3; gui.setdps(90)
     for ctx in gui.ctxlist_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.pow_si(x, n))))
     print('</H1>')
 
@@ -43,7 +43,7 @@ def demo_manual_cplx_imag_part():
 
 
 
-def demo_pow_cplx_ctx():
+def demo_pow_si_cplx_ctx():
     print('<H1 Title="pow_cplx_ctx">')
     xlist = [-5.1+2j, 8.8+2j]; gui.setdps(50)
     nlist = [2, 3, 4]
@@ -59,7 +59,7 @@ def demo_pow_cplx_ctx():
     print()
 
 
-def demo_pow_cplx_re_im_ctx():
+def demo_pow_si_cplx_re_im_ctx():
     print('<H1 Title="pow_cplx_re_im_ctx">')
     xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
     nlist = [2, 3, 4]
@@ -81,8 +81,8 @@ def demo_pow_cplx_re_im_ctx():
     print()
 
 
-def demo_pow_cplx_explicit():
-    print('<H1 Title="demo_pow_cplx_explicit">')
+def demo_pow_si_cplx_explicit():
+    print('<H1 Title="demo_pow_si_cplx_explicit">')
     xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
     nlist = [2, 3, 4]
     for x in xlist:

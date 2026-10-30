@@ -17,7 +17,7 @@ def main_tests():
 def demo_manual_real():
     print('<H1 Title="demo_manual_real">')
     #from xlcalcnet import *
-    x = -5.1; gui.setdps(90)
+    x = 0.5; gui.setdps(90)
     for ctx in gui.ctxlist_real: print(ctx.fmtname + ': ' + ctx.fmt(ctx.asin(x)))
     print('</H1>')
 

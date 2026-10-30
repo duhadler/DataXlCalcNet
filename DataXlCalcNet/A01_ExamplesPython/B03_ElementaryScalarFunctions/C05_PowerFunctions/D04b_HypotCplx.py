@@ -28,7 +28,7 @@ def demo_manual_cplx_short():
 def demo_manual_cplx_real_part():
     print('<H1 Title="demo_manual_cplx_real_part">')
     #from xlcalcnet import *
-    x = -5.1+2j;  y = 2.7+2j; gui.setdps(50)
+    x = -5.1+2j;  y = 2.7+2j; gui.setdps(90)
     for ctx in gui.ctxlist_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.hypot(x, y))))
     print('</H1>')
 

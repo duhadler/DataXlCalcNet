@@ -12,9 +12,9 @@ def main_tests():
     demo_manual_cplx_short()
     demo_manual_cplx_real_part()
     demo_manual_cplx_imag_part()
-    demo_cot_cplx_ctx()
-    demo_cot_cplx_re_im_ctx()
-    demo_cot_cplx_explicit()
+    demo_abs_cplx_ctx()
+    demo_abs_cplx_re_im_ctx()
+    demo_abs_cplx_explicit()
 
 
 def demo_manual_cplx_short():
@@ -43,11 +43,11 @@ def demo_manual_cplx_imag_part():
 
 
 
-def demo_cot_cplx_ctx():
-    print('<H1 Title="cot_cplx_ctx">')
+def demo_abs_cplx_ctx():
+    print('<H1 Title="abs_cplx_ctx">')
     xlist = [-5.1+2j, 8.8+2j]; gui.setdps(50)
     for x in xlist:
-        print('<H2 Title="cot(x); x=' + str(x) + '">')
+        print('<H2 Title="abs(x); x=' + str(x) + '">')
         for ctx in gui.ctxlist_cplx:
             res = ctx.abs(x)
             print(ctx.fmtname + ': ' + ctx.fmt(res))
@@ -57,17 +57,17 @@ def demo_cot_cplx_ctx():
     print()
 
 
-def demo_cot_cplx_re_im_ctx():
-    print('<H1 Title="cot_cplx_re_im_ctx">')
+def demo_abs_cplx_re_im_ctx():
+    print('<H1 Title="abs_cplx_re_im_ctx">')
     xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
     for x in xlist:
-        print('<H2 Title="Re(cot(x)); x=' + str(x) + '">')
+        print('<H2 Title="Re(abs(x)); x=' + str(x) + '">')
         for ctx in gui.ctxlist_cplx:
             res = ctx.abs(x)
             print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(res)))
         print('</H2>')
         print()
-        print('<H2 Title="Im(cot(x)); x=' + str(x) + '">')
+        print('<H2 Title="Im(abs(x)); x=' + str(x) + '">')
         for ctx in gui.ctxlist_cplx:
             res = ctx.abs(x)
             print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(res)))
@@ -77,11 +77,11 @@ def demo_cot_cplx_re_im_ctx():
     print()
 
 
-def demo_cot_cplx_explicit():
-    print('<H1 Title="demo_cot_cplx_explicit">')
+def demo_abs_cplx_explicit():
+    print('<H1 Title="demo_abs_cplx_explicit">')
     xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
     for x in xlist:
-        print('<H2 Title="cot(x); x=' + str(x) + '">')
+        print('<H2 Title="abs(x); x=' + str(x) + '">')
         res = cmath53.abs(x); print('cmath53: ' + cmath53.fmt(res))
         res = scplx.abs(x); print('  scplx: ' + scplx.fmt(res))
         res = dcplx.abs(x); print('  dcplx: ' + dcplx.fmt(res))

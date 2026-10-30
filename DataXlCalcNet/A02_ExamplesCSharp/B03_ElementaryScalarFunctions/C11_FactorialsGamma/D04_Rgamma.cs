@@ -1,8 +1,7 @@
 ﻿
+#region Usings
 /* If defined includes code requiring ArbPrecNet. Is set automatically */
 #define HasArbPrecNet
-
-#region Usings
 using System;
 using System.Numerics;
 using FixedPrecNet;
@@ -18,56 +17,157 @@ static class Program
 
 public static void MainTests()
 {
-    Test_Real_Lgamma();
+#if HasArbPrecNet
+/* No syntax highlighting if HasArbPrecNet is undefined */
+    ArbPrec.SetDps(80);
+#endif
+    TestRgammaReal();
+    TestRgammaCplx();
+    TestRgammaRealImag();
 }
 
 
-#region Test_Real_Lgamma
+#region TestRgammaReal
 
-public static void Test_Real_Lgamma()
+public static void TestRgammaReal()
 {
-    Console.WriteLine("<H1 Title=" + "\"" + "Test_Real_Lgamma" + "\"" + ">");
-#if HasArbPrecNet
-/* No syntax highlighting if HasArbPrecNet is undefined */
-    ArbPrec.SetDps(40);
-#endif
+    Console.WriteLine("<H1 Title=" + "\"" + "TestRgammaReal" + "\"" + ">");
     double[] InputArray1 = { -4.333, 0.0, 4.333 };
-    foreach (var x in InputArray1)
-    {
-        Double res01 = math53.lgamma(x);
-        Console.WriteLine("math53: lgamma(x={0}):  {1}", x, res01);
-        Single res02 = sreal.lgamma(x);
-        Console.WriteLine(" sreal: lgamma(x={0}):  {1}", x, res02);
-        Double res03 = dreal.lgamma(x);
-        Console.WriteLine(" dreal: lgamma(x={0}):  {1}", x, res03);
-        Extended res04 = ereal.lgamma(x);
-        Console.WriteLine(" ereal: lgamma(x={0}):  {1}", x, res04);
-        Quadruple res05 = qreal.lgamma(x);
-        Console.WriteLine(" qreal: lgamma(x={0}):  {1}", x, res05);
-        Octuple res06 = oreal.lgamma(x);
-        Console.WriteLine(" oreal: lgamma(x={0}):  {1}", x, res06);
+    
+    foreach (var x in InputArray1) {
+        Console.WriteLine("<H2 Title=" + "\"" + "rgamma(x); " + "x={0}" 
+            + "\"" + ">", x);
+        Double res01 = math53.rgamma(x);
+        Console.WriteLine("math53:  {0}", res01);
+        Single res02 = sreal.rgamma(x);
+        Console.WriteLine(" sreal:  {0}", res02);
+        Double res03 = dreal.rgamma(x);
+        Console.WriteLine(" dreal:  {0}", res03);
+        Extended res04 = ereal.rgamma(x);
+        Console.WriteLine(" ereal:  {0}", res04);
+        Quadruple res05 = qreal.rgamma(x);
+        Console.WriteLine(" qreal:  {0}", res05);
+        Octuple res06 = oreal.rgamma(x);
+        Console.WriteLine(" oreal:  {0}", res06);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
-        Mpfr res07 = mreal.lgamma(x);
-        Console.WriteLine(" mreal: lgamma(x={0}):  {1}", x, res07);
-
-//        Single res08 = sflint.lgamma(x);
-//        Console.WriteLine("sflint: lgamma(x={0}):  {1}", x, res08);
-//        Double res09 = dflint.lgamma(x);
-//        Console.WriteLine("dflint: lgamma(x={0}):  {1}", x, res09);
-//        Extended res10 = eflint.lgamma(x);
-//        Console.WriteLine("eflint: lgamma(x={0}):  {1}", x, res10);
-//        Quadruple res11 = qflint.lgamma(x);
-//        Console.WriteLine("qflint: lgamma(x={0}):  {1}", x, res11);
-//        Octuple res12 = oflint.lgamma(x);
-//        Console.WriteLine("oflint: lgamma(x={0}):  {1}", x, res12);
-
-//        Mpfr res13 = mflint.lgamma(x);
-//        Console.WriteLine("mflint: lgamma(x={0}):  {1}", x, res13);
-        Arb res16 = aflint.lgamma(x);
-        Console.WriteLine("aflint: lgamma(x={0}): {1}", x, res16);
+        Mpfr res07 = mreal.rgamma(x);
+        Console.WriteLine(" mreal:  {0}", res07);
+        Single res08 = sflint.rgamma(x);
+        Console.WriteLine("sflint:  {0}", res08);
+        Double res09 = dflint.rgamma(x);
+        Console.WriteLine("dflint:  {0}", res09);
+        Extended res10 = eflint.rgamma(x);
+        Console.WriteLine("eflint:  {0}", res10);
+        Quadruple res11 = qflint.rgamma(x);
+        Console.WriteLine("qflint:  {0}", res11);
+        Octuple res12 = oflint.rgamma(x);
+        Console.WriteLine("oflint:  {0}", res12);
+        Mpfr res13 = mflint.rgamma(x);
+        Console.WriteLine("mflint:  {0}", res13);
+        Arb res16 = aflint.rgamma(x);
+        Console.WriteLine("aflint: {0}", res16);
 #endif
+        Console.WriteLine("</H2>");
         Console.WriteLine();
+    }
+    Console.WriteLine("</H1>");
+}
+
+#endregion
+
+
+#region TestRgammaCplx
+
+public static void TestRgammaCplx()
+{
+    Console.WriteLine("<H1 Title=" + "\"" + "TestRgammaCplx" + "\"" + ">");
+    Complex[] InputArray1C = {dcplx.t(-4.333, 1.0), dcplx.t(0.0, 1.0), 
+        dcplx.t(4.333, 1.0)};
+
+    foreach (var x in InputArray1C) {
+        Console.WriteLine("<H2 Title=" + "\"" + "rgamma(x); " + "x={0}" + 
+            "\"" + ">", x);
+        Complex res01 = cmath53.rgamma(x);
+        Console.WriteLine("cmath53:  {0}", res01);
+#if HasArbPrecNet
+/* No syntax highlighting if HasArbPrecNet is undefined */
+        SingleC res08 = sflintc.rgamma(x);
+        Console.WriteLine("sflintc:  {0}", res08);
+        Complex res09 = dflintc.rgamma(x);
+        Console.WriteLine("dflintc:  {0}", res09);
+        ExtendedC res10 = eflintc.rgamma(x);
+        Console.WriteLine("eflintc:  {0}", res10);
+        QuadrupleC res11 = qflintc.rgamma(x);
+        Console.WriteLine("qflintc:  {0}", res11);
+        OctupleC res12 = oflintc.rgamma(x);
+        Console.WriteLine("oflintc:  {0}", res12);
+        MpfrC res13 = mflintc.rgamma(x);
+        Console.WriteLine("mflintc:  {0}", res13);
+        ArbC res16 = aflintc.rgamma(x);
+        Console.WriteLine("aflintc: {0}", res16);
+#endif
+        Console.WriteLine("</H2>");
+        Console.WriteLine();
+    }
+    Console.WriteLine("</H1>");
+}
+
+#endregion
+
+
+#region TestRgammaRealImag
+
+public static void TestRgammaRealImag()
+{
+    Console.WriteLine("<H1 Title=" + "\"" + "TestRgammaRealImag" + 
+        "\"" + ">");
+    bool[] ReImArray = {true, false};
+    Complex[] InputArray1C = {dcplx.t(-4.333, 1.0), dcplx.t(0.0, 1.0), 
+        dcplx.t(4.333, 1.0)};
+    foreach (var x in InputArray1C) {
+    foreach (var IsReal in ReImArray)
+    {
+        string ReIm = IsReal ? "Re(" : "Im(";
+        Console.WriteLine("<H2 Title=" + "\"" + ReIm + "rgamma(x)); x={0}" 
+            + "\"" + ">", x);
+
+        Complex res01c = cmath53.rgamma(x); 
+        Double res01 = IsReal ? res01c.Real : res01c.Imaginary;
+        Console.WriteLine("cmath53:  {0}", res01);
+
+#if HasArbPrecNet
+        SingleC res08c = sflintc.rgamma(x);
+        Single res08 = IsReal ? res08c.real : res08c.imag;
+        Console.WriteLine("sflintc:  {0}", res08);
+
+        Complex res09c = dflintc.rgamma(x);
+        Double res09 = IsReal ? res09c.Real : res09c.Imaginary;
+        Console.WriteLine("dflintc:  {0}", res09);
+
+        ExtendedC res10c = eflintc.rgamma(x);
+        Extended res10 = IsReal ? res10c.real : res10c.imag;
+        Console.WriteLine("eflintc:  {0}", res10);
+
+        QuadrupleC res11c = qflintc.rgamma(x);
+        Quadruple res11 = IsReal ? res11c.real : res11c.imag;
+        Console.WriteLine("qflintc:  {0}", res11);
+
+        OctupleC res12c = oflintc.rgamma(x);
+        Octuple res12 = IsReal ? res12c.real : res12c.imag;
+        Console.WriteLine("oflintc:  {0}", res12);
+
+        MpfrC res13c = mflintc.rgamma(x);
+        Mpfr res13 = IsReal ? res13c.real : res13c.imag;
+        Console.WriteLine("mflintc:  {0}", res13);
+
+        ArbC res16c = aflintc.rgamma(x);
+        Arb res16 = IsReal ? res16c.real : res16c.imag;
+        Console.WriteLine("aflintc: {0}", res16);
+#endif
+        Console.WriteLine("</H2>");
+        Console.WriteLine();
+    }
     }
     Console.WriteLine("</H1>");
 }

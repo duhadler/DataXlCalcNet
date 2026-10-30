@@ -21,7 +21,6 @@ def demo_manual_real():
     #from xlcalcnet import *
     x = -5.1; gui.setdps(50)
     for ctx in gui.ctxlist_real: print(ctx.fmtname + ': ' + ctx.cplxctx.fmt(ctx.expj(x)))
-    #for ctx in [dreal]: print(ctx.fmtname + ': ' + ctx.cplxctx.fmt(ctx.expj(x)))
     print('</H1>')
 
 

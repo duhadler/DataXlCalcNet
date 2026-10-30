@@ -20,7 +20,7 @@ def main_tests():
 def demo_manual_cplx_short():
     print('<H1 Title="demo_manual_cplx_short">')
     #from xlcalcnet import *
-    x = -5.1+2j; gui.setdps(50)
+    x = -5.1+2j; gui.setdps(40)
     for ctx in [fpm, mpm, cmath53, qcplx]: print(ctx.fmtname + ': ' + ctx.fmt(ctx.log10p1(x)))
     print('</H1>')
 

@@ -1,8 +1,7 @@
 ﻿
+#region Usings
 /* If defined includes code requiring ArbPrecNet. Is set automatically */
 #define HasArbPrecNet
-
-#region Usings
 using System;
 using System.Numerics;
 using FixedPrecNet;
@@ -18,56 +17,157 @@ static class Program
 
 public static void MainTests()
 {
-    Test_Real_Gamma();
+#if HasArbPrecNet
+/* No syntax highlighting if HasArbPrecNet is undefined */
+    ArbPrec.SetDps(80);
+#endif
+    TestFactorialReal();
+    TestFactorialCplx();
+    TestFactorialRealImag();
 }
 
 
-#region Test_Real_Gamma
+#region TestFactorialReal
 
-public static void Test_Real_Gamma()
+public static void TestFactorialReal()
 {
-    Console.WriteLine("<H1 Title=" + "\"" + "Test_Real_Gamma" + "\"" + ">");
-#if HasArbPrecNet
-/* No syntax highlighting if HasArbPrecNet is undefined */
-    ArbPrec.SetDps(40);
-#endif
+    Console.WriteLine("<H1 Title=" + "\"" + "TestFactorialReal" + "\"" + ">");
     double[] InputArray1 = { -4.333, 0.0, 4.333 };
-    foreach (var x in InputArray1)
-    {
-        Double res01 = math53.gamma(x);
-        Console.WriteLine("math53: gamma(x={0}):  {1}", x, res01);
-        Single res02 = sreal.gamma(x);
-        Console.WriteLine(" sreal: gamma(x={0}):  {1}", x, res02);
-        Double res03 = dreal.gamma(x);
-        Console.WriteLine(" dreal: gamma(x={0}):  {1}", x, res03);
-        Extended res04 = ereal.gamma(x);
-        Console.WriteLine(" ereal: gamma(x={0}):  {1}", x, res04);
-        Quadruple res05 = qreal.gamma(x);
-        Console.WriteLine(" qreal: gamma(x={0}):  {1}", x, res05);
-        Octuple res06 = oreal.gamma(x);
-        Console.WriteLine(" oreal: gamma(x={0}):  {1}", x, res06);
+    
+    foreach (var x in InputArray1) {
+        Console.WriteLine("<H2 Title=" + "\"" + "factorial(x); " + "x={0}" 
+            + "\"" + ">", x);
+        Double res01 = math53.factorial(x);
+        Console.WriteLine("math53:  {0}", res01);
+        Single res02 = sreal.factorial(x);
+        Console.WriteLine(" sreal:  {0}", res02);
+        Double res03 = dreal.factorial(x);
+        Console.WriteLine(" dreal:  {0}", res03);
+        Extended res04 = ereal.factorial(x);
+        Console.WriteLine(" ereal:  {0}", res04);
+        Quadruple res05 = qreal.factorial(x);
+        Console.WriteLine(" qreal:  {0}", res05);
+        Octuple res06 = oreal.factorial(x);
+        Console.WriteLine(" oreal:  {0}", res06);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
-        Mpfr res07 = mreal.gamma(x);
-        Console.WriteLine(" mreal: gamma(x={0}):  {1}", x, res07);
-
-//        Single res08 = sflint.gamma(x);
-//        Console.WriteLine("sflint: gamma(x={0}):  {1}", x, res08);
-//        Double res09 = dflint.gamma(x);
-//        Console.WriteLine("dflint: gamma(x={0}):  {1}", x, res09);
-//        Extended res10 = eflint.gamma(x);
-//        Console.WriteLine("eflint: gamma(x={0}):  {1}", x, res10);
-//        Quadruple res11 = qflint.gamma(x);
-//        Console.WriteLine("qflint: gamma(x={0}):  {1}", x, res11);
-//        Octuple res12 = oflint.gamma(x);
-//        Console.WriteLine("oflint: gamma(x={0}):  {1}", x, res12);
-
-//        Mpfr res13 = mflint.gamma(x);
-//        Console.WriteLine("mflint: gamma(x={0}):  {1}", x, res13);
-        Arb res16 = aflint.gamma(x);
-        Console.WriteLine("aflint: gamma(x={0}): {1}", x, res16);
+        Mpfr res07 = mreal.factorial(x);
+        Console.WriteLine(" mreal:  {0}", res07);
+        Single res08 = sflint.factorial(x);
+        Console.WriteLine("sflint:  {0}", res08);
+        Double res09 = dflint.factorial(x);
+        Console.WriteLine("dflint:  {0}", res09);
+        Extended res10 = eflint.factorial(x);
+        Console.WriteLine("eflint:  {0}", res10);
+        Quadruple res11 = qflint.factorial(x);
+        Console.WriteLine("qflint:  {0}", res11);
+        Octuple res12 = oflint.factorial(x);
+        Console.WriteLine("oflint:  {0}", res12);
+        Mpfr res13 = mflint.factorial(x);
+        Console.WriteLine("mflint:  {0}", res13);
+        Arb res16 = aflint.factorial(x);
+        Console.WriteLine("aflint: {0}", res16);
 #endif
+        Console.WriteLine("</H2>");
         Console.WriteLine();
+    }
+    Console.WriteLine("</H1>");
+}
+
+#endregion
+
+
+#region TestFactorialCplx
+
+public static void TestFactorialCplx()
+{
+    Console.WriteLine("<H1 Title=" + "\"" + "TestFactorialCplx" + "\"" + ">");
+    Complex[] InputArray1C = {dcplx.t(-4.333, 1.0), dcplx.t(0.0, 1.0), 
+        dcplx.t(4.333, 1.0)};
+
+    foreach (var x in InputArray1C) {
+        Console.WriteLine("<H2 Title=" + "\"" + "factorial(x); " + "x={0}" + 
+            "\"" + ">", x);
+        Complex res01 = cmath53.factorial(x);
+        Console.WriteLine("cmath53:  {0}", res01);
+#if HasArbPrecNet
+/* No syntax highlighting if HasArbPrecNet is undefined */
+        SingleC res08 = sflintc.factorial(x);
+        Console.WriteLine("sflintc:  {0}", res08);
+        Complex res09 = dflintc.factorial(x);
+        Console.WriteLine("dflintc:  {0}", res09);
+        ExtendedC res10 = eflintc.factorial(x);
+        Console.WriteLine("eflintc:  {0}", res10);
+        QuadrupleC res11 = qflintc.factorial(x);
+        Console.WriteLine("qflintc:  {0}", res11);
+        OctupleC res12 = oflintc.factorial(x);
+        Console.WriteLine("oflintc:  {0}", res12);
+        MpfrC res13 = mflintc.factorial(x);
+        Console.WriteLine("mflintc:  {0}", res13);
+        ArbC res16 = aflintc.factorial(x);
+        Console.WriteLine("aflintc: {0}", res16);
+#endif
+        Console.WriteLine("</H2>");
+        Console.WriteLine();
+    }
+    Console.WriteLine("</H1>");
+}
+
+#endregion
+
+
+#region TestFactorialRealImag
+
+public static void TestFactorialRealImag()
+{
+    Console.WriteLine("<H1 Title=" + "\"" + "TestFactorialRealImag" + 
+        "\"" + ">");
+    bool[] ReImArray = {true, false};
+    Complex[] InputArray1C = {dcplx.t(-4.333, 1.0), dcplx.t(0.0, 1.0), 
+        dcplx.t(4.333, 1.0)};
+    foreach (var x in InputArray1C) {
+    foreach (var IsReal in ReImArray)
+    {
+        string ReIm = IsReal ? "Re(" : "Im(";
+        Console.WriteLine("<H2 Title=" + "\"" + ReIm + "factorial(x)); x={0}" 
+            + "\"" + ">", x);
+
+        Complex res01c = cmath53.factorial(x); 
+        Double res01 = IsReal ? res01c.Real : res01c.Imaginary;
+        Console.WriteLine("cmath53:  {0}", res01);
+
+#if HasArbPrecNet
+        SingleC res08c = sflintc.factorial(x);
+        Single res08 = IsReal ? res08c.real : res08c.imag;
+        Console.WriteLine("sflintc:  {0}", res08);
+
+        Complex res09c = dflintc.factorial(x);
+        Double res09 = IsReal ? res09c.Real : res09c.Imaginary;
+        Console.WriteLine("dflintc:  {0}", res09);
+
+        ExtendedC res10c = eflintc.factorial(x);
+        Extended res10 = IsReal ? res10c.real : res10c.imag;
+        Console.WriteLine("eflintc:  {0}", res10);
+
+        QuadrupleC res11c = qflintc.factorial(x);
+        Quadruple res11 = IsReal ? res11c.real : res11c.imag;
+        Console.WriteLine("qflintc:  {0}", res11);
+
+        OctupleC res12c = oflintc.factorial(x);
+        Octuple res12 = IsReal ? res12c.real : res12c.imag;
+        Console.WriteLine("oflintc:  {0}", res12);
+
+        MpfrC res13c = mflintc.factorial(x);
+        Mpfr res13 = IsReal ? res13c.real : res13c.imag;
+        Console.WriteLine("mflintc:  {0}", res13);
+
+        ArbC res16c = aflintc.factorial(x);
+        Arb res16 = IsReal ? res16c.real : res16c.imag;
+        Console.WriteLine("aflintc: {0}", res16);
+#endif
+        Console.WriteLine("</H2>");
+        Console.WriteLine();
+    }
     }
     Console.WriteLine("</H1>");
 }
