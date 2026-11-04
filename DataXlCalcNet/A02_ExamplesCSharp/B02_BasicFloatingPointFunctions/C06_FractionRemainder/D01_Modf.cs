@@ -62,8 +62,8 @@ public static void Test_Modf()
         Console.WriteLine("oflint: modf(x={0}):  {1}", x, res12);
         var res13 = mflint.modf(x);
         Console.WriteLine("mflint: modf(x={0}):  {1}", x, res13);
-//        Arb res16 = aflint.modf(x);
-//        Console.WriteLine("aflint: modf(x={0}): {1}", x, res16);
+        var res16 = aflint.modf(x);
+        Console.WriteLine("aflint: modf(x={0}): {1}", x, res16);
 #endif
         Console.WriteLine();
     }

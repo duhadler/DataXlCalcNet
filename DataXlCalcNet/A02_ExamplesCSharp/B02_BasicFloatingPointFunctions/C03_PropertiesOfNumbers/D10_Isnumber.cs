@@ -63,8 +63,8 @@ public static void Test_IsNumber()
         Console.WriteLine("oflint: isnumber(x={0}):  {1}", x, res12);
         Boolean res13 = mflint.isnumber(x);
         Console.WriteLine("mflint: isnumber(x={0}):  {1}", x, res13);
-//        Boolean res16 = aflint.isnumber(x);
-//        Console.WriteLine("aflint: isnumber(x={0}): {1}", x, res16);
+        Boolean res16 = aflint.isnumber(x);
+        Console.WriteLine("aflint: isnumber(x={0}): {1}", x, res16);
 #endif
         Console.WriteLine();
     }

@@ -63,8 +63,8 @@ public static void Test_FitsInt32()
         Console.WriteLine("oflint: fitsint32(x={0}):  {1}", x, res12);
         Boolean res13 = mflint.fitsint32(x);
         Console.WriteLine("mflint: fitsint32(x={0}):  {1}", x, res13);
-//        Boolean res16 = aflint.fitsint32(x);
-//        Console.WriteLine("aflint: fitsint32(x={0}): {1}", x, res16);
+        Boolean res16 = aflint.fitsint32(x);
+        Console.WriteLine("aflint: fitsint32(x={0}): {1}", x, res16);
 #endif
         Console.WriteLine();
     }

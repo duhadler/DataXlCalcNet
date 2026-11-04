@@ -70,8 +70,8 @@ public static void Test_IsUnordered()
         Console.WriteLine("oflint: isunordered(x, y) =  {0}", res12);
         Boolean res13 = mflint.isunordered(x, y);
         Console.WriteLine("mflint: isunordered(x, y) =  {0}", res13);
-//        Boolean res16 = aflint.isunordered(x, y);
-//        Console.WriteLine("aflint: isunordered(x, y) = {0}", res16);
+        Boolean res16 = aflint.isunordered(x, y);
+        Console.WriteLine("aflint: isunordered(x, y) = {0}", res16);
 #endif
     Console.WriteLine();
     Console.WriteLine("</H2>");

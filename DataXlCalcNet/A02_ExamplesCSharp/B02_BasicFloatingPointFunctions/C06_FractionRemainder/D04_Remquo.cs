@@ -33,8 +33,8 @@ public static void TestRemquo()
     ArbPrec.SetDps(40);
 #endif
 
-    Double[] InputArray1 = { -4.333, 0.0, 4.333000001 };
-    Double[] InputArray2 = { -4.333, 0.0, 4.333 };
+    Double[] InputArray1 = { 7.5, 0.1, 14.333000001 };
+    Double[] InputArray2 = { 2.1, 0.1, 4.333 };
     foreach (Double x in InputArray1) {
     foreach (Double y in InputArray2) {
         Console.WriteLine("<H2 Title=" + "\"" + "x={0}, y={1}" + "\"" + ">", 
@@ -66,10 +66,10 @@ public static void TestRemquo()
         Console.WriteLine("qflint: remquo(x, y) =  {0}", res11);
         var res12 = oflint.remquo(x, y);
         Console.WriteLine("oflint: remquo(x, y) =  {0}", res12);
-//        var res13 = mflint.remquo(x, y);
-//        Console.WriteLine("mflint: remquo(x, y) =  {0}", res13);
-//        Arb res16 = aflint.remquo(x, y);
-//        Console.WriteLine("aflint: remquo(x, y) = {0}", res16);
+        var res13 = mflint.remquo(x, y);
+        Console.WriteLine("mflint: remquo(x, y) =  {0}", res13);
+        var res16 = aflint.remquo(x, y);
+        Console.WriteLine("aflint: remquo(x, y) = {0}", res16);
 #endif
     Console.WriteLine();
     Console.WriteLine("</H2>");

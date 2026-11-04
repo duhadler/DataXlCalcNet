@@ -60,10 +60,10 @@ public static void Test_Square_Real()
         Console.WriteLine("qflint: frexp(x={0}):  {1}", x, res11);
         var res12 = oflint.frexp(x);
         Console.WriteLine("oflint: frexp(x={0}):  {1}", x, res12);
-//        var res13 = mflint.frexp(x);
-//        Console.WriteLine("mflint: frexp(x={0}):  {1}", x, res13);
-//        Arb res16 = aflint.frexp(x);
-//        Console.WriteLine("aflint: frexp(x={0}): {1}", x, res16);
+        var res13 = mflint.frexp(x);
+        Console.WriteLine("mflint: frexp(x={0}):  {1}", x, res13);
+        var res16 = aflint.frexp(x);
+        Console.WriteLine("aflint: frexp(x={0}): {1}", x, res16);
 #endif
         Console.WriteLine();
     }

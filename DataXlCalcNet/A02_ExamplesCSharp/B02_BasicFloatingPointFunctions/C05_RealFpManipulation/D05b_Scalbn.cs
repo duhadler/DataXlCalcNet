@@ -68,8 +68,8 @@ public static void TestScalbn()
         Console.WriteLine("oflint: scalbn(x, e) =  {0}", res12);
         Mpfr res13 = mflint.scalbn(x, e);
         Console.WriteLine("mflint: scalbn(x, e) =  {0}", res13);
-//        Arb res16 = aflint.scalbn(x, e);
-//        Console.WriteLine("aflint: scalbn(x, e) = {0}", res16);
+        Arb res16 = aflint.scalbn(x, e);
+        Console.WriteLine("aflint: scalbn(x, e) = {0}", res16);
 #endif
     Console.WriteLine();
     Console.WriteLine("</H2>");

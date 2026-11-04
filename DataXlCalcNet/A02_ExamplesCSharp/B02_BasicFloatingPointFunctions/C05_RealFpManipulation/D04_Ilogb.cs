@@ -62,8 +62,8 @@ public static void Test_Ilogb()
         Console.WriteLine("oflint: ilogb(x={0}):  {1}", x, res12);
         Int32 res13 = mflint.ilogb(x);
         Console.WriteLine("mflint: ilogb(x={0}):  {1}", x, res13);
-//        Int32 res16 = aflint.ilogb(x);
-//        Console.WriteLine("aflint: ilogb(x={0}): {1}", x, res16);
+        Int32 res16 = aflint.ilogb(x);
+        Console.WriteLine("aflint: ilogb(x={0}):  {1}", x, res16);
 #endif
         Console.WriteLine();
     }

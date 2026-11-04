@@ -63,8 +63,8 @@ public static void Test_IsNormal()
         Console.WriteLine("oflint: isnormal(x={0}):  {1}", x, res12);
         Boolean res13 = mflint.isnormal(x);
         Console.WriteLine("mflint: isnormal(x={0}):  {1}", x, res13);
-//        Boolean res16 = aflint.isnormal(x);
-//        Console.WriteLine("aflint: isnormal(x={0}): {1}", x, res16);
+        Boolean res16 = aflint.isnormal(x);
+        Console.WriteLine("aflint: isnormal(x={0}): {1}", x, res16);
 #endif
         Console.WriteLine();
     }

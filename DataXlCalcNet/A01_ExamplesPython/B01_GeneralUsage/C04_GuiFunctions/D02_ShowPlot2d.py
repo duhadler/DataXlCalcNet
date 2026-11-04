@@ -2,7 +2,7 @@
 import sys
 import pathlib
 import clr
-clr.AddReference("System.Windows.Forms")
+clr.AddReference('System.Windows.Forms')
 import System
 import System.Windows.Forms as WinForms
 from System.Threading import ApartmentState, Thread, ThreadStart
@@ -15,9 +15,9 @@ class ChartsApp(WinForms.Form):
 
     def __init__(self, WindowTitle, Width, Height):
         PyDir = str(pathlib.Path(sys.executable).parent.resolve())
-        PathToBin = PyDir + r"\Lib\site-packages\xlcalcnet\Addin\NET48\Bin"
-        clr.AddReference(PathToBin + r"\TinyPlot2DUserCtrl.dll")
-        PathToIcon = PathToBin + r"\kuengreen_256_icon.ico"
+        PathToBin = PyDir + r'\Lib\site-packages\xlcalcnet\Addin\NET48\Bin'
+        clr.AddReference(PathToBin + r'\TinyPlot2DUserCtrl.dll')
+        PathToIcon = PathToBin + r'\kuengreen_256_icon.ico'
         import TinyPlot2DCtrl
         super().__init__()
         self.components = System.ComponentModel.Container()
@@ -55,10 +55,10 @@ class plot2D():
             thread.Start()
             thread.Join()
         except Exception as error:
-            print("An error occurred:", error)
+            print('An error occurred:', error)
 
 
-WindowTitle = "Gallery of Plots (xlcalcnet)"
+WindowTitle = 'Gallery of Plots (xlcalcnet)'
 Width = 1260;  Height = 1700
 plt2d = plot2D(WindowTitle, Width, Height)
 plt2d.show()

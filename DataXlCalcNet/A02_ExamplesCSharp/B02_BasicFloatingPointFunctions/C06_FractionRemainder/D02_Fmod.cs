@@ -68,8 +68,8 @@ public static void TestFmod()
         Console.WriteLine("oflint: fmod(x, y) =  {0}", res12);
         Mpfr res13 = mflint.fmod(x, y);
         Console.WriteLine("mflint: fmod(x, y) =  {0}", res13);
-//        Arb res16 = aflint.fmod(x, y);
-//        Console.WriteLine("aflint: fmod(x, y) = {0}", res16);
+        Arb res16 = aflint.fmod(x, y);
+        Console.WriteLine("aflint: fmod(x, y) = {0}", res16);
 #endif
     Console.WriteLine();
     Console.WriteLine("</H2>");

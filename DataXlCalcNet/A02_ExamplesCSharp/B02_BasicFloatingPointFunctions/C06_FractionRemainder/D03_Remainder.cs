@@ -33,8 +33,8 @@ public static void TestRemainder()
     ArbPrec.SetDps(40);
 #endif
 
-    Double[] InputArray1 = { -4.333, 0.0, 4.333000001 };
-    Double[] InputArray2 = { -4.333, 0.0, 4.333 };
+    Double[] InputArray1 = { 14.333, 0.1, 14.333000001 };
+    Double[] InputArray2 = { 4.333001, 0.1, 4.333 };
     foreach (Double x in InputArray1) {
     foreach (Double y in InputArray2) {
         Console.WriteLine("<H2 Title=" + "\"" + "x={0}, y={1}" + "\"" + ">", 
@@ -68,8 +68,8 @@ public static void TestRemainder()
         Console.WriteLine("oflint: remainder(x, y) =  {0}", res12);
         Mpfr res13 = mflint.remainder(x, y);
         Console.WriteLine("mflint: remainder(x, y) =  {0}", res13);
-//        Arb res16 = aflint.remainder(x, y);
-//        Console.WriteLine("aflint: remainder(x, y) = {0}", res16);
+        Arb res16 = aflint.remainder(x, y);
+        Console.WriteLine("aflint: remainder(x, y) = {0}", res16);
 #endif
     Console.WriteLine();
     Console.WriteLine("</H2>");

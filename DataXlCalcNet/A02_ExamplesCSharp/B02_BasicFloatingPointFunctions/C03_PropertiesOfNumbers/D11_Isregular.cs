@@ -63,8 +63,8 @@ public static void Test_IsRegular()
         Console.WriteLine("oflint: isregular(x={0}):  {1}", x, res12);
         Boolean res13 = mflint.isregular(x);
         Console.WriteLine("mflint: isregular(x={0}):  {1}", x, res13);
-//        Boolean res16 = aflint.isregular(x);
-//        Console.WriteLine("aflint: isregular(x={0}): {1}", x, res16);
+        Boolean res16 = aflint.isregular(x);
+        Console.WriteLine("aflint: isregular(x={0}): {1}", x, res16);
 #endif
         Console.WriteLine();
     }
