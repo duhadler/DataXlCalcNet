@@ -17,7 +17,7 @@ def main_tests():
 def demo_manual_real():
     print('<H1 Title="demo_manual_real">')
     #from xlcalcnet import *
-    x = -1.5; q = 0.5; gui.setdps(40)
+    x = -1.5; q = 0.5; gui.setdps(90)
     for ctx in gui.ctxlist_noipm_real: print(ctx.fmtname + ': ' + ctx.fmt(ctx.jacobi_theta2(x, q)))
     print('</H1>')
 

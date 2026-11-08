@@ -9,7 +9,7 @@ from xlcalcnet import cmath53, scplx, dcplx, ecplx, qcplx, ocplx
 
 
 def main_tests():
-    print('cplx m_elliptic_k(x)')
+    print('cplx m_elliptic_k(m)')
     demo_manual_cplx_short()
     demo_manual_cplx_real_part()
     demo_manual_cplx_imag_part()
@@ -21,24 +21,26 @@ def main_tests():
 def demo_manual_cplx_short():
     print('<H1 Title="demo_manual_cplx_short">')
     #from xlcalcnet import *
-    x = -5.1+2j; gui.setdps(40)
-    for ctx in [fpm, mpm, cmath53]: print(ctx.fmtname + ': ' + ctx.fmt(ctx.m_elliptic_k(x)))
+    m = -5.1+2j; gui.setdps(40)
+    for ctx in [fpm, mpm, cmath53]: print(ctx.fmtname + ': ' + ctx.fmt(ctx.m_elliptic_k(m)))
     print('</H1>')
 
 
 def demo_manual_cplx_real_part():
     print('<H1 Title="demo_manual_cplx_real_part">')
     #from xlcalcnet import *
-    x = -5.1+2j; gui.setdps(90)
-    for ctx in gui.ctxlist_noboost_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.m_elliptic_k(x))))
+    m = -5.1+2j; gui.setdps(90)
+    for ctx in gui.ctxlist_noboost_cplx: 
+        print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.m_elliptic_k(m))))
     print('</H1>')
 
 
 def demo_manual_cplx_imag_part():
     print('<H1 Title="demo_manual_cplx_imag_part">')
     #from xlcalcnet import *
-    x = -5.1+2j; gui.setdps(90)
-    for ctx in gui.ctxlist_noboost_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(ctx.m_elliptic_k(x))))
+    m = -5.1+2j; gui.setdps(90)
+    for ctx in gui.ctxlist_noboost_cplx: 
+        print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(ctx.m_elliptic_k(m))))
     print('</H1>')
 
 
@@ -46,11 +48,11 @@ def demo_manual_cplx_imag_part():
 
 def demo_m_elliptic_k_cplx_ctx():
     print('<H1 Title="m_elliptic_k_cplx_ctx">')
-    xlist = [-5.1+2j, 8.8+2j]; gui.setdps(50)
-    for x in xlist:
-        print('<H2 Title="m_elliptic_k(x); x=' + str(x) + '">')
+    mlist = [-5.1+2j, 8.8+2j]; gui.setdps(50)
+    for m in mlist:
+        print('<H2 Title="m_elliptic_k(m); m=' + str(m) + '">')
         for ctx in gui.ctxlist_noboost_cplx:
-            res = ctx.m_elliptic_k(x)
+            res = ctx.m_elliptic_k(m)
             print(ctx.fmtname + ': ' + ctx.fmt(res))
         print('</H2>')
         print()
@@ -60,17 +62,17 @@ def demo_m_elliptic_k_cplx_ctx():
 
 def demo_m_elliptic_k_cplx_re_im_ctx():
     print('<H1 Title="m_elliptic_k_cplx_re_im_ctx">')
-    xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
-    for x in xlist:
-        print('<H2 Title="Re(m_elliptic_k(x)); x=' + str(x) + '">')
+    mlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
+    for m in mlist:
+        print('<H2 Title="Re(m_elliptic_k(m)); m=' + str(m) + '">')
         for ctx in gui.ctxlist_noboost_cplx:
-            res = ctx.m_elliptic_k(x)
+            res = ctx.m_elliptic_k(m)
             print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(res)))
         print('</H2>')
         print()
-        print('<H2 Title="Im(m_elliptic_k(x)); x=' + str(x) + '">')
+        print('<H2 Title="Im(m_elliptic_k(m)); m=' + str(m) + '">')
         for ctx in gui.ctxlist_noboost_cplx:
-            res = ctx.m_elliptic_k(x)
+            res = ctx.m_elliptic_k(m)
             print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(res)))
         print('</H2>')
         print()
@@ -80,18 +82,18 @@ def demo_m_elliptic_k_cplx_re_im_ctx():
 
 def demo_m_elliptic_k_cplx_m_elliptic_klicit():
     print('<H1 Title="demo_m_elliptic_k_cplx_m_elliptic_klicit">')
-    xlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
-    for x in xlist:
-        print('<H2 Title="m_elliptic_k(x); x=' + str(x) + '">')
-        res = cmath53.m_elliptic_k(x); print('cmath53: ' + cmath53.fmt(res))
+    mlist = [-5.1+2j, 8.8+2j]; gui.setdps(90)
+    for m in mlist:
+        print('<H2 Title="m_elliptic_k(m); m=' + str(m) + '">')
+        res = cmath53.m_elliptic_k(m); print('cmath53: ' + cmath53.fmt(res))
         if gui.has_xlcalcnet2:
-            res = sflintc.m_elliptic_k(x); print('sflintc: ' + sflintc.fmt(res))
-            res = dflintc.m_elliptic_k(x); print('dflintc: ' + dflintc.fmt(res))
-            res = eflintc.m_elliptic_k(x); print('eflintc: ' + eflintc.fmt(res))
-            res = qflintc.m_elliptic_k(x); print('qflintc: ' + qflintc.fmt(res))
-            res = oflintc.m_elliptic_k(x); print('oflintc: ' + oflintc.fmt(res))
-            res = mflintc.m_elliptic_k(x); print('mflintc: ' + mflintc.fmt(res))
-            res = aflintc.m_elliptic_k(x); print('aflintc: ' + aflintc.fmt(res))
+            res = sflintc.m_elliptic_k(m); print('sflintc: ' + sflintc.fmt(res))
+            res = dflintc.m_elliptic_k(m); print('dflintc: ' + dflintc.fmt(res))
+            res = eflintc.m_elliptic_k(m); print('eflintc: ' + eflintc.fmt(res))
+            res = qflintc.m_elliptic_k(m); print('qflintc: ' + qflintc.fmt(res))
+            res = oflintc.m_elliptic_k(m); print('oflintc: ' + oflintc.fmt(res))
+            res = mflintc.m_elliptic_k(m); print('mflintc: ' + mflintc.fmt(res))
+            res = aflintc.m_elliptic_k(m); print('aflintc: ' + aflintc.fmt(res))
         print('</H2>')
         print()
     print('</H1>')

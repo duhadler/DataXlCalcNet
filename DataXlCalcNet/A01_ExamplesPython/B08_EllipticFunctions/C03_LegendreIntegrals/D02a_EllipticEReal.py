@@ -9,7 +9,7 @@ from xlcalcnet import math53, sreal, dreal, ereal, qreal, oreal
 
 
 def main_tests():
-    print('real elliptic_e(m)')
+    print('real elliptic_e(k)')
     demo_manual_real()
     demo_elliptic_e_real_ctx()
     demo_elliptic_e_real_elliptic_elicit()
@@ -18,18 +18,18 @@ def main_tests():
 def demo_manual_real():
     print('<H1 Title="demo_manual_real">')
     #from xlcalcnet import *
-    m = 0.999; gui.setdps(90)
-    for ctx in gui.ctxlist_noipm_real: print(ctx.fmtname + ': ' + ctx.fmt(ctx.elliptic_e(m)))
+    k = 0.999; gui.setdps(90)
+    for ctx in gui.ctxlist_noipm_real: print(ctx.fmtname + ': ' + ctx.fmt(ctx.elliptic_e(k)))
     print('</H1>')
 
 
 def demo_elliptic_e_real_ctx():
     print('<H1 Title="demo_elliptic_e_real_ctx">')
-    mlist = [0.1, 0.999]; gui.setdps(90)
-    for m in mlist:
-        print('<H2 Title="elliptic_e(m); m=' + str(m) + '">')
+    klist = [0.1, 0.999]; gui.setdps(90)
+    for k in klist:
+        print('<H2 Title="elliptic_e(k); k=' + str(k) + '">')
         for ctx in gui.ctxlist_noipm_real:
-            res = ctx.elliptic_e(m)
+            res = ctx.elliptic_e(k)
             print(ctx.fmtname + ': ' + ctx.fmt(res))
         print('</H2>')
         print()
@@ -39,24 +39,24 @@ def demo_elliptic_e_real_ctx():
 
 def demo_elliptic_e_real_elliptic_elicit():
     print('<H1 Title="demo_elliptic_e_real_elliptic_elicit">')
-    mlist = [0.1, 0.999]; gui.setdps(90)
-    for m in mlist:
-        print('<H2 Title="elliptic_e(m); m=' + str(m) + '">')
-        res = math53.elliptic_e(m); print('math53: ' + math53.fmt(res))
-        res = sreal.elliptic_e(m); print(' sreal: ' + sreal.fmt(res))
-        res = dreal.elliptic_e(m); print(' dreal: ' + dreal.fmt(res))
-        res = ereal.elliptic_e(m); print(' ereal: ' + ereal.fmt(res))
-        res = qreal.elliptic_e(m); print(' qreal: ' + qreal.fmt(res))
-        res = oreal.elliptic_e(m); print(' oreal: ' + oreal.fmt(res))
+    klist = [0.1, 0.999]; gui.setdps(90)
+    for k in klist:
+        print('<H2 Title="elliptic_e(k); k=' + str(k) + '">')
+        res = math53.elliptic_e(k); print('math53: ' + math53.fmt(res))
+        res = sreal.elliptic_e(k); print(' sreal: ' + sreal.fmt(res))
+        res = dreal.elliptic_e(k); print(' dreal: ' + dreal.fmt(res))
+        res = ereal.elliptic_e(k); print(' ereal: ' + ereal.fmt(res))
+        res = qreal.elliptic_e(k); print(' qreal: ' + qreal.fmt(res))
+        res = oreal.elliptic_e(k); print(' oreal: ' + oreal.fmt(res))
         if gui.has_xlcalcnet2:
-            res = mreal.elliptic_e(m); print(' mreal: ' + mreal.fmt(res))
-            res = sflint.elliptic_e(m); print('sflint: ' + sflint.fmt(res))
-            res = dflint.elliptic_e(m); print('dflint: ' + dflint.fmt(res))
-            res = eflint.elliptic_e(m); print('eflint: ' + eflint.fmt(res))
-            res = qflint.elliptic_e(m); print('qflint: ' + qflint.fmt(res))
-            res = oflint.elliptic_e(m); print('oflint: ' + oflint.fmt(res))
-            res = mflint.elliptic_e(m); print('mflint: ' + mflint.fmt(res))
-            res = aflint.elliptic_e(m); print('aflint: ' + aflint.fmt(res))
+            res = mreal.elliptic_e(k); print(' mreal: ' + mreal.fmt(res))
+            res = sflint.elliptic_e(k); print('sflint: ' + sflint.fmt(res))
+            res = dflint.elliptic_e(k); print('dflint: ' + dflint.fmt(res))
+            res = eflint.elliptic_e(k); print('eflint: ' + eflint.fmt(res))
+            res = qflint.elliptic_e(k); print('qflint: ' + qflint.fmt(res))
+            res = oflint.elliptic_e(k); print('oflint: ' + oflint.fmt(res))
+            res = mflint.elliptic_e(k); print('mflint: ' + mflint.fmt(res))
+            res = aflint.elliptic_e(k); print('aflint: ' + aflint.fmt(res))
         print('</H2>')
         print()
     print('</H1>')

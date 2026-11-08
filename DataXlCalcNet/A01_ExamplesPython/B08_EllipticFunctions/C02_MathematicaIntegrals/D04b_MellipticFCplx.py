@@ -29,7 +29,8 @@ def demo_manual_cplx_real_part():
     print('<H1 Title="demo_manual_cplx_real_part">')
     #from xlcalcnet import *
     phi = 0.75+2j;  m = 0.5+2j; gui.setdps(90)
-    for ctx in gui.ctxlist_noboost_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.m_elliptic_f(phi, m))))
+    for ctx in gui.ctxlist_noboost_cplx: 
+        print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.m_elliptic_f(phi, m))))
     print('</H1>')
 
 
@@ -37,7 +38,8 @@ def demo_manual_cplx_imag_part():
     print('<H1 Title="demo_manual_cplx_imag_part">')
     #from xlcalcnet import *
     phi = 0.75+2j;  m = 0.5+2j; gui.setdps(90)
-    for ctx in gui.ctxlist_noboost_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(ctx.m_elliptic_f(phi, m))))
+    for ctx in gui.ctxlist_noboost_cplx: 
+        print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(ctx.m_elliptic_f(phi, m))))
     print('</H1>')
 
 

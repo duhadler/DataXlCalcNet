@@ -43,13 +43,7 @@ def demo_m_elliptic_k_real_m_elliptic_klicit():
     for m in mlist:
         print('<H2 Title="m_elliptic_k(m); m=' + str(m) + '">')
         res = math53.m_elliptic_k(m); print('math53: ' + math53.fmt(res))
-#        res = sreal.m_elliptic_k(m); print(' sreal: ' + sreal.fmt(res))
-#        res = dreal.m_elliptic_k(m); print(' dreal: ' + dreal.fmt(res))
-#        res = ereal.m_elliptic_k(m); print(' ereal: ' + ereal.fmt(res))
-#        res = qreal.m_elliptic_k(m); print(' qreal: ' + qreal.fmt(res))
-#        res = oreal.m_elliptic_k(m); print(' oreal: ' + oreal.fmt(res))
         if gui.has_xlcalcnet2:
-#            res = mreal.m_elliptic_k(m); print(' mreal: ' + mreal.fmt(res))
             res = sflint.m_elliptic_k(m); print('sflint: ' + sflint.fmt(res))
             res = dflint.m_elliptic_k(m); print('dflint: ' + dflint.fmt(res))
             res = eflint.m_elliptic_k(m); print('eflint: ' + eflint.fmt(res))

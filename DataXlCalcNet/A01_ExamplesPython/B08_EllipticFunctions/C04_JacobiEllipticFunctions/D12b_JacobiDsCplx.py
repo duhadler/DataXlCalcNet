@@ -29,7 +29,8 @@ def demo_manual_cplx_real_part():
     print('<H1 Title="demo_manual_cplx_real_part">')
     #from xlcalcnet import *
     x = -5.1+2j;  k = 2.7+2j; gui.setdps(90)
-    for ctx in gui.ctxlist_noboost_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.jacobi_ds(x, k))))
+    for ctx in gui.ctxlist_noboost_cplx: 
+        print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.real(ctx.jacobi_ds(x, k))))
     print('</H1>')
 
 
@@ -37,7 +38,8 @@ def demo_manual_cplx_imag_part():
     print('<H1 Title="demo_manual_cplx_imag_part">')
     #from xlcalcnet import *
     x = -5.1+2j;  k = 2.7+2j; gui.setdps(90)
-    for ctx in gui.ctxlist_noboost_cplx: print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(ctx.jacobi_ds(x, k))))
+    for ctx in gui.ctxlist_noboost_cplx: 
+        print(ctx.fmtname + ': ' +  ctx.realctx.fmt(ctx.imag(ctx.jacobi_ds(x, k))))
     print('</H1>')
 
 

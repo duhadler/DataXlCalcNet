@@ -18,7 +18,6 @@ def demo_manual_real():
     print('<H1 Title="demo_manual_real">')
     #from xlcalcnet import *
     phi = 0.75; m = 0.5; gui.setdps(90)
-    #for ctx in gui.ctxlist_noipm_real: print(ctx.fmtname + ': ' + ctx.fmt(ctx.m_elliptic_e_inc(phi, m)))
     for ctx in gui.ctxlist_noboost_real: print(ctx.fmtname + ': ' + ctx.fmt(ctx.m_elliptic_e_inc(phi, m)))
     print('</H1>')
 
@@ -30,7 +29,6 @@ def demo_m_elliptic_e_inc_real_ctx():
     for phi in philist:
         for m in mlist:
             print('<H2 Title="m_elliptic_e_inc(phi, m); phi=' + str(phi) + ' m=' + str(m) + '">')
-            #for ctx in gui.ctxlist_noipm_real:
             for ctx in gui.ctxlist_noboost_real:
                 res = ctx.m_elliptic_e_inc(phi, m)
                 print(ctx.fmtname + ': ' + ctx.fmt(res))
@@ -48,13 +46,7 @@ def demo_m_elliptic_e_inc_real_explicit():
         for m in mlist:
             print('<H2 Title="m_elliptic_e_inc(phi, m); phi=' + str(phi) + ' m=' + str(m) + '">')
             res = math53.m_elliptic_e_inc(phi, m); print('math53: ' + math53.fmt(res))
-#            res = sreal.m_elliptic_e_inc(phi, m); print(' sreal: ' + sreal.fmt(res))
-#            res = dreal.m_elliptic_e_inc(phi, m); print(' dreal: ' + dreal.fmt(res))
-#            res = ereal.m_elliptic_e_inc(phi, m); print(' ereal: ' + ereal.fmt(res))
-#            res = qreal.m_elliptic_e_inc(phi, m); print(' qreal: ' + qreal.fmt(res))
-#            res = oreal.m_elliptic_e_inc(phi, m); print(' oreal: ' + oreal.fmt(res))
             if gui.has_xlcalcnet2:
-#                res = mreal.m_elliptic_e_inc(phi, m); print(' mreal: ' + mreal.fmt(res))
                 res = sflint.m_elliptic_e_inc(phi, m); print('sflint: ' + sflint.fmt(res))
                 res = dflint.m_elliptic_e_inc(phi, m); print('dflint: ' + dflint.fmt(res))
                 res = eflint.m_elliptic_e_inc(phi, m); print('eflint: ' + eflint.fmt(res))
