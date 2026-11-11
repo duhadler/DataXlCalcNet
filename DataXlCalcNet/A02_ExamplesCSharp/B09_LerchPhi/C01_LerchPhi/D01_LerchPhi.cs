@@ -32,14 +32,14 @@ public static void MainTests()
 public static void TestLerchPhiReal()
 {
     Console.WriteLine("<H1 Title=" + "\"" + "TestLerchPhiReal" + "\"" + ">");
-    Double[] InputArray1 = { -0.8d, -0.1d, -0.5d, 1.0d - 0.001d };  // |z|<1
-    Double[] InputArray2 = { -0.5d, 2.5d, 13.5d };  // s>=-1
-    Double[] InputArray3 = { 0.1d, 0.5d, 13.5 };  // a>=0
+    Double[] InputArray1 = { -0.8, -0.1, 0.5 };  // |z|<1
+    Double[] InputArray2 = { -0.5, 2.5, 13.5 };  // s>=-1
+    Double[] InputArray3 = { 0.1, 0.5, 13.5 };  // a>=0
     foreach (Double z in InputArray1) {
     foreach (Double s in InputArray2) {
     foreach (Double a in InputArray3) {
         Console.WriteLine("<H2 Title=" + "\"" + "lerch_phi(z, s, a); " + 
-            "s={0}, z={1}, a={2}" + "\"" + ">", s, z, a);
+            "z={0}, s={1}, a={2}" + "\"" + ">", z, s, a);
         Double res01 = math53.lerch_phi(z, s, a);
         Console.WriteLine("math53:  {0}", res01);
 #if HasArbPrecNet
@@ -78,7 +78,7 @@ public static void TestLerchPhiCplx()
     Complex[] InputArray2C = {dcplx.t(2.1, 1.0), dcplx.t(12.1, 1.0), 
         dcplx.t(53.5, 1.0)};  // s
     Complex[] InputArray3C = {dcplx.t(0.01, 1.0), dcplx.t(0.5, 1.0), 
-        dcplx.t(1.0-0.001, 1.0)};  // a
+        dcplx.t(0.99, 1.0)};  // a
     foreach (Complex z in InputArray1C) {
     foreach (Complex s in InputArray2C) {
     foreach (Complex a in InputArray3C) {

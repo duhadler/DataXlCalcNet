@@ -21,51 +21,9 @@ public static void MainTests()
 /* No syntax highlighting if HasArbPrecNet is undefined */
     ArbPrec.SetDps(80);
 #endif
-    TestLerchZetaReal();
     TestLerchZetaCplx();
     TestLerchZetaRealImag();
 }
-
-
-#region TestLerchZetaReal
-
-public static void TestLerchZetaReal()
-{
-    Console.WriteLine("<H1 Title=" + "\"" + "TestLerchZetaReal" + "\"" + ">");
-    Double[] InputArray1 = { -0.8d, -0.1d, -0.5d, 1.0d - 0.001d };  // |lambda1|<1
-    Double[] InputArray2 = { -0.5d, 2.5d, 13.5d };  // alpha>=-1
-    Double[] InputArray3 = { 0.1d, 0.5d, 13.5 };  // s>=0
-    foreach (Double lambda1 in InputArray1) {
-    foreach (Double alpha in InputArray2) {
-    foreach (Double s in InputArray3) {
-        Console.WriteLine("<H2 Title=" + "\"" + "lerch_zeta(lambda1, alpha, alpha); " + 
-            "alpha={0}, lambda1={1}, s={2}" + "\"" + ">", alpha, lambda1, s);
-//        Double res01 = math53.lerch_zeta(lambda1, alpha, alpha);
-//        Console.WriteLine("math53:  {0}", res01);
-#if HasArbPrecNet
-/* No syntax highlighting if HasArbPrecNet is undefined */
-        SingleC res08 = sflint.lerch_zeta(lambda1, alpha, alpha);
-        Console.WriteLine("sflint:  {0}", res08);
-        Complex res09 = dflint.lerch_zeta(lambda1, alpha, alpha);
-        Console.WriteLine("dflint:  {0}", res09);
-        ExtendedC res10 = eflint.lerch_zeta(lambda1, alpha, alpha);
-        Console.WriteLine("eflint:  {0}", res10);
-        QuadrupleC res11 = qflint.lerch_zeta(lambda1, alpha, alpha);
-        Console.WriteLine("qflint:  {0}", res11);
-        OctupleC res12 = oflint.lerch_zeta(lambda1, alpha, alpha);
-        Console.WriteLine("oflint:  {0}", res12);
-        MpfrC res13 = mflint.lerch_zeta(lambda1, alpha, alpha);
-        Console.WriteLine("mflint:  {0}", res13);
-        ArbC res16 = aflint.lerch_zeta(lambda1, alpha, alpha);
-        Console.WriteLine("aflint: {0}", res16);
-#endif
-    Console.WriteLine("</H2>");
-    Console.WriteLine();
-    } } }
-    Console.WriteLine("</H1>");
-}
-
-#endregion
 
 
 #region TestLerchZetaCplx
@@ -86,19 +44,19 @@ public static void TestLerchZetaCplx()
                 "lambda1={0}, alpha={1}, s={2}" + "\"" + ">", lambda1, alpha, s);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
-        SingleC res08 = sflintc.lerch_zeta(lambda1, alpha, alpha);
+        SingleC res08 = sflintc.lerch_zeta(lambda1, alpha, s);
         Console.WriteLine("sflintc:  {0}", res08);
-        Complex res09 = dflintc.lerch_zeta(lambda1, alpha, alpha);
+        Complex res09 = dflintc.lerch_zeta(lambda1, alpha, s);
         Console.WriteLine("dflintc:  {0}", res09);
-        ExtendedC res10 = eflintc.lerch_zeta(lambda1, alpha, alpha);
+        ExtendedC res10 = eflintc.lerch_zeta(lambda1, alpha, s);
         Console.WriteLine("eflintc:  {0}", res10);
-        QuadrupleC res11 = qflintc.lerch_zeta(lambda1, alpha, alpha);
+        QuadrupleC res11 = qflintc.lerch_zeta(lambda1, alpha, s);
         Console.WriteLine("qflintc:  {0}", res11);
-        OctupleC res12 = oflintc.lerch_zeta(lambda1, alpha, alpha);
+        OctupleC res12 = oflintc.lerch_zeta(lambda1, alpha, s);
         Console.WriteLine("oflintc:  {0}", res12);
-        MpfrC res13 = mflintc.lerch_zeta(lambda1, alpha, alpha);
+        MpfrC res13 = mflintc.lerch_zeta(lambda1, alpha, s);
         Console.WriteLine("mflintc:  {0}", res13);
-        ArbC res16 = aflintc.lerch_zeta(lambda1, alpha, alpha);
+        ArbC res16 = aflintc.lerch_zeta(lambda1, alpha, s);
         Console.WriteLine("aflintc: {0}", res16);
 #endif
         Console.WriteLine("</H2>");

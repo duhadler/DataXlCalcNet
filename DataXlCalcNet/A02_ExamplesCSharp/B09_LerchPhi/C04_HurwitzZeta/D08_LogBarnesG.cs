@@ -32,7 +32,7 @@ public static void MainTests()
 public static void TestLogBarnesGReal()
 {
     Console.WriteLine("<H1 Title=" + "\"" + "TestLogBarnesGReal" + "\"" + ">");
-    double[] InputArray1 = { -0.333, 0.0, 4.333 };
+    double[] InputArray1 = { -0.333, 0.01, 4.333 };
     
     foreach (var x in InputArray1) {
         Console.WriteLine("<H2 Title=" + "\"" + "logbarnes_g(x); " + "x={0}" 

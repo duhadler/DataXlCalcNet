@@ -205,9 +205,9 @@ def demo_dft_1():
 
 #demo_arb_series_arithmetic()
 
-demo_arb_series_compose()
+#demo_arb_series_compose()
 
-#demo_arb_showgood_str()
+demo_arb_showgood_str()
 
 #demo_acb_poly()
 

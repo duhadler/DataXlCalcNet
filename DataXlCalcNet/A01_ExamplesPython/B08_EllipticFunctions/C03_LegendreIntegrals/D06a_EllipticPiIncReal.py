@@ -10,8 +10,8 @@ from xlcalcnet import math53, sreal, dreal, ereal, qreal, oreal
 
 def main_tests():
     demo_manual_real()
-#    demo_elliptic_pi_inc_real_ctx()
-#    demo_elliptic_pi_inc_real_explicit()
+    demo_elliptic_pi_inc_real_ctx()
+    demo_elliptic_pi_inc_real_explicit()
 
 
 def demo_manual_real():
@@ -29,7 +29,7 @@ def demo_elliptic_pi_inc_real_ctx():
     klist = [0.01, 0.5, 0.99];
     for n in nlist:
         for phi in philist:
-            for k in philist:
+            for k in klist:
                 print('<H2 Title="elliptic_pi_inc(n, phi, k); n=' + str(n) + ' phi=' + str(phi) + ' k=' + str(k) + '">')
                 for ctx in gui.ctxlist_noipm_real:
                     res = ctx.elliptic_pi_inc(n, phi, k)
@@ -47,7 +47,7 @@ def demo_elliptic_pi_inc_real_explicit():
     klist = [0.01, 0.5, 0.99];
     for n in nlist:
         for phi in philist:
-            for k in philist:
+            for k in klist:
                 print('<H2 Title="elliptic_pi_inc(n, phi, k); n=' + str(n) + ' phi=' + str(phi) + ' k=' + str(k) + '">')
                 res = math53.elliptic_pi_inc(n, phi, k); print('math53: ' + math53.fmt(res))
                 res = sreal.elliptic_pi_inc(n, phi, k); print(' sreal: ' + sreal.fmt(res))

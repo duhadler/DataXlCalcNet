@@ -29,7 +29,7 @@ def demo_m_elliptic_pi_inc_real_ctx():
     mlist = [0.01, 0.5, 0.99];
     for n in nlist:
         for phi in philist:
-            for m in philist:
+            for m in mlist:
                 print('<H2 Title="m_elliptic_pi_inc(n, phi, m); n=' + str(n) + ' phi=' + str(phi) + ' m=' + str(m) + '">')
                 for ctx in gui.ctxlist_noboost_real:
                     res = ctx.m_elliptic_pi_inc(n, phi, m)
@@ -47,7 +47,7 @@ def demo_m_elliptic_pi_inc_real_explicit():
     mlist = [0.01, 0.5, 0.99];
     for n in nlist:
         for phi in philist:
-            for m in philist:
+            for m in mlist:
                 print('<H2 Title="m_elliptic_pi_inc(n, phi, m); n=' + str(n) + ' phi=' + str(phi) + ' m=' + str(m) + '">')
                 res = math53.m_elliptic_pi_inc(n, phi, m); print('math53: ' + math53.fmt(res))
                 if gui.has_xlcalcnet2:

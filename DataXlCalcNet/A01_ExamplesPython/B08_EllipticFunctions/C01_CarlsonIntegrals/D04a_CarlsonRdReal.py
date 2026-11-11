@@ -29,7 +29,7 @@ def demo_elliptic_rd_real_ctx():
     zlist = [2.9, 5.4];
     for x in xlist:
         for y in ylist:
-            for z in ylist:
+            for z in zlist:
                 print('<H2 Title="elliptic_rd(x, y, z); x=' + str(x) + ' y=' + str(y) + ' z=' + str(z) + '">')
                 for ctx in gui.ctxlist_noipm_real:
                     res = ctx.elliptic_rd(x, y, z)
@@ -47,7 +47,7 @@ def demo_elliptic_rd_real_explicit():
     zlist = [2.9, 5.4];
     for x in xlist:
         for y in ylist:
-            for z in ylist:
+            for z in zlist:
                 print('<H2 Title="elliptic_rd(x, y, z); x=' + str(x) + ' y=' + str(y) + ' z=' + str(z) + '">')
                 res = math53.elliptic_rd(x, y, z); print('math53: ' + math53.fmt(res))
                 res = sreal.elliptic_rd(x, y, z); print(' sreal: ' + sreal.fmt(res))

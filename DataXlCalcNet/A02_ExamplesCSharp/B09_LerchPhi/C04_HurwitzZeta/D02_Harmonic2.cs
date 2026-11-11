@@ -32,8 +32,8 @@ public static void MainTests()
 public static void TestHarmonic2Real()
 {
     Console.WriteLine("<H1 Title=" + "\"" + "TestHarmonic2Real" + "\"" + ">");
-    Double[] InputArray1 = { 0.0, 1.0, 2.0, 4.0, 6.0, 8.0, 10.0 };
-    Double[] InputArray2 = { -0.333d, 0.0d, 0.333d };
+    Double[] InputArray1 = { 2.0, 4.0, 6.0, 8.0, 10.0 };
+    Double[] InputArray2 = { 0.333, 4.0, 10.333 };
     foreach (Double z in InputArray1) {
     foreach (Double r in InputArray2) {
         Console.WriteLine("<H2 Title=" + "\"" + "harmonic2(z, r); z={0}, r={1}" 

@@ -36,25 +36,25 @@ public static void TestEulerpolyReal()
     Double[] InputArray2 = { -0.333d, 0.0d, 0.333d };
     foreach (int n in InputArray1) {
     foreach (Double z in InputArray2) {
-        Console.WriteLine("<H2 Title=" + "\"" + "eulerpoly(z, n); n={0}, z={1}" 
+        Console.WriteLine("<H2 Title=" + "\"" + "eulerpoly(n, z); n={0}, z={1}" 
             + "\"" + ">", n, z);
-        Double res01 = math53.eulerpoly(z, n);
+        Double res01 = math53.eulerpoly(n, z);
         Console.WriteLine("math53:  {0}", res01);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
-        Single res08 = sflint.eulerpoly(z, n);
+        Single res08 = sflint.eulerpoly(n, z);
         Console.WriteLine("sflint:  {0}", res08);
-        Double res09 = dflint.eulerpoly(z, n);
+        Double res09 = dflint.eulerpoly(n, z);
         Console.WriteLine("dflint:  {0}", res09);
-        Extended res10 = eflint.eulerpoly(z, n);
+        Extended res10 = eflint.eulerpoly(n, z);
         Console.WriteLine("eflint:  {0}", res10);
-        Quadruple res11 = qflint.eulerpoly(z, n);
+        Quadruple res11 = qflint.eulerpoly(n, z);
         Console.WriteLine("qflint:  {0}", res11);
-        Octuple res12 = oflint.eulerpoly(z, n);
+        Octuple res12 = oflint.eulerpoly(n, z);
         Console.WriteLine("oflint:  {0}", res12);
-        Mpfr res13 = mflint.eulerpoly(z, n);
+        Mpfr res13 = mflint.eulerpoly(n, z);
         Console.WriteLine("mflint:  {0}", res13);
-        Arb res16 = aflint.eulerpoly(z, n);
+        Arb res16 = aflint.eulerpoly(n, z);
         Console.WriteLine("aflint: {0}", res16);
 #endif
     Console.WriteLine("</H2>");
@@ -76,25 +76,25 @@ public static void TestEulerpolyCplx()
         dcplx.t(4.333d, 2) };
     foreach (int n in InputArrayInt1) {
     foreach (Complex z in InputArray1C) {
-        Console.WriteLine("<H2 Title=" + "\"" + "eulerpoly(z, n); n={0}, z={1}" 
+        Console.WriteLine("<H2 Title=" + "\"" + "eulerpoly(n, z); n={0}, z={1}" 
         + "\"" + ">", n, z);
-        Complex res01 = cmath53.eulerpoly(z, n);
+        Complex res01 = cmath53.eulerpoly(n, z);
         Console.WriteLine("cmath53:  {0}", res01);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
-        SingleC res08 = sflintc.eulerpoly(z, n);
+        SingleC res08 = sflintc.eulerpoly(n, z);
         Console.WriteLine("sflintc:  {0}", res08);
-        Complex res09 = dflintc.eulerpoly(z, n);
+        Complex res09 = dflintc.eulerpoly(n, z);
         Console.WriteLine("dflintc:  {0}", res09);
-        ExtendedC res10 = eflintc.eulerpoly(z, n);
+        ExtendedC res10 = eflintc.eulerpoly(n, z);
         Console.WriteLine("eflintc:  {0}", res10);
-        QuadrupleC res11 = qflintc.eulerpoly(z, n);
+        QuadrupleC res11 = qflintc.eulerpoly(n, z);
         Console.WriteLine("qflintc:  {0}", res11);
-        OctupleC res12 = oflintc.eulerpoly(z, n);
+        OctupleC res12 = oflintc.eulerpoly(n, z);
         Console.WriteLine("oflintc:  {0}", res12);
-        MpfrC res13 = mflintc.eulerpoly(z, n);
+        MpfrC res13 = mflintc.eulerpoly(n, z);
         Console.WriteLine("mflintc:  {0}", res13);
-        ArbC res16 = aflintc.eulerpoly(z, n);
+        ArbC res16 = aflintc.eulerpoly(n, z);
         Console.WriteLine("aflintc: {0}", res16);
 #endif
     Console.WriteLine("</H2>");
@@ -119,40 +119,40 @@ public static void TestEulerpolyRealImag()
     foreach (Complex z in InputArray1C) {
     foreach (var IsReal in ReImArray) {
         string ReIm = IsReal ? "Re(" : "Im(";
-        Console.WriteLine("<H2 Title=" + "\"" + ReIm + "eulerpoly(z, n)); n={0}, z={1}" 
+        Console.WriteLine("<H2 Title=" + "\"" + ReIm + "eulerpoly(n, z)); n={0}, z={1}" 
             + "\"" + ">", n, z);
 
-        Complex res01c = cmath53.eulerpoly(z, n);
+        Complex res01c = cmath53.eulerpoly(n, z);
         Double res01 = IsReal ? res01c.Real : res01c.Imaginary;
         Console.WriteLine("cmath53:  {0}", res01);
 
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
-        SingleC res08c = sflintc.eulerpoly(z, n);
+        SingleC res08c = sflintc.eulerpoly(n, z);
         Single res08 = IsReal ? res08c.real : res08c.imag;
         Console.WriteLine("sflintc:  {0}", res08);
 
-        Complex res09c = dflintc.eulerpoly(z, n);
+        Complex res09c = dflintc.eulerpoly(n, z);
         Double res09 = IsReal ? res09c.Real : res09c.Imaginary;
         Console.WriteLine("dflintc:  {0}", res09);
 
-        ExtendedC res10c = eflintc.eulerpoly(z, n);
+        ExtendedC res10c = eflintc.eulerpoly(n, z);
         Extended res10 = IsReal ? res10c.real : res10c.imag;
         Console.WriteLine("eflintc:  {0}", res10);
 
-        QuadrupleC res11c = qflintc.eulerpoly(z, n);
+        QuadrupleC res11c = qflintc.eulerpoly(n, z);
         Quadruple res11 = IsReal ? res11c.real : res11c.imag;
         Console.WriteLine("qflintc:  {0}", res11);
 
-        OctupleC res12c = oflintc.eulerpoly(z, n);
+        OctupleC res12c = oflintc.eulerpoly(n, z);
         Octuple res12 = IsReal ? res12c.real : res12c.imag;
         Console.WriteLine("oflintc:  {0}", res12);
 
-        MpfrC res13c = mflintc.eulerpoly(z, n);
+        MpfrC res13c = mflintc.eulerpoly(n, z);
         Mpfr res13 = IsReal ? res13c.real : res13c.imag;
         Console.WriteLine("mflintc:  {0}", res13);
 
-        ArbC res16c = aflintc.eulerpoly(z, n);
+        ArbC res16c = aflintc.eulerpoly(n, z);
         Arb res16 = IsReal ? res16c.real : res16c.imag;
         Console.WriteLine("aflintc: {0}", res16);
 #endif

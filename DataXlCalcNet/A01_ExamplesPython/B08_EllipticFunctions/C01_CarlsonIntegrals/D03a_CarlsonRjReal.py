@@ -30,7 +30,7 @@ def demo_elliptic_rj_real_ctx():
     plist = [7.3, 6.2];
     for x in xlist:
         for y in ylist:
-            for z in ylist:
+            for z in zlist:
                 for p in plist:
                     print('<H2 Title="elliptic_rj(x, y, z, p); x=' + str(x) 
                         + ' y=' + str(y) + ' z=' + str(z)  + ' p=' + str(p) + '">')
@@ -51,7 +51,7 @@ def demo_elliptic_rj_real_explicit():
     plist = [7.3, 6.2];
     for x in xlist:
         for y in ylist:
-            for z in ylist:
+            for z in zlist:
                 for p in plist:
                     print('<H2 Title="elliptic_rj(x, y, z, p); x=' + str(x) + ' y=' + str(y) + ' z=' + str(z)  + ' p=' + str(p) + '">')
                     res = math53.elliptic_rj(x, y, z, p); print('math53: ' + math53.fmt(res))
