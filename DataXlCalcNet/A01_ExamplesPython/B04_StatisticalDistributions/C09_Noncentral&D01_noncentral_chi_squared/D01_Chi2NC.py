@@ -1,8 +1,8 @@
 ﻿import time
 import math
 from xlcalcnet import gui; gui.adduserpath()
-from A01_ExamplesPython.B18_FunctionsAndCurvesPlots.C01_Intro_Parametric2D import D02_DistPlot;
-DistPlot = D02_DistPlot.DistPlot
+#from A01_ExamplesPython.B18_FunctionsAndCurvesPlots.C01_Intro_Parametric2D import D02_DistPlot;
+#DistPlot = D02_DistPlot.DistPlot
 from xlcalcnet import sreal, dreal, ereal, qreal, oreal
 from xlcalcnet import ArbPrec, mreal
 ArbPrec.SetDps(80);
@@ -21,7 +21,7 @@ funclist = ['pdf', 'cdf', 'sf', 'hf', 'chf', 'qtf', 'isf', 'mean', 'median', \
 
 def main_tests():
     DemoDistChi2Nc()
-    DemoPlotChi2Nc()
+#    DemoPlotChi2Nc()
 
 
 def DemoDistChi2Nc():

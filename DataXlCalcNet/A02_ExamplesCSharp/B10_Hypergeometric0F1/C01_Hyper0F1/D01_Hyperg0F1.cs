@@ -34,8 +34,8 @@ public static void MainTests()
 public static void TestHyperg0F1Real()
 {
     Console.WriteLine("<H1 Title=" + "\"" + "TestHyperg0F1Real" + "\"" + ">");
-    Double[] InputArray1 = { 0.0d, 0.75d, 1.5d };
-    Double[] InputArray2 = { 0.0d, 0.5d, 1.0d };
+    Double[] InputArray1 = { 0.1, 0.75, 1.5 };
+    Double[] InputArray2 = { 0.2, 0.5, 1.0 };
     foreach (Double b in InputArray1) {
     foreach (Double x in InputArray2) {
         Console.WriteLine("<H2 Title=" + "\"" + "hyperg_0f1(b, x); b={0}, x={1}" 

@@ -30,7 +30,7 @@ public static void MainTests()
 public static void TestBesselYvZeroReal()
 {
     Console.WriteLine("<H1 Title=" + "\"" + "TestBesselYvZeroReal" + "\"" + ">");
-    int[] InputArray1 = { 0, 1, 2, 4, 6, 8, 10 };
+    int[] InputArray1 = { 1, 2, 4, 6, 8, 10 };
     Double[] InputArray2 = { -0.333d, 0.0d, 0.333d, 10.333d };
     foreach (int m in InputArray1) {
     foreach (Double nu in InputArray2) {

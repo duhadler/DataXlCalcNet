@@ -31,8 +31,8 @@ public static void TestMarcumQ()
 {
     Console.WriteLine("<H1 Title=" + "\"" + "TestMarcumQ" + "\"" + ">");
     int[] InputArray1 = { 1, 2, 3, 4 };
-    Double[] InputArray2 =  { 1.5d, 2.5d, 13.5d };
-    Double[] InputArray3 = { 2.1d, 12.1d, 53.5d };
+    Double[] InputArray2 =  { 1.5, 2.5, 13.5 };
+    Double[] InputArray3 = { 2.1, 12.1, 53.5 };
     foreach (int m in InputArray1) {
     foreach (Double a in InputArray2) {
     foreach (Double b in InputArray3) {
