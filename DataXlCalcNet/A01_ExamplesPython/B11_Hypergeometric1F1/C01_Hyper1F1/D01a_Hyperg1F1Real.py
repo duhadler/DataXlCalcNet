@@ -10,29 +10,29 @@ from xlcalcnet import math53, sreal, dreal, ereal, qreal, oreal
 
 def main_tests():
     demo_manual_real()
-    demo_elliptic_rf_real_ctx()
-    demo_elliptic_rf_real_explicit()
+    demo_hyperg_1f1_real_ctx()
+    demo_hyperg_1f1_real_explicit()
 
 
 def demo_manual_real():
     print('<H1 Title="demo_manual_real">')
     #from xlcalcnet import *
-    x = 5.1; y = 2.7; z = 1.3; gui.setdps(90)
-    for ctx in gui.ctxlist_noipm_real: print(ctx.fmtname + ': ' + ctx.fmt(ctx.elliptic_rf(x, y, z)))
+    a = 5.1; b = 2.7; x = 1.3; gui.setdps(90)
+    for ctx in gui.ctxlist_noipm_real: print(ctx.fmtname + ': ' + ctx.fmt(ctx.hyperg_1f1(a, b, x)))
     print('</H1>')
 
 
-def demo_elliptic_rf_real_ctx():
-    print('<H1 Title="demo_elliptic_rf_real_ctx">')
-    xlist = [5.1, 8.8]; gui.setdps(90)
-    ylist = [1.5, 2.7];
-    zlist = [2.9, 5.4];
-    for x in xlist:
-        for y in ylist:
-            for z in zlist:
-                print('<H2 Title="elliptic_rf(x, y, z); x=' + str(x) + ' y=' + str(y) + ' z=' + str(z) + '">')
+def demo_hyperg_1f1_real_ctx():
+    print('<H1 Title="demo_hyperg_1f1_real_ctx">')
+    alist = [5.1, 8.8]; gui.setdps(90)
+    blist = [1.5, 2.7];
+    xlist = [2.9, 5.4];
+    for a in alist:
+        for b in blist:
+            for x in xlist:
+                print('<H2 Title="hyperg_1f1(a, b, x); a=' + str(a) + ' b=' + str(b) + ' x=' + str(x) + '">')
                 for ctx in gui.ctxlist_noipm_real:
-                    res = ctx.elliptic_rf(x, y, z)
+                    res = ctx.hyperg_1f1(a, b, x)
                     print(ctx.fmtname + ': ' + ctx.fmt(res))
                 print('</H2>')
                 print()
@@ -40,30 +40,30 @@ def demo_elliptic_rf_real_ctx():
     print()
 
 
-def demo_elliptic_rf_real_explicit():
-    print('<H1 Title="demo_elliptic_rf_real_explicit">')
-    xlist = [-5.1, 8.8]; gui.setdps(90)
-    ylist = [1.5, 2.7];
-    zlist = [2.9, 5.4];
-    for x in xlist:
-        for y in ylist:
-            for z in zlist:
-                print('<H2 Title="elliptic_rf(x, y, z); x=' + str(x) + ' y=' + str(y) + ' z=' + str(z) + '">')
-                res = math53.elliptic_rf(x, y, z); print('math53: ' + math53.fmt(res))
-                res = sreal.elliptic_rf(x, y, z); print(' sreal: ' + sreal.fmt(res))
-                res = dreal.elliptic_rf(x, y, z); print(' dreal: ' + dreal.fmt(res))
-                res = ereal.elliptic_rf(x, y, z); print(' ereal: ' + ereal.fmt(res))
-                res = qreal.elliptic_rf(x, y, z); print(' qreal: ' + qreal.fmt(res))
-                res = oreal.elliptic_rf(x, y, z); print(' oreal: ' + oreal.fmt(res))
+def demo_hyperg_1f1_real_explicit():
+    print('<H1 Title="demo_hyperg_1f1_real_explicit">')
+    alist = [-5.1, 8.8]; gui.setdps(90)
+    blist = [1.5, 2.7];
+    xlist = [2.9, 5.4];
+    for a in alist:
+        for b in blist:
+            for x in xlist:
+                print('<H2 Title="hyperg_1f1(a, b, x); a=' + str(a) + ' b=' + str(b) + ' x=' + str(x) + '">')
+                res = math53.hyperg_1f1(a, b, x); print('math53: ' + math53.fmt(res))
+                res = sreal.hyperg_1f1(a, b, x); print(' sreal: ' + sreal.fmt(res))
+                res = dreal.hyperg_1f1(a, b, x); print(' dreal: ' + dreal.fmt(res))
+                res = ereal.hyperg_1f1(a, b, x); print(' ereal: ' + ereal.fmt(res))
+                res = qreal.hyperg_1f1(a, b, x); print(' qreal: ' + qreal.fmt(res))
+                res = oreal.hyperg_1f1(a, b, x); print(' oreal: ' + oreal.fmt(res))
                 if gui.has_xlcalcnet2:
-                    res = mreal.elliptic_rf(x, y, z); print(' mreal: ' + mreal.fmt(res))
-                    res = sflint.elliptic_rf(x, y, z); print('sflint: ' + sflint.fmt(res))
-                    res = dflint.elliptic_rf(x, y, z); print('dflint: ' + dflint.fmt(res))
-                    res = eflint.elliptic_rf(x, y, z); print('eflint: ' + eflint.fmt(res))
-                    res = qflint.elliptic_rf(x, y, z); print('qflint: ' + qflint.fmt(res))
-                    res = oflint.elliptic_rf(x, y, z); print('oflint: ' + oflint.fmt(res))
-                    res = mflint.elliptic_rf(x, y, z); print('mflint: ' + mflint.fmt(res))
-                    res = aflint.elliptic_rf(x, y, z); print('aflint: ' + aflint.fmt(res))
+                    res = mreal.hyperg_1f1(a, b, x); print(' mreal: ' + mreal.fmt(res))
+                    res = sflint.hyperg_1f1(a, b, x); print('sflint: ' + sflint.fmt(res))
+                    res = dflint.hyperg_1f1(a, b, x); print('dflint: ' + dflint.fmt(res))
+                    res = eflint.hyperg_1f1(a, b, x); print('eflint: ' + eflint.fmt(res))
+                    res = qflint.hyperg_1f1(a, b, x); print('qflint: ' + qflint.fmt(res))
+                    res = oflint.hyperg_1f1(a, b, x); print('oflint: ' + oflint.fmt(res))
+                    res = mflint.hyperg_1f1(a, b, x); print('mflint: ' + mflint.fmt(res))
+                    res = aflint.hyperg_1f1(a, b, x); print('aflint: ' + aflint.fmt(res))
                 print('</H2>')
                 print()
     print('</H1>')

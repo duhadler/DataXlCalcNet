@@ -76,8 +76,8 @@ public static void TestErfiCplx()
     foreach (var x in InputArray1C) {
         Console.WriteLine("<H2 Title=" + "\"" + "erfi(x); " + "x={0}" + 
             "\"" + ">", x);
-//        Complex res01 = cmath53.erfi(x);
-//        Console.WriteLine("cmath53:  {0}", res01);
+        Complex res01 = cmath53.erfi(x);
+        Console.WriteLine("cmath53:  {0}", res01);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
         SingleC res08 = sflintc.erfi(x);
