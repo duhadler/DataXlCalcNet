@@ -100,8 +100,8 @@ public static void TestSphericalHarmonicCplx()
     foreach (Complex phi in InputArray4C) {
         Console.WriteLine("<H2 Title=" + "\"" + "spherical_y(n, m, theta, phi); " + 
             "n={0}, m={1}, theta={2}, phi={3}" + "\"" + ">", n, m, theta, phi);
-//        Complex res01 = cmath53.spherical_y(n, m, theta, phi);
-//        Console.WriteLine("cmath53:  {0}", res01);
+        Complex res01 = cmath53.spherical_y(n, m, theta, phi);
+        Console.WriteLine("cmath53:  {0}", res01);
 #if HasArbPrecNet
 /* No syntax highlighting if HasArbPrecNet is undefined */
         SingleC res08 = sflintc.spherical_y(n, m, theta, phi);
