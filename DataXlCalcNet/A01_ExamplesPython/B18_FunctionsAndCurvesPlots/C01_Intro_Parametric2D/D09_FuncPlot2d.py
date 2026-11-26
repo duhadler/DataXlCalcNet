@@ -1,5 +1,5 @@
 ﻿
-from xlcalcnet import gui, math53, mpm
+from xlcalcnet import gui, math53, mpm, fpm
 from pathlib import Path
 import os, time
 import matplotlib.pyplot as plt
@@ -12,7 +12,7 @@ class NoConvergence(Exception):
     pass
 
 
-def xarange(ctx, a, b, dt):
+def xarange(ctx, a, b, dt, ShiftZero=0):
     a, b, dt = float(a), float(b), float(dt)
     result = []
     i = 0
@@ -21,13 +21,15 @@ def xarange(ctx, a, b, dt):
         t = a + dt*i
         i += 1
         if t < b:
-            result.append(t)
+            t0 = t
+            if (t==0): t0=ShiftZero
+            result.append(t0)
         else:
             break
     return result
 
 
-def FuncPlot2d(ctx=None, f=None, xlim=[-5,5], ylim=None, points=200, dpi=None, 
+def FuncPlot2d(ctx=None, f=None, xlim=[-5,5], ylim=None,   
     singularities=[], axes=None, **kwargs):
     OutputDir = kwargs['OutputDir'] if 'OutputDir' in kwargs else 'OutputMonitor'
     Title = kwargs['Title'] if 'Title' in kwargs else 'FuncPlot2d'
@@ -37,6 +39,10 @@ def FuncPlot2d(ctx=None, f=None, xlim=[-5,5], ylim=None, points=200, dpi=None,
     FigSizeY = float(kwargs['FigSizeY']) if 'FigSizeY' in kwargs else 5
     Resolution = int(kwargs['Resolution']) if 'Resolution' in kwargs else 300
 # End of standard key word arguments
+    FileName = kwargs['FileName'] if 'FileName' in kwargs else 'Temp'
+    ShiftZero = kwargs['ShiftZero'] if 'ShiftZero' in kwargs else 0
+    IsCharfunc = kwargs['IsCharfunc'] if 'IsCharfunc' in kwargs else False
+# End of custom key word arguments
 
     if (OutputMode != 'gui'):
         import matplotlib
@@ -54,7 +60,7 @@ def FuncPlot2d(ctx=None, f=None, xlim=[-5,5], ylim=None, points=200, dpi=None,
     a, b = xlim
     colors = ['b', 'r', 'g', 'm', 'k']
     for n, func in enumerate(f):
-        x = xarange(ctx, a, b, (b-a)/float(points))
+        x = xarange(ctx, a, b, (b-a)/float(Resolution), ShiftZero)
         segments = []
         segment = []
         in_complex = False
@@ -67,7 +73,7 @@ def FuncPlot2d(ctx=None, f=None, xlim=[-5,5], ylim=None, points=200, dpi=None,
                 v = func(x[i])
                 if ctx.isnan(v) or abs(v) > 1e300:
                     raise ValueError
-                if hasattr(v, "imag") and v.imag:
+                if hasattr(v, 'imag') and v.imag:
                     re = float(v.real)
                     im = float(v.imag)
                     if not in_complex:
@@ -80,7 +86,7 @@ def FuncPlot2d(ctx=None, f=None, xlim=[-5,5], ylim=None, points=200, dpi=None,
                         in_complex = False
                         segments.append(segment)
                         segment = []
-                    if hasattr(v, "real"):
+                    if hasattr(v, 'real'):
                         v = v.real
                     segment.append((float(x[i]), v))
             except plot_ignore:
@@ -97,19 +103,29 @@ def FuncPlot2d(ctx=None, f=None, xlim=[-5,5], ylim=None, points=200, dpi=None,
             c = colors[n % len(colors)]
             if len(segment[0]) == 3:
                 z = [s[2] for s in segment]
-                axes.plot(x, y, '--'+c, linewidth=3)
-                axes.plot(x, z, ':'+c, linewidth=3)
+                if IsCharfunc:
+                    axes.plot(x, y, 'b', linewidth=2)
+                    axes.plot(x, z, 'r', linewidth=2)
+                else:
+                    axes.plot(x, y, '--'+c, linewidth=3)
+                    axes.plot(x, z, ':'+c, linewidth=3)
             else:
                 axes.plot(x, y, c, linewidth=3)
     axes.set_xlim([float(_) for _ in xlim])
     if ylim:
         axes.set_ylim([float(_) for _ in ylim])
-    axes.set_xlabel('x')
-    axes.set_ylabel('f(x)')
+    if IsCharfunc:
+        axes.set_xlabel('t')
+        axes.set_ylabel('c_x(t)')
+    else:
+        axes.set_xlabel('x')
+        axes.set_ylabel('f(x)')
     axes.grid(True)
-    #axes.legend(['First line', 'Second line'], loc='center right', bbox_to_anchor=(1.25, 0.5))
+    if IsCharfunc: axes.legend(['real part', 'imaginary part'])
+    
     
     plt.title(Title)
+
 
 # Start of output choices
     if (OutputMode == 'plt'):
@@ -118,12 +134,30 @@ def FuncPlot2d(ctx=None, f=None, xlim=[-5,5], ylim=None, points=200, dpi=None,
         gui.plot(fig, __file__, Title)
     else:
         FName = 'Temp'
-        if OutputDir != 'Temp': FName = (Path(__file__).stem)
+#        if OutputDir != 'Temp': FName = (Path(__file__).stem)
+        if OutputDir != 'Temp': 
+            if FileName == 'Temp': FName = (Path(__file__).stem)              
+            else: FName = FileName
         LocalDir = gui.get_local_appdata_xlcalcnet()
         FullPath = os.sep.join([LocalDir, OutputDir, FName + '.' + OutputMode])
         plt.savefig(FullPath,  bbox_inches='tight')
         if OutputDir != 'Temp': print('Graphics written to: ', FullPath)
     plt.close('all')
+
+#
+## Start of output choices
+#    if (OutputMode == 'plt'):
+#        plt.show()
+#    elif (OutputMode == 'gui'):
+#        gui.plot(fig, __file__, Title)
+#    else:
+#        FName = 'Temp'
+#        if OutputDir != 'Temp': FName = (Path(__file__).stem)
+#        LocalDir = gui.get_local_appdata_xlcalcnet()
+#        FullPath = os.sep.join([LocalDir, OutputDir, FName + '.' + OutputMode])
+#        plt.savefig(FullPath,  bbox_inches='tight')
+#        if OutputDir != 'Temp': print('Graphics written to: ', FullPath)
+#    plt.close('all')
 
 
 
@@ -131,8 +165,19 @@ def FuncPlot2d(ctx=None, f=None, xlim=[-5,5], ylim=None, points=200, dpi=None,
 try:
     if __name__ == '__main__':
         start0 = time.time()
-        FuncPlot2d(ctx=mpm, f=[mpm.cos, mpm.sin], xlim=[-4, 4], Title = 'Plot2dCosSin')
-        #FuncPlot2d(ctx=math53, f=[math53.cos, math53.sin], xlim=[-4, 4], Title = 'Simultaneous plot of sin and cos, using math53')
+
+#        FuncPlot2d(ctx=mpm, f=[fpm.dist_arcsine(0, 1).c_x], xlim=[-20, 20], 
+#            ShiftZero=0.0001, IsCharfunc=True, OutputMode='svg',
+#            Title = 'Arcsine distribution, characteristic function (a=0, b=1)')
+
+#        FuncPlot2d(ctx=mpm, f=[fpm.dist_arcsine(0, 1).m_x], xlim=[-1, 1],
+#            Title = 'Arcsine distribution, moment generating function (a=0, b=1)')
+
+#        FuncPlot2d(ctx=mpm, f=[fpm.dist_arcsine(0, 1).k_x], xlim=[-5, 5],
+#            Title = 'Arcsine distribution, cumulant generating function (a=0, b=1)')
+
+#        FuncPlot2d(ctx=mpm, f=[mpm.cos, mpm.sin], xlim=[-4, 4], Title = 'Plot2dCosSin')
+        FuncPlot2d(ctx=math53, f=[math53.cos, math53.sin], xlim=[-4, 4], Title = 'Simultaneous plot of sin and cos, using math53')
         
         #FuncPlot2d(ctx=mpm, f=[mpm.acos, mpm.asin], xlim=[-2, 2], Title = 'Simultaneous plot of asin an acos, using mpm')
         #FuncPlot2d(ctx=math53, f=[math53.acos, math53.asin], xlim=[-2, 2], Title = 'Simultaneous plot of asin and acos, using math53')

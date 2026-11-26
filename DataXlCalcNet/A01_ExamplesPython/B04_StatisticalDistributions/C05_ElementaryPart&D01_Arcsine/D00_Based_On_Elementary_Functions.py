@@ -1284,7 +1284,7 @@ def demo_rv_weibull():
     return
 
 
-#demo_rv_arcsine()
+demo_rv_arcsine()
 #demo_rv_cauchy()
 #demo_rv_dagum()
 #demo_rv_exponential()
@@ -1305,7 +1305,7 @@ def demo_rv_weibull():
 #demo_rv_singh_maddala()
 #demo_rv_triangular()
 #demo_rv_uniform()
-demo_rv_weibull()
+#demo_rv_weibull()
 
 
 
